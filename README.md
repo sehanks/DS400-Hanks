@@ -31,4 +31,4 @@ The second model I used was LSTM. Long short-term memory networks, or LSTMs, are
 
 
 ### Commit 5: Parameter Tuning
-In this stage, I was able to alter my models to make them each as accurate as possible before choosing my final model. After much consideration, I have chosen LSTM to be my final model due to its high accuracy and efficiency. I was also able to create a decoder that takes in an input audio, and prints out the transcript for that audio. This may be useful during my application stage.
+In this stage, I was able to alter my models to make them each as accurate as possible before choosing my final model. After much consideration, I have chosen CNN to be my final model due to its high accuracy and efficiency. I was also able to create a decoder that takes in an input audio, and prints out the transcript for that audio. This may be useful during my application stage.
