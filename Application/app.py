@@ -2,7 +2,7 @@ import streamlit as st
 #import tensorflow as tf
 import numpy as np
 import pandas as pd
-#from PIL import Image, ImageOps
+from PIL import Image, ImageOps
 
 
 #model = load_model('model_cnn.hdf5')
