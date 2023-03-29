@@ -1,43 +1,7 @@
-
-import os
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from datetime import datetime
-import cv2
-
-import IPython
-import librosa 
-import librosa.display
-from IPython.display import Audio # to play the audio files
-plt.style.use('seaborn-white')
-from python_speech_features import mfcc
-
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
-from sklearn.metrics import confusion_matrix, classification_report
-from sklearn.model_selection import train_test_split
-
-from os.path import dirname, join as pjoin
-from scipy.io import wavfile
-import scipy.io
-
-from tensorflow.keras.models import load_model
-from keras.layers.normalization import layer_normalization
-from tensorflow.keras.models import Sequential
-import tensorflow as tf
-from keras.models import Sequential
-from keras.layers import Dense, Conv1D, MaxPooling1D, Flatten, Dropout, BatchNormalization
-from keras.utils import np_utils, to_categorical
-
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
-from sklearn.metrics import confusion_matrix, classification_report
-from sklearn.model_selection import train_test_split
-
 import streamlit as st
-import streamlit.components.v1 as components
-from PIL import Image
-#from melspec import plot_colored_polar, plot_melspec
+import tensorflow as tf
+import numpy as np
+from PIL import Image, ImageOps
 
 
 model = load_model('model_cnn.hdf5')
