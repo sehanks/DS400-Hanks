@@ -81,29 +81,10 @@ def main():
     
     # Emotion Recognition page
     if page == 'Emotion Recognition':
-        
         # Title of this page
         st.subheader('Emotion Recognition')
-        
         # Upload file heading
-        st.markdown("##### Upload audio file"
-        
-        
-        #with  st.form(key = 'emotion_clf_form'):
-          #raw_text = st.text_area('Type here')
-          #submit_text = st.form_submit_button(label = 'Submit')
-        #if submit_text:
-            #col1, col2 = st.beta_columns(2)
-            # Apply functions
-            #prediction = predict_emotion(raw_text)
-            #probability = get_prediction_prob(raw_text)
-            #with col1:
-                #st.success('Original Text')
-                #st.success('Prediction')
-                #st.write(prediction)
-            #with col2:
-                #st.success('Prediction Probability')
-                #st.write(probability)
+        st.markdown("##### Upload audio file")
         
     # Project Summary page
     elif page == 'Project Summary':
@@ -112,11 +93,6 @@ def main():
     # About (me) page
     else:
         st.subheader('About')
-        
-        
-        
-
-        
         
         
 if __name__ == '__main__':
