@@ -67,7 +67,7 @@ def save_audio_file(file):
 def main():
     
     # Image
-    sidebar_image = Image.open('Application/emotion1.png')
+    sidebar_image = Image.open('Application/emotion2.png')
     with st.sidebar:
         st.image(sidebar_image, width = 300)
     
