@@ -91,8 +91,8 @@ def main():
     elif page == 'Project Summary':
         st.subheader('Project Summary')
         st.markdown("###### Github Link")
-        link = '[GitHub Repository]' \ '()'
-         link = '[GitHub repository of the web-application]' \
+        #link = '[GitHub Repository]' \ '()'
+        link = '[GitHub repository]' \
                '(https://github.com/sehanks/DS400-Hanks)'
         st.markdown(link, unsafe_allow_html = True)
         
