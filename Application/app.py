@@ -80,10 +80,7 @@ def main():
     # Emotion Recognition page
     if page == 'Emotion Recognition':
         st.title('Speech Emotion Recognizer App')
-        # Title of this page
-        st.subheader('Emotion Recognition')
-        # Upload file heading
-        st.markdown("##### Upload audio file")
+        st.subheader('Upload Audio File')
         
     # Project Summary page
     elif page == 'Project Summary':
@@ -108,7 +105,7 @@ def main():
         
     # About (me) page
     else:
-        st.subheader('About')
+        st.title('About')
         
         
 if __name__ == '__main__':
