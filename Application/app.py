@@ -1,7 +1,7 @@
 import streamlit as st
-import tensorflow as tf
-import numpy as np
-from PIL import Image, ImageOps
+#import tensorflow as tf
+#import numpy as np
+#from PIL import Image, ImageOps
 
 
 model = load_model('model_cnn.hdf5')
