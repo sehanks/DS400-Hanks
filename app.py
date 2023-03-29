@@ -4,19 +4,27 @@ import numpy as np
 
 
 def main():
-    st.title('Speech Emotion Recognizer')
-    menu = ['Home', 'Monitor', 'About']
+    
+    # Set title of app
+    st.title('Speech Emotion Recognizer App')
+    # Dropdown categories for sidebar
+    menu = ['Emotion Recognition', 'Project Summary', 'About']
+    # Title of dropdown
     choice = st.sidebar.selectbox('Menu', menu)
     
-    if choice == 'Home':
-        st.subheader('Home-Emotion In Text')
+    # Emotion Recognition page
+    if choice == 'Emotion Recognition':
+        # Title of this page
+        st.subheader('Emotion Recognition')
         with  st.form(key = 'emotion_clf_form'):
           raw_text = st.text_area('Type here')
           submit_text = st.form_submit_button(label = 'Submit')
         
-    elif choice == 'Monitor':
-        st.subheader('Monitor App')
+    # Project Summary page
+    elif choice == 'Project Summary':
+        st.subheader('Project Summary')
         
+    # About (me) page
     else:
         st.subheader('About')
         
