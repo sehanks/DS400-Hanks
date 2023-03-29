@@ -5,23 +5,47 @@ import numpy as np
 
 def main():
     
+    # Image
+    #side_img = Image.open("___.jpg")
+    #with st.sidebar:
+        #st.image(side_img, width = 300)
+    
     # Set title of app
     st.title('Speech Emotion Recognizer App')
+    
     # Dropdown categories for sidebar
     menu = ['Emotion Recognition', 'Project Summary', 'About']
+    
     # Title of dropdown
-    choice = st.sidebar.selectbox('Menu', menu)
+    page = st.sidebar.selectbox('Menu', menu)
     
     # Emotion Recognition page
-    if choice == 'Emotion Recognition':
+    if page == 'Emotion Recognition':
+        
         # Title of this page
         st.subheader('Emotion Recognition')
-        with  st.form(key = 'emotion_clf_form'):
-          raw_text = st.text_area('Type here')
-          submit_text = st.form_submit_button(label = 'Submit')
+        
+        # Upload file heading
+        st.markdown("## Upload your audio file")
+        
+        #with  st.form(key = 'emotion_clf_form'):
+          #raw_text = st.text_area('Type here')
+          #submit_text = st.form_submit_button(label = 'Submit')
+        #if submit_text:
+            #col1, col2 = st.beta_columns(2)
+            # Apply functions
+            #prediction = predict_emotion(raw_text)
+            #probability = get_prediction_prob(raw_text)
+            #with col1:
+                #st.success('Original Text')
+                #st.success('Prediction')
+                #st.write(prediction)
+            #with col2:
+                #st.success('Prediction Probability')
+                #st.write(probability)
         
     # Project Summary page
-    elif choice == 'Project Summary':
+    elif page == 'Project Summary':
         st.subheader('Project Summary')
         
     # About (me) page
