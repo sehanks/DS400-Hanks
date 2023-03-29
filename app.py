@@ -26,7 +26,15 @@ def main():
         st.subheader('Emotion Recognition')
         
         # Upload file heading
-        st.markdown("##### Upload your audio file")
+        st.markdown("##### Upload audio file")
+        
+        with st.container:
+            col1, col2 = st.columns(2)
+            with col1:
+                # File uploader
+                audio = st.file_uploader('Upload your audio file', type = ['wav', 'mp3'])
+                  
+        
         
         #with  st.form(key = 'emotion_clf_form'):
           #raw_text = st.text_area('Type here')
