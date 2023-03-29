@@ -1,5 +1,5 @@
 import streamlit as st
-tensorflow 2.11.0.
+import tensorflow as tf
 import numpy as np
 from PIL import Image, ImageOps
 
@@ -86,51 +86,7 @@ def main():
         st.subheader('Emotion Recognition')
         
         # Upload file heading
-        st.markdown("##### Upload audio file")
-        
-        with st.container:
-            col1, col2 = st.columns(2)
-            with col1:
-                # File uploader
-                audio = st.file_uploader('Upload your audio file', type = ['wav', 'mp3'])
-                if audio is not None:
-                    # Check whether the specified path exists or not
-                    if not os.path.exists('audio'):
-                        # Create a directory recursively
-                        os.makedirs('audio')
-                    # Join different path components
-                    path = os.path.join('audio', audio.name)
-                    # save_audio_file function
-                    save_audio_file = save_audio_file(audio)
-                    
-                    if save_audio_file == 1:
-                        st.warning('File size is too large. Try another file.')
-                        
-                    elif save_audio_file == 0:
-                        # Display audio
-                        st.audio(audio, format = 'audio/wav', start_time = 0)
-                        try:
-                            wav, sr = librosa.load(path, sr = 44100)
-                            Xdb = get_melspec(path)[1]
-                            mfccs = librosa.feature.mfcc(wav, sr = sr)
-                        except Exception as e:
-                            audio = None
-                            st.error(f'Error {e} - wrong format of the file. Try another .wav file.')
-                            
-                    else:
-                        st.error('Unknown error')
-                        
-                else:
-                    
-                    if st.button('Try example test file'):
-                        wav, sr = librosa.load('test.wav', sr = 44100)
-                        Xdb = get_melspec('test.wav')[1]
-                        mfccs = librosa.feature.mfcc(wav, sr = sr)
-                        # display audio
-                        st.audio('test.wav', format = 'audio/wav', start_time = 0)
-                        path = 'test.wav'
-                        audio = 'test'
-
+        st.markdown("##### Upload audio file"
         
         
         #with  st.form(key = 'emotion_clf_form'):
