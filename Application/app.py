@@ -67,9 +67,9 @@ def save_audio_file(file):
 def main():
     
     # Image
-    #side_img = Image.open("___.jpg")
-    #with st.sidebar:
-        #st.image(side_img, width = 300)
+    sidebar_image = Image.open('emotion1.png')
+    with st.sidebar:
+        st.image(sidebar_image, width = 300)
     
     # Set title of app
     st.title('Speech Emotion Recognizer App')
