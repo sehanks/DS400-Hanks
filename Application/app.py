@@ -1,5 +1,5 @@
 import streamlit as st
-import tensorflow as tf
+tensorflow 2.11.0.
 import numpy as np
 from PIL import Image, ImageOps
 
