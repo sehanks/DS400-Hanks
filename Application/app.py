@@ -1,13 +1,14 @@
 import streamlit as st
 #import tensorflow as tf
-#import numpy as np
+import numpy as np
+import pandas as pd
 #from PIL import Image, ImageOps
 
 
-model = load_model('model_cnn.hdf5')
+#model = load_model('model_cnn.hdf5')
 
 
-starttime = datetime.now()
+#starttime = datetime.now()
 
 
 
