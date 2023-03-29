@@ -71,9 +71,6 @@ def main():
     with st.sidebar:
         st.image(sidebar_image, width = 300)
     
-    # Set title of app
-    st.title('Speech Emotion Recognizer App')
-    
     # Dropdown categories for sidebar
     menu = ['Emotion Recognition', 'Project Summary', 'About']
     
@@ -82,6 +79,7 @@ def main():
     
     # Emotion Recognition page
     if page == 'Emotion Recognition':
+        st.title('Speech Emotion Recognizer App')
         # Title of this page
         st.subheader('Emotion Recognition')
         # Upload file heading
@@ -89,12 +87,24 @@ def main():
         
     # Project Summary page
     elif page == 'Project Summary':
-        st.subheader('Project Summary')
-        st.markdown("###### Github Link")
-        #link = '[GitHub Repository]' \ '()'
+        st.title('Project Summary')
+        st.subheader('Github Link')
         link = '[GitHub repository]' \
                '(https://github.com/sehanks/DS400-Hanks)'
         st.markdown(link, unsafe_allow_html = True)
+        
+        st.subheader('Dataset Information')
+        text = """
+            This application is a part of a final Data Science Capstone project. 
+            The dataset used in this project is the Toronto Emotional Speech Set (TESS) from the Northwestern University Auditory Test No. 6. 
+            This dataset was particularly appealing because it solely includes females and yet the audio is of such good caliber. 
+            Due to other datasets' vast amount of male speakers, there is an imbalance in representation. 
+            Two women (26 and 64 years old) recited a set of 200 keywords in the sentence "Say the word _," 
+            and recordings evoking each of the following emotions were made (anger, disgust, fear, happiness, pleasant surprise, sadness, and neutral). 
+            There are a total of 2800 audio files. Each of the two females and their emotions is contained within their own folder in the dataset. 
+            The 200 target words audio files (in WAV format) are contained within those.   
+            """
+        st.markdown(text, unsafe_allow_html = True)
         
     # About (me) page
     else:
