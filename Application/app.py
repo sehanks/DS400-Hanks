@@ -1,18 +1,7 @@
 import streamlit as st
-#import tensorflow as tf
 import numpy as np
 import pandas as pd
 from PIL import Image, ImageOps
-import seaborn as sns
-import cv2
-import librosa
-import librosa.display
-from tensorflow.keras.models import load_model
-import os
-from datetime import datetime
-import streamlit.components.v1 as components
-import matplotlib.pyplot as plt
-from melspec import plot_colored_polar, plot_melspec
 
 
 #model = load_model('model_cnn.hdf5')
