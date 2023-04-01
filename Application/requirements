@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-seaborn==0.12.2
 
 import IPython
 import librosa # librosa is a Python library for analyzing audio and music used to extract the data from audio files it later
