@@ -1,7 +1,42 @@
-scipy
-matplotlib
-numpy==1.18.1
-pandas
-seaborn
-plotly
-sklearn
+import os
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+import IPython
+import librosa # librosa is a Python library for analyzing audio and music used to extract the data from audio files it later
+import librosa.display
+from IPython.display import Audio # to play the audio files
+plt.style.use('seaborn-white')
+from python_speech_features import mfcc
+
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.metrics import confusion_matrix, classification_report
+from sklearn.model_selection import train_test_split
+
+from os.path import dirname, join as pjoin
+from scipy.io import wavfile
+import scipy.io
+
+from keras.layers import Input, Conv2D, MaxPooling2D, AveragePooling2D, Flatten, GlobalAveragePooling2D, Dense, Dropout, Conv1D, MaxPooling1D, BatchNormalization
+from keras.layers import concatenate
+from keras.models import Model
+from keras.layers.normalization import layer_normalization
+from tensorflow.keras.models import Sequential
+from keras.callbacks import ReduceLROnPlateau
+from tensorflow.keras.layers import LSTM
+from keras.applications.vgg19 import VGG19
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+from keras.models import Sequential
+from keras.utils import np_utils, to_categorical
+
+import torch
+from pytorch_transformers import GPT2Tokenizer, GPT2LMHeadModel
+import speech_recognition as sr
+
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.metrics import confusion_matrix, classification_report
+from sklearn.model_selection import train_test_split
