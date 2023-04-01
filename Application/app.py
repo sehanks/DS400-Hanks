@@ -3,6 +3,16 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from PIL import Image, ImageOps
+import seaborn as sns
+import cv2
+import librosa
+import librosa.display
+from tensorflow.keras.models import load_model
+import os
+from datetime import datetime
+import streamlit.components.v1 as components
+import matplotlib.pyplot as plt
+from melspec import plot_colored_polar, plot_melspec
 
 
 #model = load_model('model_cnn.hdf5')
@@ -102,6 +112,9 @@ def main():
             The 200 target words audio files (in WAV format) are contained within those.   
             """
         st.markdown(text, unsafe_allow_html = True)
+        
+        tess = pd.read_csv('Tess_df.csv')
+        sns.countplot(data = tess, x = 'Emotions')
         
     # About (me) page
     else:
