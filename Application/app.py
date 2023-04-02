@@ -103,7 +103,8 @@ def main():
         st.markdown(text, unsafe_allow_html = True)
         
         tess = pd.read_csv('Application/Tess_df.csv')
-        st.bar_chart(data = tess)
+        tess_counts = tess['Emotions'].value_counts()
+        st.bar_chart(data = tess, x = tess['Emotions'], y = tess_counts)
         
     # About (me) page
     else:
