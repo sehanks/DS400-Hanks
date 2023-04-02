@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from PIL import Image, ImageOps
 import sklearn
+import seaborn
 
 
 #model = load_model('model_cnn.hdf5')
@@ -104,7 +105,7 @@ def main():
         st.markdown(text, unsafe_allow_html = True)
         
         tess = pd.read_csv('Application/Tess_df.csv')
-        tess['Emotions'].value_counts()[:20].plot(kind = 'bar')
+        sns.countplot(x = tess['Emotions'])
         
     # About (me) page
     else:
