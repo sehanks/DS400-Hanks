@@ -13,7 +13,7 @@ streamlit
 streamlit-option-menu
 tensorflow
 seaborn==0.12.2
-os.path
+os
 
 # numpy
 # pandas==1.2.4
