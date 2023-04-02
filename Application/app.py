@@ -106,7 +106,12 @@ def main():
         st.markdown(text, unsafe_allow_html = True)
         
         tess = pd.read_csv('Application/Tess_df.csv')
-        sns.countplot(x = tess['Emotions'])
+        
+        fig = plt.figure(figsize=(10, 4))
+        
+        sns.countplot(x = tess['Emotions'], data = tess)
+
+        st.pyplot(fig)
         
     # About (me) page
     else:
