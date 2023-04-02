@@ -103,7 +103,8 @@ def main():
         st.markdown(text, unsafe_allow_html = True)
         
         tess = pd.read_csv('Application/Tess_df.csv')
-        sns.countplot(data = tess, x = 'Emotions')
+        fig = px.bar(data_frame = tess, x = 'Emotion', y = 'Path', hover_data = tess.columns)
+        st.plotly_chart(fig, use_container_width = True)
         
     # About (me) page
     else:
