@@ -102,7 +102,7 @@ def main():
             """
         st.markdown(text, unsafe_allow_html = True)
         
-        tess = pd.read_csv('Tess_df.csv')
+        tess = pd.read_csv('Application/Tess_df.csv')
         emotions = tess['Emotions']
         path = tess['Path']
         cross = pd.crosstab(emotions, path).value_counts
