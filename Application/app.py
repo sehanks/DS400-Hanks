@@ -4,6 +4,7 @@ import pandas as pd
 from PIL import Image, ImageOps
 import sklearn
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 
 #model = load_model('model_cnn.hdf5')
