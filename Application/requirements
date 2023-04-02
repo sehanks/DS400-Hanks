@@ -3,7 +3,7 @@ pandas
 pandas-datareader
 matplotlib
 seaborn
-plotly as px
+plotly
 Pillow
 scipy
 scikit-learn
@@ -11,5 +11,4 @@ streamlit
 streamlit-option-menu
 tensorflow
 seaborn==0.12.2
-import plotly.express as px
 
