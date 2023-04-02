@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from PIL import Image, ImageOps
 import sklearn
-import seaborn
+import seaborn as sns
 
 
 #model = load_model('model_cnn.hdf5')
