@@ -83,7 +83,6 @@ def main():
         
     # Project Summary page
     elif page == 'Project Summary':
-        import plotly.express as px
         st.title('Project Summary')
         st.subheader('Github Link')
         link = '[GitHub repository]' \
