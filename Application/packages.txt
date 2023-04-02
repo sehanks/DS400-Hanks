@@ -1,3 +1,6 @@
-libsndfile1-dev
-ffmpeg
-python3-cffi
+requests-dev
+bs4-dev
+pandas-dev
+numpy-dev
+seaborn-dev
+plotly-dev
