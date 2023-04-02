@@ -2,7 +2,6 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from PIL import Image, ImageOps
-import plotly.figure_factory as ff
 
 
 #model = load_model('model_cnn.hdf5')
@@ -104,8 +103,8 @@ def main():
         st.markdown(text, unsafe_allow_html = True)
         
         tess = pd.read_csv('Application/Tess_df.csv')
-        fig = plotly.express.bar(data_frame = tess, x = 'Emotion', y = 'Path', hover_data = tess.columns)
-        st.plotly_chart(fig, use_container_width = True)
+        #fig = px.bar(data_frame = tess, x = 'Emotion', y = 'Path', hover_data = tess.columns)
+        #st.plotly_chart(fig, use_container_width = True)
         
     # About (me) page
     else:
