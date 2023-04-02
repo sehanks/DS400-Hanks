@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from PIL import Image, ImageOps
+import plotly.figure_factory as ff
 
 
 #model = load_model('model_cnn.hdf5')
