@@ -2,7 +2,6 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from PIL import Image, ImageOps
-import plotly.express as px
 
 
 #model = load_model('model_cnn.hdf5')
