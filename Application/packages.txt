@@ -5,3 +5,4 @@ numpy-dev
 seaborn-dev
 plotly-dev
 matplotlib-dev
+os-dev
