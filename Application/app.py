@@ -84,6 +84,17 @@ def main():
         st.title('Speech Emotion Recognizer App')
         st.subheader('Upload Audio File')
         
+        with st.container():
+            column1, column2 = st.columns(2)
+            with column1:
+                audio_file = st.file_uploader('Upload audio file', type = ['wav', 'mp3', 'ogg'])  # File uploader
+                if not os.path.exists('audio'):  # Check whether the specified path exists or not
+                    os.makedirs('audio')  # Create a directory recursively               
+                path = os.path.join('audio', audio.name)  # Join different path components
+                save_audio_file = save_audio_file(audio)  # save_audio_file function
+                if save_audio_file == 1:
+                        st.warning('File size is too large. Try another file.')
+        
     # Project Summary page
     elif page == 'Project Summary':
         st.title('Project Summary')
@@ -106,11 +117,8 @@ def main():
         st.markdown(text, unsafe_allow_html = True)
         
         tess = pd.read_csv('Application/Tess_df.csv')
-        
         fig = plt.figure(figsize=(10, 4))
-        
         sns.countplot(x = tess['Emotions'], data = tess)
-
         st.pyplot(fig)
         
     # About (me) page
