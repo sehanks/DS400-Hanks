@@ -102,9 +102,11 @@ def main():
             """
         st.markdown(text, unsafe_allow_html = True)
         
-        tess = pd.read_csv('Application/Tess_df.csv')
-        tess_counts = tess['Emotions'].value_counts()
-        st.bar_chart(data = tess, x = tess['Emotions'], y = tess_counts)
+        tess = pd.read_csv('Tess_df.csv')
+        emotions = tess['Emotions']
+        path = tess['Path']
+        cross = pd.crosstab(emotions, path).value_counts
+        st.bar_chart(data = cross)
         
     # About (me) page
     else:
