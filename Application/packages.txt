@@ -4,3 +4,4 @@ pandas-dev
 numpy-dev
 seaborn-dev
 plotly-dev
+matplotlib-dev
