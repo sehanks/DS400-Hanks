@@ -1,14 +1,27 @@
 numpy
 pandas
 pandas-datareader
+librosa==0.8.0
 matplotlib
 seaborn
 plotly
 Pillow
+requests
 scipy
 scikit-learn
 streamlit
 streamlit-option-menu
 tensorflow
 seaborn==0.12.2
+
+# numpy
+# pandas==1.2.4
+# matplotlib==3.3.4
+# Pillow==8.2.0
+# opencv-python-headless==4.5.1.48
+# plotly==4.14.3
+# requests==2.25.1
+# librosa==0.8.0
+# streamlit==0.81.1
+# tensorflow-cpu==2.4.1
 
