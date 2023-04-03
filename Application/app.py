@@ -101,43 +101,41 @@ def main():
         st.subheader('Upload Audio File')
         
         with st.container():
-            column1, column2 = st.columns(2)
-            with column1:
-                audio_file = st.file_uploader('Upload your own audio file.', type = ['wav', 'mp3', 'ogg'])  # File uploader
-                if audio_file is not None:
-                    if not os.path.exists('audio'):  # Check whether the specified path exists or not
-                        os.makedirs('audio')  # Create a directory recursively               
-                    path = os.path.join('audio', audio_file.name)  # Join different path components
-                    save_audio = save_audio_file(audio_file)  # save_audio_file function
-                    if save_audio == 1:
-                        st.warning('File size is too large. Try another file.')
-                    elif save_audio == 0:
-                        st.audio(audio_file, format = 'audio/wav', start_time = 0)  # Display audio
-                        try:
-                            wav, sr = librosa.load(path, sr = 45000)
-                        except Exception as e:
-                            audio_file = None
-                            st.error(f'Error {e} - wrong format of the file. Try another .wav file.')
-                    else:
-                        st.error('Unknown error')
+            audio_file = st.file_uploader('Upload your own audio file.', type = ['wav', 'mp3', 'ogg'])  # File uploader
+            if audio_file is not None:
+                if not os.path.exists('audio'):  # Check whether the specified path exists or not
+                    os.makedirs('audio')  # Create a directory recursively               
+                path = os.path.join('audio', audio_file.name)  # Join different path components
+                save_audio = save_audio_file(audio_file)  # save_audio_file function
+                if save_audio == 1:
+                    st.warning('File size is too large. Try another file.')
+                elif save_audio == 0:
+                    st.audio(audio_file, format = 'audio/wav', start_time = 0)  # Display audio
+                    try:
+                        wav, sr = librosa.load(path, sr = 45000)
+                    except Exception as e:
+                        audio_file = None
+                        st.error(f'Error {e} - wrong format of the file. Try another .wav file.')
                 else:
-                    column3, column4 = st.columns(2)
-                    with column3:  
-                        if st.button('Try test audio file'):
-                            st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0) 
-                            path = 'Application/OAF_back_angry.wav'
-                            array, sampling_rate = librosa.load(path)
-                            waveplot(array, sampling_rate, 'Angry')
-                            spectrogram(array, sampling_rate, 'Angry')
-                    with column4:
-                        if audio_file is None:
-                            #st.write('Record audio file')
-                            if st.button('Record an audio file'):
-                                with st.spinner(f'Recording for 5 seconds ....'):
-                                    st.write('Recording...')
-                                    time.sleep(3)
-                                    st.success('Recording completed.')
-                                    st.write('Error while loading the file.')
+                    st.error('Unknown error')
+            else:
+                column3, column4 = st.columns(2)
+                with column3:  
+                    if st.button('Try test audio file'):
+                        st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0) 
+                        path = 'Application/OAF_back_angry.wav'
+                        array, sampling_rate = librosa.load(path)
+                        waveplot(array, sampling_rate, 'Angry')
+                        spectrogram(array, sampling_rate, 'Angry')
+                with column4:
+                    if audio_file is None:
+                        #st.write('Record audio file')
+                        if st.button('Record an audio file'):
+                            with st.spinner(f'Recording for 5 seconds ....'):
+                                st.write('Recording...')
+                                time.sleep(3)
+                                st.success('Recording completed.')
+                                st.write('Error while loading the file.')
 
         
     # Project Summary page
