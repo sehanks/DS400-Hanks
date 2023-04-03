@@ -107,11 +107,11 @@ def main():
                 else:
                     if st.button('Try the test audio file'):
                         path = np.array('Application/OAF_back_angry.wav')
-                        wav, sr = librosa.load(path, sr = 45000)
-                        mfcc = librosa.feature.mfcc(wav, sr = sr)
+                        #wav, sr = librosa.load(path, sr = 45000)
+                        #mfcc = librosa.feature.mfcc(wav, sr = sr)
                         st.audio(path, format = 'audio/wav', start_time = 0)  # Display audio
                         #path = 'Application/OAF_back_angry.wav'
-                        audio_file = 'test'
+                        #audio_file = 'test'
         
     # Project Summary page
     elif page == 'Project Summary':
