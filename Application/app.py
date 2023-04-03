@@ -119,8 +119,8 @@ def main():
                 else:
                     st.error('Unknown error')
             else:
-                column3, column4 = st.columns(2)
-                with column3:  
+                column1, column2, column3, column4, column5 = st.columns(5)
+                with column2:  
                     if st.button('Try test audio file'):
                         st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0) 
                         path = 'Application/OAF_back_angry.wav'
