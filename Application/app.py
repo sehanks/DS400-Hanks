@@ -106,11 +106,10 @@ def main():
                         st.error('Unknown error')
                 else:
                     if st.button('Try the test audio file'):
-                        wav, sr = librosa.load('OAF_back_angry.wav', sr = 45000)
-                        X = get_melspec('OAF_back_angry.wav')[1]
+                        wav, sr = librosa.load('Application/OAF_back_angry.wav', sr = 45000)
                         mfcc = librosa.feature.mfcc(wav, sr = sr)
                         st.audio('OAF_back_angry.wav', format = 'audio/wav', start_time = 0)  # Display audio
-                        path = 'OAF_back_angry.wav'
+                        path = 'Application/OAF_back_angry.wav'
                         audio_file = 'test'
         
     # Project Summary page
