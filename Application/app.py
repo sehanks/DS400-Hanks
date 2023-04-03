@@ -124,6 +124,7 @@ def main():
                         st.error('Unknown error')
                 else:
                     if st.button('Try the test audio file'):
+                        wav, sr = librosa.load('Application/OAF_back_angry.wav', sr = 44100)
                         st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0)  # Display audio
                         path = 'Application/OAF_back_angry.wav'
                         array, sampling_rate = librosa.load(path)
@@ -134,9 +135,10 @@ def main():
                     fig = plt.figure(figsize = (10, 2))
                     fig.set_facecolor('#d1d1e0')
                     plt.title('Waveplot')
-                    path = 'Application/OAF_back_angry.wav'
-                    array, sampling_rate = librosa.load(path)
-                    waveplot(array, sampling_rate, 'Angry')
+                    librosa.display.waveplot(wav, sr = 45000)
+                    #path = 'Application/OAF_back_angry.wav'
+                    #array, sampling_rate = librosa.load(path)
+                    #waveplot(array, sampling_rate, 'Angry')
                     st.write(fig)
                 else:
                     pass
