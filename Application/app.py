@@ -107,7 +107,7 @@ def main():
                 if audio_file is not None:
                     if not os.path.exists('audio'):  # Check whether the specified path exists or not
                         os.makedirs('audio')  # Create a directory recursively               
-                    path = os.path.join('audio', audio.name)  # Join different path components
+                    path = os.path.join('audio', audio_file.name)  # Join different path components
                     save_audio_file = save_audio_file(audio)  # save_audio_file function
                     if save_audio_file == 1:
                         st.warning('File size is too large. Try another file.')
