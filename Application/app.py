@@ -124,7 +124,10 @@ def main():
                         st.error('Unknown error')
             with column2:
                 if audio_file is None:
-                    st.markdown('   ', unsafe_allow_html = True)
+                    text = """
+                    
+                        """
+                    st.markdown(text, unsafe_allow_html = True)
                     if st.button('Try the test audio file'):
                         st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0) 
                         path = 'Application/OAF_back_angry.wav'
