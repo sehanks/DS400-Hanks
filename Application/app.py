@@ -103,7 +103,7 @@ def main():
         with st.container():
             column1, column2 = st.columns(2)
             with column1:
-                audio_file = st.file_uploader('Upload your own audio file', type = ['wav', 'mp3', 'ogg'])  # File uploader
+                audio_file = st.file_uploader('Upload your own audio file.', type = ['wav', 'mp3', 'ogg'])  # File uploader
                 if audio_file is not None:
                     if not os.path.exists('audio'):  # Check whether the specified path exists or not
                         os.makedirs('audio')  # Create a directory recursively               
@@ -124,16 +124,20 @@ def main():
                         st.error('Unknown error')
             with column2:
                 if audio_file is None:
-                    text = """
-                    
-                        """
-                    st.markdown(text, unsafe_allow_html = True)
                     if st.button('Try the test audio file'):
                         st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0) 
                         path = 'Application/OAF_back_angry.wav'
                         array, sampling_rate = librosa.load(path)
                         waveplot(array, sampling_rate, 'Angry')
                         spectrogram(array, sampling_rate, 'Angry')
+                else:
+                    st.write('Record audio file')
+                    if st.button('Record'):
+                        with st.spinner(f'Recording for 5 seconds ....'):
+                            st.write('Recording...')
+                            time.sleep(3)
+                            st.success('Recording completed.')
+                            st.write('Error while loading the file.')
 
         
     # Project Summary page
