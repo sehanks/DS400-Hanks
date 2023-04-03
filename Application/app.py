@@ -17,23 +17,18 @@ starttime = datetime.now()
 
 
 def predict_emotion(docx):
-    
-    results = model.predict([docx])
-    
+    results = model.predict([docx])    
     return results
 
 
 
-def get_prediction_prob(docx):
-    
-    results = model.predict_prob([docx])
-    
+def get_prediction_prob(docx):    
+    results = model.predict_prob([docx])    
     return results
 
 
 
-def save_audio_file(file):
-    
+def save_audio_file(file):    
     if file.size > 4000000:
         return 1
     
@@ -98,7 +93,7 @@ def main():
                     if save_audio_file == 1:
                         st.warning('File size is too large. Try another file.')
                     elif save_audio_file == 0:
-                        st.audio(audio_file, format = 'audio/wav', start_time = 0)
+                        st.audio(audio_file, format = 'audio/wav', start_time = 0)  # Display audio
                         try:
                             wav, sr = librosa.load(path, sr = 45000)
                             X = get_melspec(path)[1]
@@ -108,6 +103,14 @@ def main():
                             st.error(f'Error {e} - wrong format of the file. Try another .wav file.')
                     else:
                         st.error('Unknown error')
+                else:
+                    if st.button('Try the test audio file'):
+                        wav, sr = librosa.load('OAF_back_angry.wav', sr = 45000)
+                        X = get_melspec('OAF_back_angry.wav')[1]
+                        mfcc = librosa.feature.mfcc(wav, sr = sr)
+                        st.audio('OAF_back_angry.wav', format = 'audio/wav', start_time = 0)  # Display audio
+                        path = 'OAF_back_angry.wav'
+                        audio_file = 'test'
         
     # Project Summary page
     elif page == 'Project Summary':
