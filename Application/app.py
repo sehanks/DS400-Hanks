@@ -124,9 +124,9 @@ def main():
                     column3, column4 = st.columns(2)
                     with column3:  
                         if st.button('Try test audio file'):
-                            wav, sr = librosa.load(path, sr = 45000)
                             st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0) 
                             path = 'Application/OAF_back_angry.wav'
+                            wav, sr = librosa.load(path, sr = 45000)
                             array, sampling_rate = librosa.load(path)
                             waveplot(array, sampling_rate, 'Angry')
                             spectrogram(array, sampling_rate, 'Angry')
