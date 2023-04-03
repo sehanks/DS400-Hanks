@@ -115,8 +115,6 @@ def main():
                         st.audio(audio_file, format = 'audio/wav', start_time = 0)
                         try:
                             wav, sr = librosa.load(path, sr = 45000)
-                            X = get_melspec(path)[1]
-                            mfcc = librosa.feature.mfcc(wav, sr = sr)
                         except Exception as e:
                             audio_file = None
                             st.error(f'Error {e} - wrong format of the file. Try another .wav file.')
