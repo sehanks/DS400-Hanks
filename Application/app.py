@@ -130,7 +130,7 @@ def main():
                             array, sampling_rate = librosa.load(path)
                             waveplot(array, sampling_rate, 'Angry')
                             spectrogram(array, sampling_rate, 'Angry')
-                            fig = plt.figure(figsize = (10, 2))
+                            fig = plt.figure(figsize = (20, 10))
                             plt.title('Waveplot for Test Audio File')
                             array, sampling_rate = librosa.load(path)
                             waveplot(array, sampling_rate, 'Angry')
