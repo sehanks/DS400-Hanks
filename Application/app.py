@@ -129,7 +129,7 @@ def main():
                             with column2: 
                                 wav, sr = librosa.load(path, sr = 45000)
                                 array, sampling_rate = librosa.load(path)
-                                fig = plt.figure(figsize = (10, 2))
+                                fig = plt.figure(figsize = (30, 10))
                                 plt.title('Waveplot for Test Audio File')
                                 array, sampling_rate = librosa.load(path)
                                 waveplot(array, sampling_rate, 'Angry')
