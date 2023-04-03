@@ -106,10 +106,10 @@ def main():
                         st.error('Unknown error')
                 else:
                     if st.button('Try the test audio file'):
-                        path = np.array('Application/OAF_back_angry.wav')
+                        #path = np.array('Application/OAF_back_angry.wav')
                         #wav, sr = librosa.load(path, sr = 45000)
                         #mfcc = librosa.feature.mfcc(wav, sr = sr)
-                        st.audio(path, format = 'audio/wav', start_time = 0, sample_rate = 45000)  # Display audio
+                        st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0, sample_rate = 45000)  # Display audio
                         #path = 'Application/OAF_back_angry.wav'
                         #audio_file = 'test'
         
