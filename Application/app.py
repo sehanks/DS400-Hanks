@@ -129,7 +129,7 @@ def main():
                         array, sampling_rate = librosa.load(path)
                         waveplot(array, sampling_rate, 'Angry')
                         spectrogram(array, sampling_rate, 'Angry')
-            with col2:
+            with column2:
                 if audio_file is not None:
                     fig = plt.figure(figsize = (10, 2))
                     fig.set_facecolor('#d1d1e0')
