@@ -108,10 +108,10 @@ def main():
                     if not os.path.exists('audio'):  # Check whether the specified path exists or not
                         os.makedirs('audio')  # Create a directory recursively               
                     path = os.path.join('audio', audio_file.name)  # Join different path components
-                    save_audio_file = save_audio_file(audio)  # save_audio_file function
-                    if save_audio_file == 1:
+                    save_audio = save_audio_file(audio_file)  # save_audio_file function
+                    if save_audio == 1:
                         st.warning('File size is too large. Try another file.')
-                    elif save_audio_file == 0:
+                    elif save_audio == 0:
                         st.audio(audio_file, format = 'audio/wav', start_time = 0)  # Display audio
                         try:
                             wav, sr = librosa.load(path, sr = 45000)
