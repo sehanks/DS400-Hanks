@@ -32,3 +32,7 @@ The second model I used was LSTM. Long short-term memory networks, or LSTMs, are
 
 ### Commit 5: Parameter Tuning
 In this stage, I was able to alter my models to make them each as accurate as possible before choosing my final model. After much consideration, I have chosen CNN to be my final model due to its high accuracy and efficiency. I was also able to create a decoder that takes in an input audio, and prints out the transcript for that audio. This may be useful during my application stage.
+
+
+### Commit 6: Application Design
+In this stage, I was able to begin my application. I have chosen to use StreamLit to build and share my data application. In my app, there will be 3 pages the user can choose from. The first page will be where the Emotion Recognition application is done, the second page will be a Project Summary, and the third page will be about myself as the creator. In the Emotion Recognition page, the user should be able to record an audio file and use my final model in order to predict which emotion is being presented. I will also create visuals in order show the user what emotions may be underlying in their audio. 
