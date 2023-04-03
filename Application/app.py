@@ -103,7 +103,7 @@ def main():
         with st.container():
             column1, column2 = st.columns(2)
             with column1:
-                st.subheader('Upload Audio File')
+                st.subheader('## Upload Audio File')
                 audio_file = st.file_uploader('  ', type = ['wav', 'mp3', 'ogg'])  # File uploader
                 if audio_file is not None:
                     if not os.path.exists('audio'):  # Check whether the specified path exists or not
@@ -128,7 +128,7 @@ def main():
                             st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0) 
                             path = 'Application/OAF_back_angry.wav'
                             with column2: 
-                                st.subheader('Waveplot')
+                                st.subheader('## Waveplot for Test Audio File')
                                 fig = plt.figure(figsize = (20, 8))
                                 plt.title('Waveplot for Test Audio File')
                                 wav, sr = librosa.load(path, sr = 45000)
