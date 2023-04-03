@@ -134,14 +134,9 @@ def main():
                     fig = plt.figure(figsize = (10, 2))
                     fig.set_facecolor('#d1d1e0')
                     plt.title('Waveplot')
+                    path = 'Application/OAF_back_angry.wav'
+                    array, sampling_rate = librosa.load(path)
                     waveplot(array, sampling_rate, 'Angry')
-                    plt.gca().axes.get_yaxis().set_visible(False)
-                    plt.gca().axes.get_xaxis().set_visible(False)
-                    plt.gca().axes.spines["right"].set_visible(False)
-                    plt.gca().axes.spines["left"].set_visible(False)
-                    plt.gca().axes.spines["top"].set_visible(False)
-                    plt.gca().axes.spines["bottom"].set_visible(False)
-                    plt.gca().axes.set_facecolor('#d1d1e0')
                     st.write(fig)
                 else:
                     pass
