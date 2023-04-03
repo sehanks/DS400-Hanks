@@ -120,12 +120,13 @@ def main():
                             st.error(f'Error {e} - wrong format of the file. Try another .wav file.')
                     else:
                         st.error('Unknown error')
-                if st.button('Try the test audio file'):
-                    st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0) 
-                    path = 'Application/OAF_back_angry.wav'
-                    array, sampling_rate = librosa.load(path)
-                    waveplot(array, sampling_rate, 'Angry')
-                    spectrogram(array, sampling_rate, 'Angry')
+                else:
+                    if st.button('Try the test audio file'):
+                        st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0) 
+                        path = 'Application/OAF_back_angry.wav'
+                        array, sampling_rate = librosa.load(path)
+                        waveplot(array, sampling_rate, 'Angry')
+                        spectrogram(array, sampling_rate, 'Angry')
             with column2:
                 if audio_file is not None:
                     st.write('Record audio file')
