@@ -122,26 +122,14 @@ def main():
                             st.error(f'Error {e} - wrong format of the file. Try another .wav file.')
                     else:
                         st.error('Unknown error')
-                else:
+            with column2:
+                if audio_file is None:
                     if st.button('Try the test audio file'):
-                        wav, sr = librosa.load('Application/OAF_back_angry.wav', sr = 44100)
-                        st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0)  # Display audio
+                        st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0) 
                         path = 'Application/OAF_back_angry.wav'
                         array, sampling_rate = librosa.load(path)
                         waveplot(array, sampling_rate, 'Angry')
                         spectrogram(array, sampling_rate, 'Angry')
-            with column2:
-                if audio_file is not None:
-                    fig = plt.figure(figsize = (10, 2))
-                    fig.set_facecolor('#d1d1e0')
-                    plt.title('Waveplot')
-                    librosa.display.waveplot(wav, sr = 45000)
-                    #path = 'Application/OAF_back_angry.wav'
-                    #array, sampling_rate = librosa.load(path)
-                    #waveplot(array, sampling_rate, 'Angry')
-                    st.write(fig)
-                else:
-                    pass
 
         
     # Project Summary page
