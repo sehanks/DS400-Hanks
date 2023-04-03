@@ -133,7 +133,6 @@ def main():
                             spectrogram(array, sampling_rate, 'Angry')
                     with column4:
                         if audio_file is None:
-                            st.write('Record audio file')
                             if st.button('Record an audio file'):
                                 with st.spinner(f'Recording for 5 seconds ....'):
                                     st.write('Recording...')
