@@ -127,12 +127,16 @@ def main():
                             st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0) 
                             path = 'Application/OAF_back_angry.wav'
                             with column2: 
-                                wav, sr = librosa.load(path, sr = 45000)
-                                array, sampling_rate = librosa.load(path)
                                 fig = plt.figure(figsize = (20, 8))
                                 plt.title('Waveplot for Test Audio File')
-                                array, sampling_rate = librosa.load(path)
-                                waveplot(array, sampling_rate, 'Angry')
+                                wav, sr = librosa.load(path, sr = 45000)
+                                librosa.display.waveplot(wav, sr = 45000)
+                                plt.gca().axes.get_yaxis().set_visible(False)
+                                plt.gca().axes.get_xaxis().set_visible(False)
+                                plt.gca().axes.spines["right"].set_visible(False)
+                                plt.gca().axes.spines["left"].set_visible(False)
+                                plt.gca().axes.spines["top"].set_visible(False)
+                                plt.gca().axes.spines["bottom"].set_visible(False)
                                 st.write(fig)
                     with column4:
                         if audio_file is None:
