@@ -134,10 +134,10 @@ def main():
                             #st.write('Record audio file')
                             if st.button('Record'):
                                 with st.spinner(f'Recording for 5 seconds ....'):
-                                st.write('Recording...')
-                                time.sleep(3)
-                                st.success('Recording completed.')
-                                st.write('Error while loading the file.')
+                                    st.write('Recording...')
+                                    time.sleep(3)
+                                    st.success('Recording completed.')
+                                    st.write('Error while loading the file.')
 
         
     # Project Summary page
