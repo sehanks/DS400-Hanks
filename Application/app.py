@@ -140,7 +140,7 @@ def main():
                                     time.sleep(3)
                                     st.success('Recording completed.')
                                     st.write('Error while loading the file.')
-            with column2:
+
         
     # Project Summary page
     elif page == 'Project Summary':
