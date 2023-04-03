@@ -140,17 +140,16 @@ def main():
                                     st.write('Error while loading the file.')
             with column2:
                 if audio_file is None:
-                    if st.button('Try test audio file'): # Test audio file button
-                        path = 'Application/OAF_back_angry.wav'
-                        wav, sr = librosa.load(path, sr = 45000)
-                        array, sampling_rate = librosa.load(path)
-                        waveplot(array, sampling_rate, 'Angry')
-                        spectrogram(array, sampling_rate, 'Angry')
-                        fig = plt.figure(figsize = (10, 2))
-                        plt.title('Waveplot for Test Audio File')
-                        array, sampling_rate = librosa.load(path)
-                        waveplot(array, sampling_rate, 'Angry')
-                        st.write(fig)
+                    path = 'Application/OAF_back_angry.wav'
+                    wav, sr = librosa.load(path, sr = 45000)
+                    array, sampling_rate = librosa.load(path)
+                    waveplot(array, sampling_rate, 'Angry')
+                    spectrogram(array, sampling_rate, 'Angry')
+                    fig = plt.figure(figsize = (10, 2))
+                    plt.title('Waveplot for Test Audio File')
+                    array, sampling_rate = librosa.load(path)
+                    waveplot(array, sampling_rate, 'Angry')
+                    st.write(fig)
 
         
     # Project Summary page
