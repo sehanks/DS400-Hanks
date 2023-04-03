@@ -67,8 +67,8 @@ def save_audio_file(file):
 
 def waveplot(array, sampling_rate, emotion):
     plt.figure(figsize = (8, 3))
-    plt.title("Digital Representation of " + emotion, size = 15)
-    librosa.display.waveshow(array, sr = sampling_rate)
+    plt.title('Digital Representation of ' + emotion, size = 15)
+    librosa.display.waveplot(array, sr = sampling_rate)
     plt.show()
 
 
