@@ -64,6 +64,14 @@ def save_audio_file(file):
 
 
 
+def waveplot(array, sampling_rate, emotion):
+    plt.figure(figsize = (8, 3))
+    plt.title("Digital Representation of " + emotion, size = 15)
+    librosa.display.waveshow(array, sr = sampling_rate)
+    plt.show()
+
+
+
 def main():
     
     # Image
@@ -106,12 +114,11 @@ def main():
                         st.error('Unknown error')
                 else:
                     if st.button('Try the test audio file'):
-                        #path = np.array('Application/OAF_back_angry.wav')
-                        #wav, sr = librosa.load(path, sr = 45000)
-                        #mfcc = librosa.feature.mfcc(wav, sr = sr)
-                        st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0, sample_rate = 45000)  # Display audio
-                        #path = 'Application/OAF_back_angry.wav'
-                        #audio_file = 'test'
+                        st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0)  # Display audio
+                        path = 'Application/OAF_back_angry.wav'
+                        array, sampling_rate = librosa.load(path)
+                        waveplot(array, sampling_rate, 'Angry')
+
         
     # Project Summary page
     elif page == 'Project Summary':
