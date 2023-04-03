@@ -101,7 +101,7 @@ def main():
         st.subheader('Upload Audio File')
         
         with st.container():
-            audio_file = st.file_uploader('Upload your own audio file.', type = ['wav', 'mp3', 'ogg'])  # File uploader
+            audio_file = st.file_uploader(' ', type = ['wav', 'mp3', 'ogg'])  # File uploader
             if audio_file is not None:
                 if not os.path.exists('audio'):  # Check whether the specified path exists or not
                     os.makedirs('audio')  # Create a directory recursively               
