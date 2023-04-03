@@ -123,13 +123,17 @@ def main():
                 else:
                     column3, column4 = st.columns(2)
                     with column3:  
-                        if st.button('Try test audio file'):  # Test audio file button
+                        if st.button('Try test audio file'): # Test audio file button
                             st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0) 
                             path = 'Application/OAF_back_angry.wav'
-                            wav, sr = librosa.load(path, sr = 45000)
-                            array, sampling_rate = librosa.load(path)
-                            waveplot(array, sampling_rate, 'Angry')
-                            spectrogram(array, sampling_rate, 'Angry')
+                            with column2: 
+                                wav, sr = librosa.load(path, sr = 45000)
+                                array, sampling_rate = librosa.load(path)
+                                fig = plt.figure(figsize = (10, 2))
+                                plt.title('Waveplot for Test Audio File')
+                                array, sampling_rate = librosa.load(path)
+                                waveplot(array, sampling_rate, 'Angry')
+                                st.write(fig)
                     with column4:
                         if audio_file is None:
                             if st.button('Record an audio file'):  # Record audio button
@@ -138,18 +142,7 @@ def main():
                                     time.sleep(3)
                                     st.success('Recording completed.')
                                     st.write('Error while loading the file.')
-            with column2:
-                if audio_file is None:
-                    path = 'Application/OAF_back_angry.wav'
-                    wav, sr = librosa.load(path, sr = 45000)
-                    array, sampling_rate = librosa.load(path)
-                    waveplot(array, sampling_rate, 'Angry')
-                    spectrogram(array, sampling_rate, 'Angry')
-                    fig = plt.figure(figsize = (10, 2))
-                    plt.title('Waveplot for Test Audio File')
-                    array, sampling_rate = librosa.load(path)
-                    waveplot(array, sampling_rate, 'Angry')
-                    st.write(fig)
+
 
         
     # Project Summary page
