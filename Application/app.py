@@ -71,6 +71,15 @@ def waveplot(array, sampling_rate, emotion):
     librosa.display.waveplot(array, sr = sampling_rate)
     plt.show()
 
+    
+
+def spectrogram(array, sampling_rate, emotion):
+    x = librosa.stft(array)    
+    x_db_scale = librosa.amplitude_to_db(abs(x))    
+    plt.figure(figsize = (8, 3))    
+    plt.title("Spectrogram of " + emotion, size = 15)    
+    librosa.display.specshow(x_db_scale, sr = sampling_rate, x_axis = 'time', y_axis = 'hz')
+    
 
 
 def main():
@@ -119,6 +128,7 @@ def main():
                         path = 'Application/OAF_back_angry.wav'
                         array, sampling_rate = librosa.load(path)
                         waveplot(array, sampling_rate, 'Angry')
+                        spectrogram(array, sampling_rate, 'Angry')
 
         
     # Project Summary page
