@@ -9,6 +9,7 @@ import os
 from datetime import datetime
 import librosa 
 import librosa.display
+import cv2
 
 
 #model = load_model('model_cnn.hdf5')
