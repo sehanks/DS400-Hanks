@@ -165,7 +165,6 @@ def main():
                                 st.markdown('#  ')
                                 st.markdown('#  ')
                                 st.markdown('#  ')
-                                st.markdown('######  ')
                                 st.markdown('###### Mel-Spectrogram for Test Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
                                 spectrogram(wav, sr)
@@ -178,29 +177,16 @@ def main():
                                     time.sleep(3)
                                     st.success('Recording completed.')
                                     st.write('Error while loading the file.')
-                                with column2: 
-                                    st.markdown('##### Waveplot for Recorded Audio File')
-                                    fig = plt.figure(figsize = (20, 8))
-                                    wav, sr = librosa.load(path, sr = 45000)
-                                    librosa.display.waveplot(wav, sr = 45000)
-                                    plt.gca().axes.get_yaxis().set_visible(False)
-                                    plt.gca().axes.get_xaxis().set_visible(False)
-                                    plt.gca().axes.spines['right'].set_visible(False)
-                                    plt.gca().axes.spines['left'].set_visible(False)
-                                    plt.gca().axes.spines['top'].set_visible(False)
-                                    plt.gca().axes.spines['bottom'].set_visible(False)
-                                    st.write(fig)
-                                    
-                                    st.markdown('##### Mel-Spectrogram for Recorded Audio File')
-                                    fig2 = plt.figure(figsize = (20, 8))
-                                    spectrogram(wav, sr)
-                                    st.write(fig2)
+
                                     
         if audio_file is not None:
             if not audio_file == 'test_file':
                 st.markdown('##### Analysis of Audio File')  # Show details of the audio file in the menu bar
                 file_details = {'Name': audio_file.name, 'Size': audio_file.size}
                 st.write(file_details)
+                
+            with st.container():
+                
 
 
         
