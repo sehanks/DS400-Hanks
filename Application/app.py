@@ -164,7 +164,7 @@ def main():
                                 st.markdown('#  ')
                                 st.markdown('#  ')
                                 st.markdown('#  ')
-                                st.markdown('#######  ')
+                                st.markdown('######  ')
                                 st.markdown('###### Mel-Spectrogram for Test Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
                                 spectrogram(wav, sr)
