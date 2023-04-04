@@ -117,7 +117,7 @@ def main():
                         st.audio(audio_file, format = 'audio/wav', start_time = 0)
                         try:
                             with column2: 
-                                st.markdown('#### Waveplot for Audio File')
+                                st.markdown('##### Waveplot for Audio File')
                                 fig = plt.figure(figsize = (20, 8))
                                 wav, sr = librosa.load(path, sr = 45000)
                                 librosa.display.waveplot(wav, sr = 45000)
@@ -140,7 +140,7 @@ def main():
                             st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0) 
                             path = 'Application/OAF_back_angry.wav'
                             with column2: 
-                                st.markdown('#### Waveplot for Test Audio File')
+                                st.markdown('##### Waveplot for Test Audio File')
                                 fig = plt.figure(figsize = (20, 8))
                                 wav, sr = librosa.load(path, sr = 45000)
                                 librosa.display.waveplot(wav, sr = 45000)
@@ -151,10 +151,11 @@ def main():
                                 plt.gca().axes.spines['top'].set_visible(False)
                                 plt.gca().axes.spines['bottom'].set_visible(False)
                                 st.write(fig)
-                                st.markdown('#### Mel-Spectrogram for Test Audio File')
+                                st.markdown('##### Mel-Spectrogram for Test Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
                                 mfccs = librosa.feature.mfcc(wav, sr = sr)
-                                librosa.display.specshow(mfccs, sr = sr, x_axis = 'time')
+                                img = librosa.display.specshow(librosa.power_to_db(S, ref = np.max), x_axis = 'time', y_axis = 'mel', fmax = 8000)
+                                fig2.colorbar(img)
                                 st.write(fig2)
                     with column4:
                         if audio_file is None:
@@ -165,7 +166,7 @@ def main():
                                     st.success('Recording completed.')
                                     st.write('Error while loading the file.')
                                 with column2: 
-                                    st.markdown('#### Waveplot for Recorded Audio File')
+                                    st.markdown('##### Waveplot for Recorded Audio File')
                                     fig = plt.figure(figsize = (20, 8))
                                     wav, sr = librosa.load(path, sr = 45000)
                                     librosa.display.waveplot(wav, sr = 45000)
