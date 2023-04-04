@@ -95,7 +95,6 @@ def main():
         with st.container():
             column1, column2 = st.columns(2)
             with column1:
-                st.markdown('##  ')
                 st.markdown('###### Upload Audio File')
                 audio_file = st.file_uploader('  ', type = ['wav', 'mp3', 'ogg'])  # File uploader
                 if audio_file is not None:
@@ -186,7 +185,8 @@ def main():
                 file_details = {'Name': audio_file.name, 'Size': audio_file.size}
                 st.write(file_details)
                 
-            #with st.container():
+            st.markdown("###### Predictions")
+                
                 
 
 
