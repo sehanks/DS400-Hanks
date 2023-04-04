@@ -149,6 +149,7 @@ def main():
                                 audio_file = 'test_file'
                             with column1: 
                                 st.markdown('#  ')
+                                st.markdown('######  ')
                                 st.markdown('###### Waveplot for Test Audio File')
                                 fig = plt.figure(figsize = (20, 8))
                                 wav, sr = librosa.load(path, sr = 45000)
