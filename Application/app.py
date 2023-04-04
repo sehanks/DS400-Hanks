@@ -185,7 +185,7 @@ def main():
                 file_details = {'Name': audio_file.name, 'Size': audio_file.size}
                 st.write(file_details)
                 
-            with st.container():
+            #with st.container():
                 
 
 
