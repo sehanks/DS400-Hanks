@@ -202,9 +202,7 @@ def main():
             
             with st.container():
                 column1, column2, column3, column4 = st.columns(4)
-                mfccs = get_mfccs(path, model.input_shape[-1])
-                mfccs = mfccs.reshape(1, *mfccs.shape)
-                pred = model.predict(mfccs)[0]
+                pred = model.predict(audio_file)
             
                 
                 
