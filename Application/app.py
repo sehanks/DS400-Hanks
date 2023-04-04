@@ -112,7 +112,7 @@ def main():
                         try:
                             with column1: 
                                 st.markdown('#  ')
-                                st.markdown('##### Waveplot for Audio File')
+                                st.markdown('###### Waveplot for Audio File')
                                 fig = plt.figure(figsize = (20, 8))
                                 wav, sr = librosa.load(path, sr = 45000)
                                 librosa.display.waveplot(wav, sr = 45000)
@@ -128,7 +128,7 @@ def main():
                                 st.markdown('#  ')
                                 st.markdown('#  ')
                                 st.markdown('######  ')
-                                st.markdown('##### Mel-Spectrogram for Audio File')
+                                st.markdown('###### Mel-Spectrogram for Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
                                 spectrogram(wav, sr)
                                 st.write(fig2)
