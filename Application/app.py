@@ -124,8 +124,8 @@ def main():
                                 st.markdown('##### Mel-Spectrogram for Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
                                 img = spectrogram(wav, sr)
-                                #mel = librosa.feature.melspectrogram(y = wav, sr = 45000)
-                                #img = librosa.display.specshow(mel, x_axis = 'time', y_axis = 'hz')
+                                mel = librosa.feature.melspectrogram(y = wav, sr = 45000)
+                                img = librosa.display.specshow(mel, x_axis = 'time', y_axis = 'hz')
                                 fig2.colorbar(img)
                                 st.write(fig2)
                         except Exception as e:
@@ -154,9 +154,9 @@ def main():
                                 
                                 st.markdown('##### Mel-Spectrogram for Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
-                                mel = librosa.feature.melspectrogram(y = wav, sr = sr, n_mels = 128, fmax = 8000)
-                                img = librosa.display.specshow(mel, x_axis = 'time', y_axis = 'hz')
-                                #img = librosa.display.specshow(librosa.power_to_db(mel, ref = np.max), x_axis = 'time', y_axis = 'mel', fmax = 8000)
+                                mel = librosa.feature.melspectrogram(y = wav, sr = 45000, n_mels = 128, fmax = 8000)
+                                #img = librosa.display.specshow(mel, x_axis = 'time', y_axis = 'hz')
+                                img = librosa.display.specshow(librosa.power_to_db(mel, ref = np.max), x_axis = 'time', y_axis = 'mel', fmax = 8000)
                                 fig2.colorbar(img)
                                 st.write(fig2)
                     with column4:
