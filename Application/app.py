@@ -81,6 +81,19 @@ def spectrogram(array, sampling_rate, emotion):
     librosa.display.specshow(x_db_scale, sr = sampling_rate, x_axis = 'time', y_axis = 'hz')
     
 
+    
+def get_melspec(audio):
+    y, sr = librosa.load(audio, sr = 45000)
+    X = librosa.stft(y)
+    Xdb = librosa.amplitude_to_db(abs(X))
+    img = np.stack((Xdb,) * 3, -1)
+    img = img.astype(np.uint8)
+    grayImage = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    grayImage = cv2.resize(grayImage, (224, 224))
+    rgbImage = np.repeat(grayImage[..., np.newaxis], 3, -1)
+    return (rgbImage, Xdb)
+    
+    
 
 def main():
     
