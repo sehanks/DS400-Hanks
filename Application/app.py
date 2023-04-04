@@ -104,7 +104,7 @@ def main():
                     save_audio = save_audio_file(audio_file)  # save_audio_file function
                     if save_audio == 1:
                         st.warning('File size is too large. Try another file.')
-                    elif save_audio == 0 
+                    elif save_audio == 0: 
                         with column2:
                             st.audio(audio_file, format = 'audio/wav', start_time = 0)
                         try:
