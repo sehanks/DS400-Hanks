@@ -184,8 +184,12 @@ def main():
                 file_details = {'Name': audio_file.name, 'Size': audio_file.size}
                 st.write(file_details)
               
-            st.markdown('#  ')
-            st.markdown("#### Emotion Detected: ")
+                prediction = predict_emotion(audio_file)
+                probability = get_prediction_prob(audio_file)
+              
+                st.markdown('#  ')
+                st.markdown('#### Emotion Detected: {}'.format(prediction))
+            
                 
                 
 
