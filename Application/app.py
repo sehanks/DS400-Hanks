@@ -153,7 +153,8 @@ def main():
                                 st.write(fig)
                                 st.markdown('#### Mel-Spectrogram for Test Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
-                                librosa.display.specshow(wav, sr = 45000)
+                                mfccs = librosa.feature.mfcc(wav, sr = sr)
+                                librosa.display.specshow(mfccs, sr = sr, x_axis = 'time')
                                 st.write(fig2)
                     with column4:
                         if audio_file is None:
