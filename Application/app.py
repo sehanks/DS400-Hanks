@@ -135,6 +135,7 @@ def main():
                         if st.button('Try test audio file'): # Test audio file button
                             st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0) 
                             path = 'Application/OAF_back_angry.wav'
+                            audio_file = 'test_file'
                             with column2: 
                                 st.markdown('##### Waveplot for Test Audio File')
                                 fig = plt.figure(figsize = (20, 8))
@@ -177,6 +178,13 @@ def main():
                                     fig2 = plt.figure(figsize = (20, 8))
                                     spectrogram(wav, sr)
                                     st.write(fig2)
+                                    
+        if audio_file is not None:
+            st.markdown('##### Analyzing...')
+            if not audio_file == 'test_file':
+                st.sidebar.subheader('Audio file')
+                file_details = {'Filename': audio_file.name, 'FileSize': audio_file.size}
+                st.sidebar.write(file_details)
 
 
         
