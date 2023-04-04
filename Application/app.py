@@ -19,14 +19,14 @@ starttime = datetime.now()
 
 
 
-def predict_emotion(docx):
-    results = model.predict([docx])    
+def predict_emotion(file):
+    results = model.predict([file])    
     return results
 
 
 
-def get_prediction_prob(docx):    
-    results = model.predict_prob([docx])    
+def get_prediction_prob(file):    
+    results = model.predict_prob([file])    
     return results
 
 
@@ -63,6 +63,19 @@ def save_audio_file(file):
         f.write(file.getbuffer())
         
     return 0
+
+
+
+# @st.cache
+def get_mfccs(audio, limit):
+    y, sr = librosa.load(audio)
+    a = librosa.feature.mfcc(y, sr = sr, n_mfcc = 40)
+    if a.shape[1] > limit:
+        mfccs = a[:, :limit]
+    elif a.shape[1] < limit:
+        mfccs = np.zeros((a.shape[0], limit))
+        mfccs[:, :a.shape[1]] = a
+    return mfccs
 
 
   
@@ -184,11 +197,14 @@ def main():
                 file_details = {'Name': audio_file.name, 'Size': audio_file.size}
                 st.write(file_details)
               
-                prediction = predict_emotion(audio_file)
-                probability = get_prediction_prob(audio_file)
-              
                 st.markdown('#  ')
-                st.markdown('#### Emotion Detected: {}'.format(prediction))
+                st.markdown('#### Emotion Detected: ')
+            
+            with st.container():
+                column1, column2, column3, column4 = st.columns(4)
+                mfccs = get_mfccs(path, model.input_shape[-1])
+                mfccs = mfccs.reshape(1, *mfccs.shape)
+                pred = model.predict(mfccs)[0]
             
                 
                 
