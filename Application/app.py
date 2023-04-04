@@ -122,7 +122,7 @@ def main():
                                 plt.gca().axes.spines['bottom'].set_visible(False)
                                 st.write(fig)
                                 
-                                st.markdown('##### Mel-Spectrogram for Test Audio File')
+                                st.markdown('##### Mel-Spectrogram for Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
                                 mel = librosa.feature.melspectrogram(y = wav, sr = 45000)
                                 img = librosa.display.specshow(mel, x_axis = 'time', y_axis = 'hz')
