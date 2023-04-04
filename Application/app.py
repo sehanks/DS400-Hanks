@@ -18,7 +18,6 @@ model = load_model('Application/model_cnn.hdf5')
 starttime = datetime.now()
 
 
-
 def save_audio_file(file):    
     if file.size > 4000000:
         return 1
@@ -58,8 +57,16 @@ def spectrogram(array, sampling_rate):
     x = librosa.stft(array)
     x_db_scale = librosa.amplitude_to_db(abs(x))   
     librosa.display.specshow(x_db_scale, sr = sampling_rate, x_axis = 'time', y_axis = 'hz')
-      
-    
+  
+
+
+def get_mfccs(audio):
+        wav, sr = librosa.load(path, sr = 45000)
+        mfcc = librosa.feature.mfcc(y = wav, sr = sr)
+        mfcc_mean = np.mean(mfcc.T, axis = 0)
+        return mfcc_mean   
+
+
 
 def main():
     
@@ -76,6 +83,9 @@ def main():
     
     # Emotion Recognition page
     if page == 'Emotion Recognition':
+        st.sidebar.subheader('Transformation')
+        model_type = st.sidebar.selectbox('What transformation would you like to do to extract features?', 
+                                          ('MFCC', 'Zero Crossing Rate', 'Mel Spectogram', 'Root Mean Square Value', 'Chroma', 'Spectral Centroid'))
         st.title('Speech Emotion Recognizer App')
         
         with st.container():
@@ -174,13 +184,17 @@ def main():
                 st.markdown('#### Emotion Detected: ')
             
             with st.container():
-                pred = model.predict(audio_file)
-            
+                column5, column6 = st.columns(2)
                 
-                
+                if model_type == 'MFCC':
+                st.markdown("## Predictions")
+                    with st.container():
+                        col1, col2, col3, col4 = st.columns(4)
+                        mfccs = get_mfccs(path)
+                        pred = model.predict(mfccs)
 
-
-        
+     
+    
     # Project Summary page
     elif page == 'Project Summary':
         st.title('Project Summary')
