@@ -6,6 +6,7 @@ seaborn-dev
 plotly-dev
 matplotlib-dev
 os-dev
+cv2-dev
 libsndfile1-dev
 ffmpeg
 python3-cffi
