@@ -104,10 +104,11 @@ def main():
                     save_audio = save_audio_file(audio_file)  # save_audio_file function
                     if save_audio == 1:
                         st.warning('File size is too large. Try another file.')
-                    elif save_audio == 0:
-                        st.audio(audio_file, format = 'audio/wav', start_time = 0)
+                    elif save_audio == 0 
+                        with column2:
+                            st.audio(audio_file, format = 'audio/wav', start_time = 0)
                         try:
-                            with column2: 
+                            with column1: 
                                 st.markdown('##### Waveplot for Audio File')
                                 fig = plt.figure(figsize = (20, 8))
                                 wav, sr = librosa.load(path, sr = 45000)
@@ -119,7 +120,7 @@ def main():
                                 plt.gca().axes.spines['top'].set_visible(False)
                                 plt.gca().axes.spines['bottom'].set_visible(False)
                                 st.write(fig)
-                                
+                            with column2:
                                 st.markdown('##### Mel-Spectrogram for Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
                                 spectrogram(wav, sr)
