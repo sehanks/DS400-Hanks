@@ -68,8 +68,7 @@ def save_audio_file(file):
 
 def spectrogram(array, sampling_rate):
     x = librosa.stft(array)
-    x_db_scale = librosa.amplitude_to_db(abs(x))
-    plt.figure(figsize = (20, 8))      
+    x_db_scale = librosa.amplitude_to_db(abs(x))   
     librosa.display.specshow(x_db_scale, sr = sampling_rate, x_axis = 'time', y_axis = 'hz')
     
 
