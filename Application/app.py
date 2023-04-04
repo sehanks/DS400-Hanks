@@ -12,7 +12,7 @@ import librosa.display
 from tensorflow.keras.models import load_model
 
 
-model = load_model('model_cnn.hdf5')
+model = load_model('Application/model_cnn.hdf5')
 
 
 starttime = datetime.now()
