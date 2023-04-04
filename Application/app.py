@@ -153,8 +153,10 @@ def main():
                                 st.write(fig)
                                 st.markdown('##### Mel-Spectrogram for Test Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
-                                mfccs = librosa.feature.mfcc(wav, sr = sr)
-                                img = librosa.display.specshow(librosa.power_to_db(S, ref = np.max), x_axis = 'time', y_axis = 'mel', fmax = 8000)
+                                librosa.feature.melspectrogram(wav, sr = 45000)
+                                S = librosa.feature.melspectrogram(y = wav, sr = 45000, n_mels = 128, fmax = 8000)
+                                S_dB = librosa.power_to_db(S, ref = np.max)
+                                img = librosa.display.specshow(S_dB, x_axis = 'time', y_axis = 'mel', sr=sr, fmax = 8000)
                                 fig2.colorbar(img)
                                 st.write(fig2)
                     with column4:
