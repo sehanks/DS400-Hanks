@@ -11,7 +11,7 @@ import librosa
 import librosa.display
 
 
-#model = load_model('model_cnn.hdf5')
+model = load_model('model_cnn.hdf5')
 
 
 starttime = datetime.now()
@@ -71,7 +71,6 @@ def spectrogram(array, sampling_rate):
     x_db_scale = librosa.amplitude_to_db(abs(x))   
     librosa.display.specshow(x_db_scale, sr = sampling_rate, x_axis = 'time', y_axis = 'hz')
     
-
     
     
 
@@ -172,6 +171,11 @@ def main():
                                     plt.gca().axes.spines['top'].set_visible(False)
                                     plt.gca().axes.spines['bottom'].set_visible(False)
                                     st.write(fig)
+                                    
+                                    st.markdown('##### Mel-Spectrogram for Recorded Audio File')
+                                    fig2 = plt.figure(figsize = (20, 8))
+                                    spectrogram(wav, sr)
+                                    st.write(fig2)
 
 
         
