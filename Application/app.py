@@ -152,10 +152,11 @@ def main():
                                 plt.gca().axes.spines['bottom'].set_visible(False)
                                 st.write(fig)
                                 
-                                st.markdown('##### Mel-Spectrogram for Test Audio File')
+                                st.markdown('##### Mel-Spectrogram for Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
-                                mel = librosa.feature.melspectrogram(y = wav, sr = 45000)
+                                mel = librosa.feature.melspectrogram(y = wav, sr = sr, n_mels = 128, fmax = 8000)
                                 img = librosa.display.specshow(mel, x_axis = 'time', y_axis = 'hz')
+                                #img = librosa.display.specshow(librosa.power_to_db(mel, ref = np.max), x_axis = 'time', y_axis = 'mel', fmax = 8000)
                                 fig2.colorbar(img)
                                 st.write(fig2)
                     with column4:
