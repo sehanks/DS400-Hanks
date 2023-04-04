@@ -95,8 +95,8 @@ def main():
         with st.container():
             column1, column2 = st.columns(2)
             with column1:
-                st.markdown('###### Upload Audio File')
-                audio_file = st.file_uploader('  ', type = ['wav', 'mp3', 'ogg'])  # File uploader
+                #st.markdown('###### Upload Audio File')
+                audio_file = st.file_uploader('Upload Audio File', type = ['wav', 'mp3', 'ogg'])  # File uploader
                 if audio_file is not None:
                     if not os.path.exists('audio'):  # Check whether the specified path exists or not
                         os.makedirs('audio')  # Create a directory recursively               
