@@ -107,7 +107,7 @@ def main():
                     elif save_audio == 0: 
                         with column2:
                             st.markdown('#  ')
-                            st.markdown('#####  ')
+                            st.markdown('#  ')
                             st.audio(audio_file, format = 'audio/wav', start_time = 0)
                         try:
                             with column1: 
