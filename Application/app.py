@@ -69,7 +69,7 @@ def save_audio_file(file):
 # @st.cache
 def get_mfccs(audio, limit):
     y, sr = librosa.load(audio)
-    a = librosa.feature.mfcc(y, sr = sr, n_mfcc = 40)
+    a = librosa.feature.mfcc(y, sr = sr, n_mfcc = 163)
     if a.shape[1] > limit:
         mfccs = a[:, :limit]
     elif a.shape[1] < limit:
