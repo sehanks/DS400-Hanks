@@ -184,7 +184,7 @@ def main():
             if not audio_file == 'test_file':
                 st.markdown('##### Audio file')  # Show details of the audio file in the menu bar
                 file_details = {'Name': audio_file.name, 'Size': audio_file.size}
-                st.sidebar.write(file_details)
+                st.write(file_details)
 
 
         
