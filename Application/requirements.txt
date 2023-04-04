@@ -13,6 +13,7 @@ streamlit
 streamlit-option-menu
 tensorflow
 seaborn==0.12.2
+cv2
 
 
 # numpy
