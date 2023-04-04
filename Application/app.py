@@ -126,7 +126,6 @@ def main():
                             with column2:
                                 st.markdown('#  ')
                                 st.markdown('#  ')
-                                st.markdown('#  ')
                                 st.markdown('######  ')
                                 st.markdown('###### Mel-Spectrogram for Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
@@ -161,7 +160,6 @@ def main():
                                 plt.gca().axes.spines['bottom'].set_visible(False)
                                 st.write(fig)
                             with column2:
-                                st.markdown('#  ')
                                 st.markdown('#  ')
                                 st.markdown('#  ')
                                 st.markdown('###### Mel-Spectrogram for Test Audio File')
