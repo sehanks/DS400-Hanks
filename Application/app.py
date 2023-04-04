@@ -19,18 +19,6 @@ starttime = datetime.now()
 
 
 
-def predict_emotion(file):
-    results = model.predict([file])    
-    return results
-
-
-
-def get_prediction_prob(file):    
-    results = model.predict_prob([file])    
-    return results
-
-
-
 def save_audio_file(file):    
     if file.size > 4000000:
         return 1
@@ -64,28 +52,13 @@ def save_audio_file(file):
         
     return 0
 
-
-
-# @st.cache
-def get_mfccs(audio, limit):
-    y, sr = librosa.load(audio)
-    a = librosa.feature.mfcc(y, sr = sr, n_mfcc = 163)
-    if a.shape[1] > limit:
-        mfccs = a[:, :limit]
-    elif a.shape[1] < limit:
-        mfccs = np.zeros((a.shape[0], limit))
-        mfccs[:, :a.shape[1]] = a
-    return mfccs
-
-
   
 
 def spectrogram(array, sampling_rate):
     x = librosa.stft(array)
     x_db_scale = librosa.amplitude_to_db(abs(x))   
     librosa.display.specshow(x_db_scale, sr = sampling_rate, x_axis = 'time', y_axis = 'hz')
-    
-    
+      
     
 
 def main():
@@ -201,7 +174,6 @@ def main():
                 st.markdown('#### Emotion Detected: ')
             
             with st.container():
-                column1, column2, column3, column4 = st.columns(4)
                 pred = model.predict(audio_file)
             
                 
