@@ -61,10 +61,10 @@ def spectrogram(array, sampling_rate):
 
 
 def get_mfccs(audio):
-        wav, sr = librosa.load(path, sr = 45000)
-        mfcc = librosa.feature.mfcc(y = wav, sr = sr)
-        mfcc_mean = np.mean(mfcc.T, axis = 0)
-        return mfcc_mean   
+    wav, sr = librosa.load(path, sr = 45000)
+    mfcc = librosa.feature.mfcc(y = wav, sr = sr)
+    mfcc_mean = np.mean(mfcc.T, axis = 0)
+    return mfcc_mean   
 
 
 
