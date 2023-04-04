@@ -9,7 +9,6 @@ import os
 from datetime import datetime
 import librosa 
 import librosa.display
-import cv2
 
 
 #model = load_model('model_cnn.hdf5')
@@ -82,17 +81,6 @@ def spectrogram(array, sampling_rate, emotion):
     librosa.display.specshow(x_db_scale, sr = sampling_rate, x_axis = 'time', y_axis = 'hz')
     
 
-    
-def get_melspec(audio):
-    y, sr = librosa.load(audio, sr = 45000)
-    X = librosa.stft(y)
-    Xdb = librosa.amplitude_to_db(abs(X))
-    img = np.stack((Xdb,) * 3, -1)
-    img = img.astype(np.uint8)
-    grayImage = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    grayImage = cv2.resize(grayImage, (224, 224))
-    rgbImage = np.repeat(grayImage[..., np.newaxis], 3, -1)
-    return (rgbImage, Xdb)
     
     
 
@@ -167,7 +155,8 @@ def main():
                                 st.write(fig)
                                 st.markdown('#### Spectrogram for Test Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
-                                librosa.display.specshow(mfccs, sr = sr, x_axis = 'time')
+                                img = librosa.display.specshow(librosa.power_to_db(S, ref = np.max), x_axis = 'time', y_axis = 'mel', fmax = 8000, ax = ax[0])
+                                fig2.colorbar(img, ax = [ax[0]])
                                 plt.gca().axes.get_yaxis().set_visible(False)
                                 plt.gca().axes.spines['right'].set_visible(False)
                                 plt.gca().axes.spines['left'].set_visible(False)
