@@ -142,6 +142,8 @@ def main():
                     with column3:  
                         if st.button('Try test audio file'): # Test audio file button
                             with column2:
+                                st.markdown('#  ')
+                                st.markdown('#  ')
                                 st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0) 
                                 path = 'Application/OAF_back_angry.wav'
                                 audio_file = 'test_file'
@@ -158,7 +160,11 @@ def main():
                                 plt.gca().axes.spines['top'].set_visible(False)
                                 plt.gca().axes.spines['bottom'].set_visible(False)
                                 st.write(fig)
-                                
+                            with column2:
+                                st.markdown('#  ')
+                                st.markdown('#  ')
+                                st.markdown('#  ')
+                                st.markdown('######  ')   
                                 st.markdown('###### Mel-Spectrogram for Test Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
                                 spectrogram(wav, sr)
