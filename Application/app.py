@@ -158,17 +158,17 @@ def main():
                                     st.success('Recording completed.')
                                     st.write('Error while loading the file.')
                                 with column2: 
-                                st.markdown('#### Waveplot for Recorded Audio File')
-                                fig = plt.figure(figsize = (20, 8))
-                                wav, sr = librosa.load(path, sr = 45000)
-                                librosa.display.waveplot(wav, sr = 45000)
-                                plt.gca().axes.get_yaxis().set_visible(False)
-                                plt.gca().axes.get_xaxis().set_visible(False)
-                                plt.gca().axes.spines['right'].set_visible(False)
-                                plt.gca().axes.spines['left'].set_visible(False)
-                                plt.gca().axes.spines['top'].set_visible(False)
-                                plt.gca().axes.spines['bottom'].set_visible(False)
-                                st.write(fig)
+                                    st.markdown('#### Waveplot for Recorded Audio File')
+                                    fig = plt.figure(figsize = (20, 8))
+                                    wav, sr = librosa.load(path, sr = 45000)
+                                    librosa.display.waveplot(wav, sr = 45000)
+                                    plt.gca().axes.get_yaxis().set_visible(False)
+                                    plt.gca().axes.get_xaxis().set_visible(False)
+                                    plt.gca().axes.spines['right'].set_visible(False)
+                                    plt.gca().axes.spines['left'].set_visible(False)
+                                    plt.gca().axes.spines['top'].set_visible(False)
+                                    plt.gca().axes.spines['bottom'].set_visible(False)
+                                    st.write(fig)
 
 
         
