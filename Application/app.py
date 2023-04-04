@@ -180,10 +180,10 @@ def main():
                                     st.write(fig2)
                                     
         if audio_file is not None:
-            st.markdown('##### Analyzing...')
+            st.markdown('### Analysis of Audio File')  
             if not audio_file == 'test_file':
-                st.sidebar.subheader('Audio file')
-                file_details = {'Filename': audio_file.name, 'FileSize': audio_file.size}
+                st.markdown('##### Audio file')  # Show details of the audio file in the menu bar
+                file_details = {'Name': audio_file.name, 'Size': audio_file.size}
                 st.sidebar.write(file_details)
 
 
