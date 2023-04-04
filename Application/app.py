@@ -187,7 +187,7 @@ def main():
                 column5, column6 = st.columns(2)
                 
                 if model_type == 'MFCC':
-                st.markdown("## Predictions")
+                    st.markdown("## Predictions")
                     with st.container():
                         col1, col2, col3, col4 = st.columns(4)
                         mfccs = get_mfccs(path)
