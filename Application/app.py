@@ -111,6 +111,7 @@ def main():
                             st.audio(audio_file, format = 'audio/wav', start_time = 0)
                         try:
                             with column1: 
+                                st.markdown('#  ')
                                 st.markdown('##### Waveplot for Audio File')
                                 fig = plt.figure(figsize = (20, 8))
                                 wav, sr = librosa.load(path, sr = 45000)
@@ -123,6 +124,14 @@ def main():
                                 plt.gca().axes.spines['bottom'].set_visible(False)
                                 st.write(fig)
                             with column2:
+                                st.markdown('#  ')
+                                st.markdown('#  ')
+                                st.markdown('#  ')
+                                st.markdown('#  ')
+                                st.markdown('#  ')
+                                st.markdown('#  ')
+                                st.markdown('#  ')
+                                st.markdown('#  ')
                                 st.markdown('##### Mel-Spectrogram for Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
                                 spectrogram(wav, sr)
