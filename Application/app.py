@@ -184,7 +184,8 @@ def main():
                 st.markdown('###### Analysis of Audio File')  # Show details of the audio file in the menu bar
                 file_details = {'Name': audio_file.name, 'Size': audio_file.size}
                 st.write(file_details)
-                
+              
+            st.markdown('#  ')
             st.markdown("###### Predictions")
                 
                 
