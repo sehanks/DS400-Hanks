@@ -66,11 +66,10 @@ def save_audio_file(file):
 
   
 
-def spectrogram(array, sampling_rate, emotion):
-    x = librosa.stft(array)    
-    x_db_scale = librosa.amplitude_to_db(abs(x))    
-    plt.figure(figsize = (8, 3))    
-    plt.title("Spectrogram of " + emotion, size = 15)    
+def spectrogram(array, sampling_rate):
+    x = librosa.stft(array)
+    x_db_scale = librosa.amplitude_to_db(abs(x))
+    plt.figure(figsize = (20, 8))      
     librosa.display.specshow(x_db_scale, sr = sampling_rate, x_axis = 'time', y_axis = 'hz')
     
 
@@ -124,8 +123,9 @@ def main():
                                 
                                 st.markdown('##### Mel-Spectrogram for Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
-                                mel = librosa.feature.melspectrogram(y = wav, sr = 45000)
-                                img = librosa.display.specshow(mel, x_axis = 'time', y_axis = 'hz')
+                                img = spectrogram(wav, sr)
+                                #mel = librosa.feature.melspectrogram(y = wav, sr = 45000)
+                                #img = librosa.display.specshow(mel, x_axis = 'time', y_axis = 'hz')
                                 fig2.colorbar(img)
                                 st.write(fig2)
                         except Exception as e:
