@@ -95,7 +95,7 @@ def main():
         with st.container():
             column1, column2 = st.columns(2)
             with column1:
-                st.markdown('##### Upload Audio File')
+                st.markdown('###### Upload Audio File')
                 audio_file = st.file_uploader('  ', type = ['wav', 'mp3', 'ogg'])  # File uploader
                 if audio_file is not None:
                     if not os.path.exists('audio'):  # Check whether the specified path exists or not
@@ -141,11 +141,13 @@ def main():
                     column3, column4 = st.columns(2)
                     with column3:  
                         if st.button('Try test audio file'): # Test audio file button
-                            st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0) 
-                            path = 'Application/OAF_back_angry.wav'
-                            audio_file = 'test_file'
-                            with column2: 
-                                st.markdown('##### Waveplot for Test Audio File')
+                            with column2:
+                                st.audio(data = 'Application/OAF_back_angry.wav', format = 'audio/wav', start_time = 0) 
+                                path = 'Application/OAF_back_angry.wav'
+                                audio_file = 'test_file'
+                            with column1: 
+                                st.markdown('#  ')
+                                st.markdown('###### Waveplot for Test Audio File')
                                 fig = plt.figure(figsize = (20, 8))
                                 wav, sr = librosa.load(path, sr = 45000)
                                 librosa.display.waveplot(wav, sr = 45000)
@@ -157,7 +159,7 @@ def main():
                                 plt.gca().axes.spines['bottom'].set_visible(False)
                                 st.write(fig)
                                 
-                                st.markdown('##### Mel-Spectrogram for Test Audio File')
+                                st.markdown('###### Mel-Spectrogram for Test Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
                                 spectrogram(wav, sr)
                                 st.write(fig2)
@@ -188,9 +190,8 @@ def main():
                                     st.write(fig2)
                                     
         if audio_file is not None:
-            st.markdown('### Analysis of Audio File')  
             if not audio_file == 'test_file':
-                st.markdown('##### Audio file')  # Show details of the audio file in the menu bar
+                st.markdown('##### Analysis of Audio File')  # Show details of the audio file in the menu bar
                 file_details = {'Name': audio_file.name, 'Size': audio_file.size}
                 st.write(file_details)
 
