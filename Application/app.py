@@ -121,6 +121,13 @@ def main():
                                 plt.gca().axes.spines['top'].set_visible(False)
                                 plt.gca().axes.spines['bottom'].set_visible(False)
                                 st.write(fig)
+                                
+                                st.markdown('##### Mel-Spectrogram for Test Audio File')
+                                fig2 = plt.figure(figsize = (20, 8))
+                                mel = librosa.feature.melspectrogram(y = wav, sr = 45000)
+                                img = librosa.display.specshow(mel, x_axis = 'time', y_axis = 'hz')
+                                fig2.colorbar(img)
+                                st.write(fig2)
                         except Exception as e:
                             audio_file = None
                             st.error(f'Error {e} - wrong format of the file. Try another .wav file.')
