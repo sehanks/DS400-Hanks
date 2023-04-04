@@ -185,7 +185,7 @@ def main():
                 st.write(file_details)
               
             st.markdown('#  ')
-            st.markdown("###### Predictions")
+            st.markdown("#### Emotion Detected: ")
                 
                 
 
