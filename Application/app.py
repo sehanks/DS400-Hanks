@@ -9,6 +9,7 @@ import os
 from datetime import datetime
 import librosa 
 import librosa.display
+from tensorflow.keras.models import load_model
 
 
 model = load_model('model_cnn.hdf5')
