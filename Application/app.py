@@ -152,14 +152,6 @@ def main():
                                 plt.gca().axes.spines['bottom'].set_visible(False)
                                 st.write(fig)
                                 st.markdown('#### Spectrogram for Test Audio File')
-                                fig2 = plt.figure(figsize = (20, 8))
-                                img = librosa.display.specshow(librosa.power_to_db(S, ref = np.max), x_axis = 'time', y_axis = 'mel', fmax = 8000, ax = ax[0])
-                                fig2.colorbar(img)
-                                plt.gca().axes.get_yaxis().set_visible(False)
-                                plt.gca().axes.spines['right'].set_visible(False)
-                                plt.gca().axes.spines['left'].set_visible(False)
-                                plt.gca().axes.spines['top'].set_visible(False)
-                                st.write(fig2)
                     with column4:
                         if audio_file is None:
                             if st.button('Record an audio file'):  # Record audio button                    
