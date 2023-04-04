@@ -151,7 +151,10 @@ def main():
                                 plt.gca().axes.spines['top'].set_visible(False)
                                 plt.gca().axes.spines['bottom'].set_visible(False)
                                 st.write(fig)
-                                st.markdown('#### Spectrogram for Test Audio File')
+                                st.markdown('#### Mel-Spectrogram for Test Audio File')
+                                fig2 = plt.figure(figsize = (20, 8))
+                                librosa.display.specshow(wav, sr = 45000)
+                                st.write(fig2)
                     with column4:
                         if audio_file is None:
                             if st.button('Record an audio file'):  # Record audio button                    
