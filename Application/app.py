@@ -147,7 +147,7 @@ def main():
                                 
                                 st.markdown('##### Mel-Spectrogram for Test Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
-                                mel = librosa.feature.melspectrogram(y = wav, sr = 45000, n_mfcc = 40)
+                                mel = librosa.feature.melspectrogram(y = wav, sr = 45000)
                                 librosa.display.specshow(mel, x_axis = 'time')
                                 
                                 #S = librosa.feature.melspectrogram(y = wav, sr = 45000, n_mels = 128, fmax = 8000)
