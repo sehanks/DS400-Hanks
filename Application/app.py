@@ -97,7 +97,7 @@ def main():
         with st.container():
             column1, column2 = st.columns(2)
             with column1:
-                st.markdown('#### Upload Audio File')
+                st.markdown('##### Upload Audio File')
                 audio_file = st.file_uploader('  ', type = ['wav', 'mp3', 'ogg'])  # File uploader
                 if audio_file is not None:
                     if not os.path.exists('audio'):  # Check whether the specified path exists or not
@@ -148,7 +148,8 @@ def main():
                                 st.markdown('##### Mel-Spectrogram for Test Audio File')
                                 fig2 = plt.figure(figsize = (20, 8))
                                 S = librosa.feature.melspectrogram(y = wav, sr = 45000, n_mels = 128, fmax = 8000)
-                                librosa.display.specshow(librosa.power_to_db(S, ref = np.max), x_axis = 'time', y_axis = 'mel', fmax = 8000)
+                                #librosa.display.specshow(librosa.power_to_db(S, ref = np.max), x_axis = 'time', y_axis = 'mel', fmax = 8000)
+                                librosa.display.specshow(S, sr = 45000, x_axis = 'time', y_axis = 'hz')
                                 st.write(fig2)
                     with column4:
                         if audio_file is None:
