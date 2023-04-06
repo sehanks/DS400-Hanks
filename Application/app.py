@@ -223,11 +223,12 @@ def main():
         st.title('About')
         column1, column2 = st.columns(2)
         with column1:
-            st.subheader('## Email')
+            st.markdown('### Email')
             st.info('sehanks01@gmail.com')
         with column2:
             linkedin = Image.open('Application/linkedin.png')
             st.image(linkedin, width = 100)
+            st.markdown('#  ')
             link = '[Sarah Hanks LinkedIn]' \
                '(www.linkedin.com/in/hanks-sarah)'
             st.markdown(link, unsafe_allow_html = True)
