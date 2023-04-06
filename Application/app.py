@@ -91,7 +91,6 @@ def main():
         with st.container():
             column1, column2 = st.columns(2)
             with column1:
-                #st.markdown('###### Upload Audio File')
                 audio_file = st.file_uploader('Upload Audio File', type = ['wav', 'mp3', 'ogg'])  # File uploader
                 if audio_file is not None:
                     if not os.path.exists('audio'):  # Check whether the specified path exists or not
@@ -183,11 +182,10 @@ def main():
             with st.container():
                 column5, column6 = st.columns(2)
                 st.markdown('#  ')
-                st.markdown('#### Emotion Detected: ')
+                st.markdown('### Emotion Detected: ')
                 if model_type == 'MFCC':
-                    st.markdown("## Predictions")
+                    st.markdown("#### Predictions")
                     with st.container():
-                        col1, col2, col3, col4 = st.columns(4)
                         mfccs = get_mfccs(path)
                         pred = model.predict(mfccs)
 
@@ -215,8 +213,9 @@ def main():
         st.markdown(text, unsafe_allow_html = True)
         
         tess = pd.read_csv('Application/Tess_df.csv')
-        fig = plt.figure(figsize=(10, 4))
+        fig = plt.figure(figsize = (10, 4))
         sns.countplot(x = tess['Emotions'], data = tess)
+        plt.title('Counts of Each Emotion')
         st.pyplot(fig)
         
     # About (me) page
