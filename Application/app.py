@@ -221,6 +221,16 @@ def main():
     # About (me) page
     else:
         st.title('About')
+        column1, column2 = st.columns(2)
+        with column1:
+            st.info('sehanks01@gmail.com')
+        with column2:
+            linkedin = Image.open('Application/linkedin.png)
+            st.image(linkedin)
+            link = '[Sarah Hanks LinkedIn]' \
+               '(https://github.com/sehanks/DS400-Hanks)'
+            st.markdown(link, unsafe_allow_html = True)
+            
         
         
 if __name__ == '__main__':
