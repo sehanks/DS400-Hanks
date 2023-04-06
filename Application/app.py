@@ -60,7 +60,7 @@ def spectrogram(array, sampling_rate):
   
 
 
-def get_mfccs(audio):
+def get_mfccs(path):
     wav, sr = librosa.load(path, sr = 45000)
     mfcc = librosa.feature.mfcc(y = wav, sr = sr)
     mfcc_mean = np.mean(mfcc.T, axis = 0)
@@ -132,24 +132,6 @@ def main():
                             st.error(f'Error {e} - wrong format of the file. Try another .wav file.')
                     else:
                         st.error('Unknown error')
-                    if not audio_file == 'test_file':
-                        st.markdown('#  ')
-                        st.markdown('###### Analysis of Audio File')  # Show details of the audio file in the menu bar
-                        file_details = {'Name': audio_file.name, 'Size': audio_file.size}
-                        st.write(file_details)
-              
-                        st.markdown('#  ')
-                        st.markdown('#### Emotion Detected: ')
-            
-                    with st.container():
-                        column5, column6 = st.columns(2)
-
-                        if model_type == 'MFCC':
-                            st.markdown("## Predictions")
-                            with st.container():
-                                col1, col2, col3, col4 = st.columns(4)
-                                mfccs = get_mfccs(path)
-                                pred = model.predict(mfccs)
                 else:
                     column3, column4 = st.columns(2)
                     with column3:  
