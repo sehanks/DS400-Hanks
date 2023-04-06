@@ -228,7 +228,7 @@ def main():
         with column2:
             linkedin = Image.open('Application/linkedin.png')
             st.image(linkedin, width = 100)
-            st.markdown('#  ')
+            st.markdown('##  ')
             link = '[Sarah Hanks LinkedIn]' \
                '(www.linkedin.com/in/hanks-sarah)'
             st.markdown(link, unsafe_allow_html = True)
