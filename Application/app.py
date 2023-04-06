@@ -226,9 +226,9 @@ def main():
             st.info('sehanks01@gmail.com')
         with column2:
             linkedin = Image.open('Application/linkedin.png')
-            st.image(linkedin)
+            st.image(linkedin, width = 100)
             link = '[Sarah Hanks LinkedIn]' \
-               '(https://github.com/sehanks/DS400-Hanks)'
+               '(www.linkedin.com/in/hanks-sarah)'
             st.markdown(link, unsafe_allow_html = True)
             
         
