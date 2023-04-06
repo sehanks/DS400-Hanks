@@ -225,7 +225,7 @@ def main():
         with column1:
             st.info('sehanks01@gmail.com')
         with column2:
-            linkedin = Image.open('Application/linkedin.png)
+            linkedin = Image.open('Application/linkedin.png')
             st.image(linkedin)
             link = '[Sarah Hanks LinkedIn]' \
                '(https://github.com/sehanks/DS400-Hanks)'
