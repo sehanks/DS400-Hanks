@@ -297,7 +297,7 @@ def main():
                             X_test = sc.transform(X_test)
                             X_train = np.expand_dims(X_train, axis = 2)
                             X_test = np.expand_dims(X_test, axis = 2)
-                            #pred = model.predict(X_test)
+                            pred = model.predict(X_test)
 
      
     
