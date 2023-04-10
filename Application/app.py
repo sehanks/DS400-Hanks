@@ -120,7 +120,7 @@ def get_feats(path):
     result = np.array(resample_norm)    
     # Noise
     get_noise = noise(array)
-    resample_noise = extract_feats(get_noise)
+    resample_noise = extract_feats(get_noise, sampling_rate)
     result = np.vstack((result, resample_noise))  # Vertical Stack    
     # Pitch
     get_pitch = pitch(array, sampling_rate)
