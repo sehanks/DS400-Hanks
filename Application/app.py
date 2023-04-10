@@ -159,9 +159,6 @@ def main():
     
     # Emotion Recognition page
     if page == 'Emotion Recognition':
-        st.sidebar.subheader('Transformation')
-        model_type = st.sidebar.selectbox('What transformation would you like to do to extract features?', 
-                                          ('MFCC', 'Zero Crossing Rate', 'Mel Spectogram', 'Root Mean Square Value', 'Chroma', 'Spectral Centroid'))
         st.title('Speech Emotion Recognizer App')
         
         with st.container():
@@ -269,71 +266,36 @@ def main():
                 file_details = {'Name': audio_file.name, 'Size': audio_file.size}
                 st.write(file_details)
                 
-                with st.container():
-                    column5, column6 = st.columns(2)
-                    st.markdown('#  ')
-                    #st.markdown('### Emotion Detected: ')
-                    if model_type == 'MFCC':
-                        st.markdown("#### Predictions")
-                        with st.container():
-                            tess = pd.read_csv('Application/Tess_df.csv')
-                            X, y = [], []
-                            for path, emotion in zip(tess['Path'], tess['Emotions']):    
-                                feat = get_feats(path)    
-                                for feature in feat:        
-                                    X.append(feature)        
-                                    y.append(emotion)
-                            feat = pd.DataFrame(X)
-                            feat['labels'] = y
-                            X = feat.drop(['labels'], axis = 1)
-                            y = feat['labels']
-                            onehot = OneHotEncoder()
-                            np_onehot = np.array(y).reshape(-1, 1)
-                            y = onehot.fit_transform(np_onehot).toarray()
-                            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 101)
-                            sc = StandardScaler()
-                            X_train = sc.fit_transform(X_train)
-                            X_test = sc.transform(X_test)
-                            X_train = np.expand_dims(X_train, axis = 2)
-                            X_test = np.expand_dims(X_test, axis = 2)
-                            pred = model.predict(X_test)
-                            y_pred = onehot.inverse_transform(pred)
-                            y_test = onehot.inverse_transform(y_test)
-            
-            else:
-                with st.container():
-                    column5, column6 = st.columns(2)
-                    st.markdown('#  ')
-                    #st.markdown('### Emotion Detected: ')
-                    if model_type == 'MFCC':
-                        st.markdown("#### Predictions")
-                        with st.container():
-                            X, y = [], []
-                            path = 'Application/OAF_back_angry.wav'
-                            array, sampling_rate = librosa.load(path = path)
-                            feat = get_feats(path) 
-                            for feature in feat:
-                                X.append(feature)
-                                y.append('Angry')
-                            feat = pd.DataFrame(X)
-                            feat['labels'] = y
-                            X = feat.drop(['labels'], axis = 1)
-                            y = feat['labels']
-                            onehot = OneHotEncoder()
-                            np_onehot = np.array(y).reshape(-1, 1)
-                            y = onehot.fit_transform(np_onehot).toarray()
-                            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 101)
-                            sc = StandardScaler()
-                            X_train = sc.fit_transform(X_train)
-                            X_test = sc.transform(X_test)
-                            X_train = np.expand_dims(X_train, axis = 2)
-                            X_test = np.expand_dims(X_test, axis = 2)
-                            pred = model.predict(X_test)
-                            y_pred = onehot.inverse_transform(pred)
-                            y_test = onehot.inverse_transform(y_test)
-                            
+            with st.container():
+                column5, column6 = st.columns(2)
+                st.markdown('#  ')
+                st.markdown('### Emotion Detected: ')
+                st.markdown("#### Predictions")
 
-     
+                tess = pd.read_csv('Application/Tess_df.csv')
+                X, y = [], []
+                for path, emotion in zip(tess['Path'], tess['Emotions']):    
+                    feat = get_feats(path)    
+                    for feature in feat:        
+                        X.append(feature)        
+                        y.append(emotion)
+                feat = pd.DataFrame(X)
+                feat['labels'] = y
+                X = feat.drop(['labels'], axis = 1)
+                y = feat['labels']
+                onehot = OneHotEncoder()
+                np_onehot = np.array(y).reshape(-1, 1)
+                y = onehot.fit_transform(np_onehot).toarray()
+                X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 101)
+                sc = StandardScaler()
+                X_train = sc.fit_transform(X_train)
+                X_test = sc.transform(X_test)
+                X_train = np.expand_dims(X_train, axis = 2)
+                X_test = np.expand_dims(X_test, axis = 2)
+                pred = model.predict(X_test)
+                y_pred = onehot.inverse_transform(pred)
+                y_test = onehot.inverse_transform(y_test)
+                 
     
     # Project Summary page
     elif page == 'Project Summary':
