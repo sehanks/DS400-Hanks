@@ -24,12 +24,9 @@ starttime = datetime.now()
 def save_audio_file(file):    
     if file.size > 4000000:
         return 1
-    
-    folder = 'audio'
-    
+    folder = 'audio'    
     # Convert current date and time to a string
-    date = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    
+    date = datetime.now().strftime("%d/%m/%Y %H:%M:%S")    
     # Clear folder
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
@@ -41,17 +38,14 @@ def save_audio_file(file):
                 os.unlink(file_path)
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
-
     try:
         with open('log0.txt', 'a') as f:
             f.write(f'{file.name} - {file.size} - {date};\n')
     except:
         pass
-
     with open(os.path.join(folder, file.name), 'wb') as f:
         # Returns a generated PDF document as a byte array
-        f.write(file.getbuffer())
-        
+        f.write(file.getbuffer())        
     return 0
 
   
@@ -68,6 +62,83 @@ def get_mfccs(path):
     mfcc = librosa.feature.mfcc(y = wav, sr = sr)
     mfcc_mean = np.mean(mfcc.T, axis = 0)
     return mfcc_mean 
+
+
+
+def noise(array):    
+    noise_aug = np.random.uniform() * np.amax(array) * 0.06     
+    array = (noise_aug * np.random.normal(size = array.shape[0])) + array     
+    return array
+def pitch(array, sampling_rate):    
+    return librosa.effects.pitch_shift(y = array, sr = sampling_rate, n_steps = 1.1)
+def slow(array, sampling_rate = 0.4):    
+    return librosa.effects.time_stretch(y = array, rate = sampling_rate)
+def fast(array, sampling_rate = 1.5):    
+    return librosa.effects.time_stretch(y = array, rate = sampling_rate)
+def shift(array):    
+    shift_aug = int(np.random.uniform(low = -20, high = 10) * 1000)    
+    return np.roll(a = array, shift = shift_aug)
+
+
+
+def extract_feats(array):    
+    # MFCC
+    result = np.array([])
+    mfcc = librosa.feature.mfcc(y = array, sr = sampling_rate)
+    mfcc_mean = np.mean(mfcc.T, axis = 0)
+    result = np.hstack((result, mfcc_mean))  # Horizontal Stack    
+    # Zero Crossing Rate
+    zcr = librosa.feature.zero_crossing_rate(y = array)
+    zcr_mean = np.mean(zcr.T, axis = 0)
+    result = np.hstack((result, zcr_mean))  # Horizontal Stack    
+    # Mel Spectogram
+    melspec = librosa.feature.melspectrogram(y = array, sr = sampling_rate)
+    melspec_mean = np.mean(melspec.T, axis = 0)
+    result = np.hstack((result, melspec_mean))  # Horizontal Stack
+    # Root Mean Square Value
+    rmsv = librosa.feature.rms(y = array)
+    rmsv_mean = np.mean(rmsv.T, axis = 0)
+    result = np.hstack((result, rmsv_mean))  # Horizontal Stack    
+    # Chroma
+    stft = np.abs(librosa.stft(array))
+    chroma_stft = librosa.feature.chroma_stft(S = stft, sr = sampling_rate)
+    chroma_stft_mean = np.mean(chroma_stft.T, axis = 0)
+    result = np.hstack((result, chroma_stft_mean))  # Horizontal Stack      
+    # Spectral Centroid
+    spectral = librosa.feature.spectral_centroid(y = array)
+    spectral_mean = np.mean(spectral.T, axis = 0)
+    result = np.hstack((result, spectral_mean))  # Horizontal Stack     
+    return result
+
+
+    
+def get_feats(path):
+    # Duration and offset takes care of the noise, pitch, slow down, etc.
+    array, sampling_rate = librosa.load(path, duration = 3, offset = 0.6)    
+    # Normal Audio
+    resample_norm = extract_feats(array)
+    result = np.array(resample_norm)    
+    # Noise
+    get_noise = noise(array)
+    resample_noise = extract_feats(get_noise)
+    result = np.vstack((result, resample_noise))  # Vertical Stack    
+    # Pitch
+    get_pitch = pitch(array, sampling_rate)
+    resample_pitch = extract_feats(get_pitch)
+    result = np.vstack((result, resample_pitch))  # Vertical Stack    
+    # Slow Down
+    get_slow = slow(array)
+    resample_slow = extract_feats(get_slow)
+    result = np.vstack((result, resample_slow))  # Vertical Stack    
+    # Speed Up
+    get_fast = fast(array)
+    resample_fast = extract_feats(get_fast)
+    result = np.vstack((result, resample_fast))  # Vertical Stack    
+    # Shift
+    get_shift = shift(array)
+    resample_shift = extract_feats(get_shift)
+    result = np.vstack((result, resample_shift))  # Vertical Stack    
+    return result
 
 
 
