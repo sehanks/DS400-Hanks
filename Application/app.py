@@ -204,8 +204,26 @@ def main():
                     if model_type == 'MFCC':
                         st.markdown("#### Predictions")
                         with st.container():
-                            mfccs = get_mfccs(path)
-                            pred = model.predict(mfccs)
+                            X, y = [], []
+                            path = 'OAF_back_angry.wav'
+                            array, sampling_rate = librosa.load(path = path)
+                            feat = get_feats(path) 
+                            for feature in feat:
+                                X.append(feature)
+                                y.append('Angry')
+                            feat = pd.DataFrame(X)
+                            feat['labels'] = y
+                            X = feat.drop(['labels'], axis = 1)
+                            y = feat['labels']
+                            onehot = OneHotEncoder()
+                            np_onehot = np.array(y).reshape(-1, 1)
+                            y = onehot.fit_transform(np_onehot).toarray()
+                            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 101)
+                            sc = StandardScaler()
+                            X_train = sc.fit_transform(X_train)
+                            X_test = sc.transform(X_test)
+                            X_train = np.expand_dims(X_train, axis = 2)
+                            X_test = np.expand_dims(X_test, axis = 2)
 
      
     
