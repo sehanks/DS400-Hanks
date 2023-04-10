@@ -273,7 +273,7 @@ def main():
                 with st.container():
                     column5, column6 = st.columns(2)
                     st.markdown('#  ')
-                    st.markdown('### Emotion Detected: ')
+                    #st.markdown('### Emotion Detected: ')
                     if model_type == 'MFCC':
                         st.markdown("#### Predictions")
                         with st.container():
@@ -298,6 +298,7 @@ def main():
                             X_train = np.expand_dims(X_train, axis = 2)
                             X_test = np.expand_dims(X_test, axis = 2)
                             pred = model.predict(X_test)
+                            st.markdown('### Emotion Detected: {}'.format(pred))
 
      
     
