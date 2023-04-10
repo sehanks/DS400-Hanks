@@ -11,6 +11,8 @@ import librosa
 import librosa.display
 from tensorflow.keras.models import load_model
 from audio_recorder_streamlit import audio_recorder
+from audiorecorder import audiorecorder
+
 
 
 model = load_model('Application/model_cnn.hdf5')
