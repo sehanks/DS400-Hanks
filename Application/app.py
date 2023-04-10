@@ -205,7 +205,7 @@ def main():
                         st.markdown("#### Predictions")
                         with st.container():
                             X, y = [], []
-                            path = 'OAF_back_angry.wav'
+                            path = 'Application/OAF_back_angry.wav'
                             array, sampling_rate = librosa.load(path = path)
                             feat = get_feats(path) 
                             for feature in feat:
@@ -224,6 +224,7 @@ def main():
                             X_test = sc.transform(X_test)
                             X_train = np.expand_dims(X_train, axis = 2)
                             X_test = np.expand_dims(X_test, axis = 2)
+                            #pred = model.predict(X_test)
 
      
     
