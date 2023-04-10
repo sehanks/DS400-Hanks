@@ -10,3 +10,4 @@ libsndfile1-dev
 ffmpeg
 python3-cffi
 audio_recorder_streamlit-dev
+audiorecorder-dev
