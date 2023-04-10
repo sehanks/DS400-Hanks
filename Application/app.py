@@ -10,6 +10,7 @@ from datetime import datetime
 import librosa 
 import librosa.display
 from tensorflow.keras.models import load_model
+from audio_recorder_streamlit import audio_recorder
 
 
 model = load_model('Application/model_cnn.hdf5')
