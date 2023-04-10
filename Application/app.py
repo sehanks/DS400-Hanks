@@ -69,7 +69,7 @@ def get_mfccs(path, model):
         mfccs = mfcc[:, :model]
     elif mfcc.shape[1] < model:
         mfccs = np.zeros((mfcc.shape[0], model))
-        mfccs[:, :mfcc.shape[1]] = mfcc
+        mfccs[:, :mfcc.shape[1]] = mfccs
     return mfccs
 
 
@@ -193,7 +193,7 @@ def main():
                     st.markdown("#### Predictions")
                     with st.container():
                         mfccs = get_mfccs(path, model.input_shape[-1])
-                        mfccs = mfccs.reshape(1, *mfccs.shape)
+                        mfccs = mfccs.reshape(1, 163, 1)
                         pred = model.predict(mfccs)[0]
 
      
