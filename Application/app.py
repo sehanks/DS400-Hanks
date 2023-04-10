@@ -269,29 +269,36 @@ def main():
                 file_details = {'Name': audio_file.name, 'Size': audio_file.size}
                 st.write(file_details)
                 
-                tess = pd.read_csv('Tess_df.csv')
-                X, y = [], []
-                for path, emotion in zip(tess['Path'], tess['Emotions']):    
-                    feat = get_feats(path)    
-                    for feature in feat:        
-                        X.append(feature)        
-                        y.append(emotion)
-                feat = pd.DataFrame(X)
-                feat['labels'] = y
-                X = feat.drop(['labels'], axis = 1)
-                y = feat['labels']
-                onehot = OneHotEncoder()
-                np_onehot = np.array(y).reshape(-1, 1)
-                y = onehot.fit_transform(np_onehot).toarray()
-                X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 101)
-                sc = StandardScaler()
-                X_train = sc.fit_transform(X_train)
-                X_test = sc.transform(X_test)
-                X_train = np.expand_dims(X_train, axis = 2)
-                X_test = np.expand_dims(X_test, axis = 2)
-                pred = model.predict(X_test)
-                y_pred = onehot.inverse_transform(pred)
-                y_test = onehot.inverse_transform(y_test)
+                with st.container():
+                    column5, column6 = st.columns(2)
+                    st.markdown('#  ')
+                    #st.markdown('### Emotion Detected: ')
+                    if model_type == 'MFCC':
+                        st.markdown("#### Predictions")
+                        with st.container():
+                            tess = pd.read_csv('Application/Tess_df.csv')
+                            X, y = [], []
+                            for path, emotion in zip(tess['Path'], tess['Emotions']):    
+                                feat = get_feats(path)    
+                                for feature in feat:        
+                                    X.append(feature)        
+                                    y.append(emotion)
+                            feat = pd.DataFrame(X)
+                            feat['labels'] = y
+                            X = feat.drop(['labels'], axis = 1)
+                            y = feat['labels']
+                            onehot = OneHotEncoder()
+                            np_onehot = np.array(y).reshape(-1, 1)
+                            y = onehot.fit_transform(np_onehot).toarray()
+                            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 101)
+                            sc = StandardScaler()
+                            X_train = sc.fit_transform(X_train)
+                            X_test = sc.transform(X_test)
+                            X_train = np.expand_dims(X_train, axis = 2)
+                            X_test = np.expand_dims(X_test, axis = 2)
+                            pred = model.predict(X_test)
+                            y_pred = onehot.inverse_transform(pred)
+                            y_test = onehot.inverse_transform(y_test)
             
             else:
                 with st.container():
