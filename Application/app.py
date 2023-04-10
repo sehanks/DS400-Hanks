@@ -298,7 +298,9 @@ def main():
                             X_train = np.expand_dims(X_train, axis = 2)
                             X_test = np.expand_dims(X_test, axis = 2)
                             pred = model.predict(X_test)
-                            st.markdown('### Emotion Detected: {}'.format(pred))
+                            y_pred = onehot.inverse_transform(pred)
+                            y_test = onehot.inverse_transform(y_test)
+                            
 
      
     
