@@ -167,19 +167,30 @@ def main():
                                 st.write(fig2)
                     with column4:
                         if audio_file is None:
-                            if st.button('Record an audio file'):  # Record audio button  
-                            #audio = audiorecorder('Click to record', 'Recording...')
-                            #if len(audio) > 0:
-                                # To play audio in frontend:
-                                #st.audio(audio.tobytes())
+                            if st.button('Record an audio file'):  # Record audio button                    
+                                #with st.spinner(f'Recording for 5 seconds ....'):
+                                    #st.write('Recording...')
+                                    #time.sleep(3)
+                                    #st.success('Recording completed.')
+                                    #st.write('Error while loading the file.')
+                                    
+                                #audio_bytes = audio_recorder()
+                                #if audio_bytes:
+                                    #st.audio(audio_bytes, format = 'audio/wav')
+                                
+                                if len(audio) > 0:
+                                    # To play audio in frontend:
+                                    st.audio(audio.tobytes())
 
-                                # To save audio to a file:
-                                #wav_file = open('audio.wav', 'wb')
-                                #wav_file.write(audio.tobytes())
+                                    # To save audio to a file:
+                                    wav_file = open('audio.wav', 'wb')
+                                    wav_file.write(audio.tobytes())
+    
+    
 
                                     
         if audio_file is not None:
-            if not audio_file == 'test_file':  # Use testing file
+            if not audio_file == 'test_file':
                 st.markdown('#  ')
                 st.markdown('###### Analysis of Audio File')  # Show details of the audio file in the menu bar
                 file_details = {'Name': audio_file.name, 'Size': audio_file.size}
