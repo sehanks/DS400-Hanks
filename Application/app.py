@@ -114,28 +114,28 @@ def extract_feats(array):
     
 def get_feats(path):
     # Duration and offset takes care of the noise, pitch, slow down, etc.
-    array, sampling_rate = librosa.load(path, duration = 3, offset = 0.6)  
+    wav, sr = librosa.load(path)  
     # Normal Audio
-    resample_norm = extract_feats(array)
+    resample_norm = extract_feats(wav)
     result = np.array(resample_norm)    
     # Noise
-    get_noise = noise(array)
+    get_noise = noise(wav)
     resample_noise = extract_feats(get_noise)
     result = np.vstack((result, resample_noise))  # Vertical Stack    
     # Pitch
-    get_pitch = pitch(array, sampling_rate)
+    get_pitch = pitch(wav, sr)
     resample_pitch = extract_feats(get_pitch)
     result = np.vstack((result, resample_pitch))  # Vertical Stack    
     # Slow Down
-    get_slow = slow(array)
+    get_slow = slow(wav)
     resample_slow = extract_feats(get_slow)
     result = np.vstack((result, resample_slow))  # Vertical Stack    
     # Speed Up
-    get_fast = fast(array)
+    get_fast = fast(wav)
     resample_fast = extract_feats(get_fast)
     result = np.vstack((result, resample_fast))  # Vertical Stack    
     # Shift
-    get_shift = shift(array)
+    get_shift = shift(wav)
     resample_shift = extract_feats(get_shift)
     result = np.vstack((result, resample_shift))  # Vertical Stack    
     return result
