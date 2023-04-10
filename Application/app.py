@@ -69,7 +69,7 @@ def get_mfccs(path, model):
         mfccs = mfcc[:, :model]
     elif mfcc.shape[1] < model:
         mfccs = np.zeros((mfcc.shape[0], model))
-        mfccs[:, :mfcc.shape[1]] = a
+        mfccs[:, :mfcc.shape[1]] = mfcc
     return mfccs
 
 
