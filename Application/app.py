@@ -116,7 +116,7 @@ def get_feats(path):
     # Duration and offset takes care of the noise, pitch, slow down, etc.
     array, sampling_rate = librosa.load(path, duration = 3, offset = 0.6)    
     # Normal Audio
-    resample_norm = extract_feats(array)
+    resample_norm = extract_feats(array, sampling_rate)
     result = np.array(resample_norm)    
     # Noise
     get_noise = noise(array)
