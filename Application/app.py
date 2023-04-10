@@ -167,7 +167,7 @@ def main():
                                 st.write(fig2)
                     with column4:
                         if audio_file is None:
-                            #if st.button('Record an audio file'):  # Record audio button  
+                            if st.button('Record an audio file'):  # Record audio button  
                             #audio = audiorecorder('Click to record', 'Recording...')
                             #if len(audio) > 0:
                                 # To play audio in frontend:
