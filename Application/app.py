@@ -193,7 +193,7 @@ def main():
                     st.markdown("#### Predictions")
                     with st.container():
                         mfccs = get_mfccs(path, model.input_shape[-1])
-                        mfccs = mfccs.reshape(1, 163, 1)
+                        mfccs = mfccs.reshape(1, mfccs.shape)
                         pred = model.predict(mfccs)[0]
 
      
