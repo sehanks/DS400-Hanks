@@ -60,17 +60,11 @@ def spectrogram(array, sampling_rate):
   
 
 
-def get_mfccs(path, model):
+def get_mfccs(path):
     wav, sr = librosa.load(path)
-    mfcc = librosa.feature.mfcc(y = wav, sr = sr, n_mfcc = 163)
-    #mfcc_mean = np.mean(mfcc.T, axis = 0)
-    #return mfcc_mean   
-    if mfcc.shape[1] > model:
-        mfccs = mfcc[:, :model]
-    elif mfcc.shape[1] < model:
-        mfccs = np.zeros((mfcc.shape[0], model))
-        mfccs[:, :mfccs.shape[1]] = mfccs
-    return mfccs
+    mfcc = librosa.feature.mfcc(y = wav, sr = sr)
+    mfcc_mean = np.mean(mfcc.T, axis = 0)
+    return mfcc_mean 
 
 
 
@@ -192,9 +186,8 @@ def main():
                 if model_type == 'MFCC':
                     st.markdown("#### Predictions")
                     with st.container():
-                        mfccs = get_mfccs(path, model.input_shape[-1])
-                        mfccs = mfccs.reshape(1, *mfccs.shape)
-                        pred = model.predict(mfccs)[0]
+                        mfccs = get_mfccs(path)
+                        pred = model.predict(mfccs)
 
      
     
