@@ -124,19 +124,19 @@ def get_feats(path):
     result = np.vstack((result, resample_noise))  # Vertical Stack    
     # Pitch
     get_pitch = pitch(array, sampling_rate)
-    resample_pitch = extract_feats(get_pitch)
+    resample_pitch = extract_feats(get_pitch, sampling_rate)
     result = np.vstack((result, resample_pitch))  # Vertical Stack    
     # Slow Down
     get_slow = slow(array)
-    resample_slow = extract_feats(get_slow)
+    resample_slow = extract_feats(get_slow, sampling_rate)
     result = np.vstack((result, resample_slow))  # Vertical Stack    
     # Speed Up
     get_fast = fast(array)
-    resample_fast = extract_feats(get_fast)
+    resample_fast = extract_feats(get_fast, sampling_rate)
     result = np.vstack((result, resample_fast))  # Vertical Stack    
     # Shift
     get_shift = shift(array)
-    resample_shift = extract_feats(get_shift)
+    resample_shift = extract_feats(get_shift, sampling_rate)
     result = np.vstack((result, resample_shift))  # Vertical Stack    
     return result
 
