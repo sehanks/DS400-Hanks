@@ -196,15 +196,16 @@ def main():
                 file_details = {'Name': audio_file.name, 'Size': audio_file.size}
                 st.write(file_details)
             
-            with st.container():
-                column5, column6 = st.columns(2)
-                st.markdown('#  ')
-                st.markdown('### Emotion Detected: ')
-                if model_type == 'MFCC':
-                    st.markdown("#### Predictions")
-                    with st.container():
-                        mfccs = get_mfccs(path)
-                        pred = model.predict(mfccs)
+            else:
+                with st.container():
+                    column5, column6 = st.columns(2)
+                    st.markdown('#  ')
+                    st.markdown('### Emotion Detected: ')
+                    if model_type == 'MFCC':
+                        st.markdown("#### Predictions")
+                        with st.container():
+                            mfccs = get_mfccs(path)
+                            pred = model.predict(mfccs)
 
      
     
