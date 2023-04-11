@@ -159,7 +159,7 @@ def get_pred(path):
     expand_dim = np.expand_dims(feat_fit, axis = 2)
     pred = model.predict(expand_dim)
     y_pred = onehot.inverse_transform(pred)
-    return y_pred[0]
+    return st.markdowmn(y_pred[0])
 
 
 
