@@ -285,7 +285,7 @@ def main():
                 feature = pd.read_csv('Application/feat.csv')
                 
                 # Prediction
-                get_pred('Application/OAF_back_angry.wav')[0]
+                get_pred('Application/OAF_back_angry.wav')[4]
                 
                 
                  
