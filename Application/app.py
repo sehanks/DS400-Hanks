@@ -149,7 +149,8 @@ def get_pred(path):
     expand_dim = np.expand_dims(feat_fit, axis = 2)
     pred = model.predict(expand_dim)
     y_pred = onehot.inverse_transform(pred)
-    st.title(y_pred[0])
+    st.markdown('### Emotion Detected: ')
+    return y_pred[4]
 
 
 
@@ -278,7 +279,7 @@ def main():
             with st.container():
                 column5, column6 = st.columns(2)
                 st.markdown('#  ')
-                st.markdown('### Emotion Detected: ')
+                #st.markdown('### Emotion Detected: ')
                 st.markdown("#### Predictions")
 
                 tess = pd.read_csv('Application/Tess_df.csv')
