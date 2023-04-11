@@ -17,6 +17,9 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 
 
 
+emotions = ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Surprise', 'Sad']
+
+
 model = load_model('Application/model_cnn.hdf5')
 
 
@@ -143,6 +146,20 @@ def prediction(path):
     pred = model.predict(expand)
     emotion = onehot.inverse_transform(pred)
     return emotion
+
+
+
+def get_pred(path):
+    onehot = OneHotEncoder()
+    np_onehot = np.array(emotions).reshape(-1, 1)
+    y = onehot.fit_transform(np_onehot).toarray()
+    feat = get_feats(path)
+    sc = StandardScaler()
+    feat_fit = sc.fit_transform(feat)
+    expand_dim = np.expand_dims(feat_fit, axis = 2)
+    pred = model.predict(expand_dim)
+    y_pred = onehot.inverse_transform(pred)
+    return y_pred[0]
 
 
 
@@ -277,25 +294,8 @@ def main():
                 tess = pd.read_csv('Application/Tess_df.csv')
                 feature = pd.read_csv('Application/feat.csv')
                 
-                # Setup
-                X = feature.drop(['labels'], axis = 1)
-                y = feature['labels']
-                onehot = OneHotEncoder()
-                np_onehot = np.array(y).reshape(-1, 1)
-                y = onehot.fit_transform(np_onehot).toarray()
-                X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 101)
-                X_train.shape, y_train.shape, X_test.shape, y_test.shape
-                sc = StandardScaler()
-                X_train = sc.fit_transform(X_train)
-                X_test = sc.transform(X_test)
-                X_train = np.expand_dims(X_train, axis = 2)
-                X_test = np.expand_dims(X_test, axis = 2)
-                X_train.shape, y_train.shape, X_test.shape, y_test.shape
-                pred = model.predict(X_test)
-                y_pred = onehot.inverse_transform(pred)
-                y_test = onehot.inverse_transform(y_test)
-                
-                prediction(tess['Path'][0])[0]
+                # Prediction
+                get_pred(tess['Path'][0])[0]
                 
                 
                  
