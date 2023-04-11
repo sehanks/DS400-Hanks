@@ -105,13 +105,6 @@ def extract_feats(array, sampling_rate):
     return result
 
 
-
-def prediction(path):
-    wav, sr = librosa.load(path)
-    
-    return mfcc_mean 
-
-
     
 def get_feats(path):    
     # Duration and offset takes care of the noise, pitch, slow down, etc.
