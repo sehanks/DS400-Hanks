@@ -282,9 +282,17 @@ def main():
                 st.markdown("#### Predictions")
 
                 tess = pd.read_csv('Application/Tess_df.csv')
-                feature = pd.read_csv('Application/feat.csv')
+                #feature = pd.read_csv('Application/feat.csv')
                 
                 # Setup
+                
+                for path, emotion in zip(tess['Path'], tess['Emotions']):   
+                    feat = get_feats(path)
+                    for feature in feat:
+                        X.append(feature)
+                        y.append(emotion)
+                feat = pd.DataFrame(X)
+                feat['labels'] = y
                 X = feature.drop(['labels'], axis = 1)
                 y = feature['labels']
                 onehot = OneHotEncoder()
