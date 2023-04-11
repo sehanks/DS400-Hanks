@@ -139,16 +139,6 @@ def get_feats(path):
 
 
 
-def prediction(path):
-    feat = get_feats(path)
-    scaled = sc.transform(feat)
-    expand = np.expand_dims(scaled, axis = 2)
-    pred = model.predict(expand)
-    emotion = onehot.inverse_transform(pred)
-    return emotion
-
-
-
 def get_pred(path):
     onehot = OneHotEncoder()
     np_onehot = np.array(emotions).reshape(-1, 1)
@@ -159,7 +149,7 @@ def get_pred(path):
     expand_dim = np.expand_dims(feat_fit, axis = 2)
     pred = model.predict(expand_dim)
     y_pred = onehot.inverse_transform(pred)
-    return st.markdowmn(y_pred[0])
+    return st.markdown(y_pred[0])
 
 
 
