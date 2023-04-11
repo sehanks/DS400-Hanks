@@ -149,8 +149,7 @@ def get_pred(path):
     expand_dim = np.expand_dims(feat_fit, axis = 2)
     pred = model.predict(expand_dim)
     y_pred = onehot.inverse_transform(pred)
-    #st.markdown('### Emotion Detected: ')
-    return y_pred[0]
+    return y_pred[4]
 
 
 
@@ -286,7 +285,7 @@ def main():
                 feature = pd.read_csv('Application/feat.csv')
                 
                 # Prediction
-                get_pred('Application/OAF_back_angry.wav')
+                get_pred('Application/OAF_back_angry.wav')[0]
                 
                 
                  
