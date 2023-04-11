@@ -150,7 +150,7 @@ def get_pred(path):
     pred = model.predict(expand_dim)
     y_pred = onehot.inverse_transform(pred)
     st.markdown('### Emotion Detected: ')
-    return y_pred[4]
+    return y_pred[0]
 
 
 
