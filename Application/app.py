@@ -278,7 +278,6 @@ def main():
                 feature = pd.read_csv('Application/feat.csv')
                 
                 # Setup
-                
                 X = feature.drop(['labels'], axis = 1)
                 y = feature['labels']
                 onehot = OneHotEncoder()
