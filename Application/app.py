@@ -282,7 +282,7 @@ def main():
                 st.markdown("#### Predictions")
 
                 tess = pd.read_csv('Application/Tess_df.csv')
-                feature = pd.read_csv('feat.csv')
+                feature = pd.read_csv('Application/feat.csv')
                 
                 # Setup
                 X = feature.drop(['labels'], axis = 1)
