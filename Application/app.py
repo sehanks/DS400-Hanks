@@ -59,14 +59,6 @@ def spectrogram(array, sampling_rate):
   
 
 
-def get_mfccs(path):
-    wav, sr = librosa.load(path)
-    mfcc = librosa.feature.mfcc(y = wav, sr = sr)
-    mfcc_mean = np.mean(mfcc.T, axis = 0)
-    return mfcc_mean 
-
-
-
 def noise(array):    
     noise_aug = np.random.uniform() * np.amax(array) * 0.06     
     array = (noise_aug * np.random.normal(size = array.shape[0])) + array     
@@ -113,6 +105,13 @@ def extract_feats(array, sampling_rate):
     return result
 
 
+
+def prediction(path):
+    wav, sr = librosa.load(path)
+    
+    return mfcc_mean 
+
+
     
 def get_feats(path):    
     # Duration and offset takes care of the noise, pitch, slow down, etc.
@@ -141,6 +140,16 @@ def get_feats(path):
     resample_shift = extract_feats(get_shift, sampling_rate)
     result = np.vstack((result, resample_shift))  # Vertical Stack    
     return result
+
+
+
+def prediction(path):
+    feat = get_feats(path)
+    scaled = sc.transform(feat)
+    expand = np.expand_dims(scaled, axis = 2)
+    pred = model.predict(expand)
+    emotion = onehot.inverse_transform(pred)
+    return emotion
 
 
 
@@ -273,28 +282,29 @@ def main():
                 st.markdown("#### Predictions")
 
                 tess = pd.read_csv('Application/Tess_df.csv')
-                X, y = [], []
-                for path, emotion in zip(tess['Path'], tess['Emotions']):    
-                    feat = get_feats(path)    
-                    for feature in feat:        
-                        X.append(feature)        
-                        y.append(emotion)
-                feat = pd.DataFrame(X)
-                feat['labels'] = y
-                X = feat.drop(['labels'], axis = 1)
-                y = feat['labels']
+                feature = pd.read_csv('feat.csv')
+                
+                # Setup
+                X = feature.drop(['labels'], axis = 1)
+                y = feature['labels']
                 onehot = OneHotEncoder()
                 np_onehot = np.array(y).reshape(-1, 1)
                 y = onehot.fit_transform(np_onehot).toarray()
                 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 101)
+                X_train.shape, y_train.shape, X_test.shape, y_test.shape
                 sc = StandardScaler()
                 X_train = sc.fit_transform(X_train)
                 X_test = sc.transform(X_test)
                 X_train = np.expand_dims(X_train, axis = 2)
                 X_test = np.expand_dims(X_test, axis = 2)
+                X_train.shape, y_train.shape, X_test.shape, y_test.shape
                 pred = model.predict(X_test)
                 y_pred = onehot.inverse_transform(pred)
                 y_test = onehot.inverse_transform(y_test)
+                
+                prediction(tess['Path'][0])[0]
+                
+                
                  
     
     # Project Summary page
