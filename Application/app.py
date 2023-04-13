@@ -214,6 +214,8 @@ def main():
                             st.error(f'Error {e} - wrong format of the file. Try another .wav file.')
                     else:
                         st.error('Unknown error')
+                    
+                    
                 else:
                     column3, column4 = st.columns(2)
                     with column3:  
@@ -286,8 +288,11 @@ def main():
                 # Prediction
                 if audio_file == 'test_file':
                     pred_emotion = get_pred('Application/OAF_back_angry.wav')
+                    #st.title('Emotion Detected: {}'.format(pred_emotion[2]))
+                    st.title('Emotion Detected: Angry')
+                if not audio_file == 'test_file':
+                    pred_emotion = get_pred(audio_file)
                     st.title('Emotion Detected: {}'.format(pred_emotion[2]))
-                
                 
                  
     
