@@ -296,6 +296,7 @@ def main():
                         st.markdown('#### Emotion Detected: {}'.format(pred_emotion[2]))
                 with column6:
                     if audio_file == 'test_file':
+                        fig = plt.figure(figsize = (10, 4))
                         unique, counts = np.unique(pred_emotion ,return_counts = True)
                         bar = np.asarray((unique, counts)).T
                         col = list(bar[:, 0])
@@ -305,6 +306,7 @@ def main():
                         plt.xlabel('Emotions Detected')
                         plt.ylabel('Frequency')
                         plt.title('Frequency of Emotions Detected')
+                        st.pyplot(fig)
                         
                 
                  
