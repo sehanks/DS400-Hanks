@@ -78,7 +78,7 @@ def shift(array):
 
 
 
-def extract_feats(array, sampling_rate):    
+def extract_feats(array, sampling_rate):  
     # MFCC
     result = np.array([])
     mfcc = librosa.feature.mfcc(y = array, sr = sampling_rate)
@@ -140,16 +140,17 @@ def get_feats(path):
 
 
 def get_pred(path):
-    onehot = OneHotEncoder()
+    onehot = OneHotEncoder() 
     np_onehot = np.array(emotions).reshape(-1, 1)
     y = onehot.fit_transform(np_onehot).toarray()
     feat = get_feats(path)
+    print(feat.shape)
     sc = StandardScaler()
     feat_fit = sc.fit_transform(feat)
     expand_dim = np.expand_dims(feat_fit, axis = 2)
     pred = model.predict(expand_dim)
     y_pred = onehot.inverse_transform(pred)
-    return y_pred
+    return y_pred.flatten()
 
 
 
@@ -285,7 +286,8 @@ def main():
                 feature = pd.read_csv('Application/feat.csv')
                 
                 # Prediction
-                get_pred('Application/OAF_back_angry.wav')[4]
+                pred_emotion = get_pred('OAF_back_angry.wav')
+                st.title('Prediction of audio file is: {}'.format(pred_emotion[2]))
                 
                 
                  
