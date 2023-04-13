@@ -279,14 +279,14 @@ def main():
             with st.container():
                 column5, column6 = st.columns(2)
                 st.markdown('#  ')
-                #st.markdown('### Emotion Detected: ')
-                st.markdown("#### Predictions")
+                #st.markdown("#### Predictions")
 
                 tess = pd.read_csv('Application/Tess_df.csv')
                 
                 # Prediction
-                pred_emotion = get_pred('Application/OAF_back_angry.wav')
-                st.title('Prediction of audio file is: {}'.format(pred_emotion[2]))
+                if audio_file == 'test_file':
+                    pred_emotion = get_pred('Application/OAF_back_angry.wav')
+                    st.title('Emotion Detected: {}'.format(pred_emotion[2]))
                 
                 
                  
