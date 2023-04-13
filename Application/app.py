@@ -286,7 +286,7 @@ def main():
                 feature = pd.read_csv('Application/feat.csv')
                 
                 # Prediction
-                pred_emotion = get_pred('OAF_back_angry.wav')
+                pred_emotion = get_pred('Application/OAF_back_angry.wav')
                 st.title('Prediction of audio file is: {}'.format(pred_emotion[2]))
                 
                 
