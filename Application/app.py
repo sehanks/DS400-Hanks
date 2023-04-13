@@ -283,7 +283,6 @@ def main():
                 st.markdown("#### Predictions")
 
                 tess = pd.read_csv('Application/Tess_df.csv')
-                feature = pd.read_csv('Application/feat.csv')
                 
                 # Prediction
                 pred_emotion = get_pred('Application/OAF_back_angry.wav')
