@@ -288,12 +288,10 @@ def main():
                     if audio_file == 'test_file':
                         pred_emotion = get_pred('Application/OAF_back_angry.wav')
                         st.markdown('#  ')
-                        st.markdown('#  ')
                         st.markdown('#### Emotion Detected: {}'.format(pred_emotion[2]))
                         #st.markdown('#### Emotion Detected: Angry')
                     if not audio_file == 'test_file':
                         pred_emotion = get_pred(audio_file)
-                        st.markdown('#  ')
                         st.markdown('#  ')
                         st.markdown('#### Emotion Detected: {}'.format(pred_emotion[2]))
                 
