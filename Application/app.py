@@ -297,7 +297,7 @@ def main():
                 with column6:
                     if audio_file == 'test_file':
                         st.markdown('#  ')
-                        fig = plt.figure(figsize = (10, 4))
+                        fig = plt.figure(figsize = (15, 7))
                         unique, counts = np.unique(pred_emotion ,return_counts = True)
                         bar = np.asarray((unique, counts)).T
                         col = list(bar[:, 0])
