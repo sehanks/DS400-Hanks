@@ -255,6 +255,7 @@ def main():
                                     st.audio(audio.tobytes())  # To play audio in frontend
                                     wav_file = open('audio.wav', 'wb')  # To save audio to a file
                                     wav_file.write(audio.tobytes())
+                                    st.audio(wav_file, format = 'audio/wav', start_time = 0)
     
     
 
