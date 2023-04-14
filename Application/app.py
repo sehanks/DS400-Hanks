@@ -248,7 +248,14 @@ def main():
                                 st.write(fig2)
                     with column4:
                         if audio_file is None:
-                            if st.button('Record an audio file'):  # Record audio button                    
+                            if st.button('Record an audio file'):
+                                with st.spinner(f'Recording for 5 seconds ....'):
+                                    audio_bytes = audio_recorder()
+                                st.success('Recording completed')
+                                
+                                
+                                
+                                '# Record audio button                    
                                 #audio = audiorecorder("Click to record", "Recording...")
                                 #if len(audio) > 0:                                    
                                     #st.audio(audio.tobytes())  # To play audio in frontend
@@ -258,14 +265,15 @@ def main():
                                     #fig = plt.figure(figsize = (20, 8))
                                     #librosa.display.waveplot(wav, sr = 45000)
                                     #st.write(fig)
-                                audio_bytes = audio_recorder()
-                                st.success('Recording completed')
-                                if audio_bytes:                          
-                                    st.audio(audio_bytes, format = 'audio/wav', start_time = 0)
-                                    fig = plt.figure(figsize = (20, 8))
-                                    wav, sr = librosa.load(audio_bytes, sr = 45000)
-                                    librosa.display.waveplot(wav, sr = 45000)
-                                    st.write(fig)
+                                    
+                                #audio_bytes = audio_recorder()
+                                #st.success('Recording completed')
+                                #if audio_bytes:                          
+                                    #st.audio(audio_bytes, format = 'audio/wav', start_time = 0)
+                                    #fig = plt.figure(figsize = (20, 8))
+                                    #wav, sr = librosa.load(audio_bytes, sr = 45000)
+                                    #librosa.display.waveplot(wav, sr = 45000)
+                                    #st.write(fig)
                                     
                                     
     
