@@ -249,11 +249,10 @@ def main():
                     with column4:
                         if st.button('Record an audio file'):
                             audio = audiorecorder('Click to record', 'Recording...')
-                            st.markdown(audio)
                             if len(audio) > 0:
                                 wav_file = open('audio.mp3', 'wb')
                                 wav_file.write(audio.tobytes())
-                                st.markdown(wav_file)
+                                st.markdown(audio)
                                 
                                 
                                 
