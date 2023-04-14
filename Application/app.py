@@ -259,7 +259,7 @@ def main():
                                 #audio_bytes = audio_recorder()
                                 #if audio_bytes:
                                     #st.audio(audio_bytes, format = 'audio/wav')
-                                
+                                audio = audiorecorder("Click to record", "Recording...")
                                 if len(audio) > 0:
                                     # To play audio in frontend:
                                     st.audio(audio.tobytes())
