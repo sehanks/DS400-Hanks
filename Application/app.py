@@ -249,12 +249,23 @@ def main():
                     with column4:
                         if st.button('Record an audio file'):
                             audio = audiorecorder('Click to record', 'Recording...')
-                            #audio_bytes = audio_recorder(pause_threshold=2.0, sample_rate=42000)
-                            #st.markdown(audio)
                             if len(audio) > 0:
-                                with column1:
-                                    wav_file = open("audio.wav", "wb")
-                                    wav_file.write(audio.tobytes())
+                                wav_file = open('audio.wav', 'wb')
+                                wav_file.write(audio.tobytes())
+                                
+                                with column1: 
+                                    st.markdown('#  ')
+                                    st.markdown('###### Waveplot for Audio File')
+                                    fig = plt.figure(figsize = (20, 8))
+                                    wav, sr = librosa.load(wav_file, sr = 45000)
+                                    librosa.display.waveplot(wav, sr = 45000)
+                                    plt.gca().axes.get_yaxis().set_visible(False)
+                                    plt.gca().axes.get_xaxis().set_visible(False)
+                                    plt.gca().axes.spines['right'].set_visible(False)
+                                    plt.gca().axes.spines['left'].set_visible(False)
+                                    plt.gca().axes.spines['top'].set_visible(False)
+                                    plt.gca().axes.spines['bottom'].set_visible(False)
+                                    st.write(fig)
                                 
                                 
                                 
