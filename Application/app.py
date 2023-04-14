@@ -251,6 +251,8 @@ def main():
                             if st.button('Record an audio file'):
                                 with st.spinner(f'Recording for 5 seconds ....'):
                                     audio_bytes = audio_recorder()
+                                    st.write('Recording...)
+                                    time.sleep(3)
                                 st.success('Recording completed')
                                 
                                 
