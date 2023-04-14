@@ -259,6 +259,7 @@ def main():
                                     #librosa.display.waveplot(wav, sr = 45000)
                                     #st.write(fig)
                                 audio_bytes = audio_recorder()
+                                st.success('Recording completed')
                                 if audio_bytes:                          
                                     st.audio(audio_bytes, format = 'audio/wav', start_time = 0)
                                     fig = plt.figure(figsize = (20, 8))
