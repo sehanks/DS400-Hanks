@@ -286,33 +286,33 @@ def main():
                         pred_emotion = get_pred(audio_file)
                         st.markdown('#  ')
                         st.markdown('### Emotion Detected: {}'.format(pred_emotion[2]))
-                with column6:
-                    if audio_file == 'test_file':
-                        st.markdown('#  ')
-                        fig = plt.figure(figsize = (15, 7))
-                        unique, counts = np.unique(pred_emotion ,return_counts = True)
-                        bar = np.asarray((unique, counts)).T
-                        col = list(bar[:, 0])
-                        row = list(bar[:, 1])
-                        color = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
-                        plt.bar(x = col, height = [int(x) for x in row], color = color)
-                        plt.xlabel('Emotions Detected')
-                        plt.ylabel('Frequency')
-                        plt.title('Frequency of Emotions Detected')
-                        st.pyplot(fig)
-                    if not audio_file == 'test_file':
-                        st.markdown('#  ')
-                        fig = plt.figure(figsize = (10, 4))
-                        unique, counts = np.unique(pred_emotion ,return_counts = True)
-                        bar = np.asarray((unique, counts)).T
-                        col = list(bar[:, 0])
-                        row = list(bar[:, 1])
-                        color = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
-                        plt.bar(x = col, height = [int(x) for x in row], color = color)
-                        plt.xlabel('Emotions Detected')
-                        plt.ylabel('Frequency')
-                        plt.title('Frequency of Emotions Detected')
-                        st.pyplot(fig)
+            with st.container():
+                if audio_file == 'test_file':
+                    st.markdown('#  ')
+                    fig = plt.figure(figsize = (15, 7))
+                    unique, counts = np.unique(pred_emotion ,return_counts = True)
+                    bar = np.asarray((unique, counts)).T
+                    col = list(bar[:, 0])
+                    row = list(bar[:, 1])
+                    color = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+                    plt.bar(x = col, height = [int(x) for x in row], color = color)
+                    plt.xlabel('Emotions Detected')
+                    plt.ylabel('Frequency')
+                    plt.title('Frequency of Emotions Detected')
+                    st.pyplot(fig)
+                if not audio_file == 'test_file':
+                    st.markdown('#  ')
+                    fig = plt.figure(figsize = (10, 4))
+                    unique, counts = np.unique(pred_emotion ,return_counts = True)
+                    bar = np.asarray((unique, counts)).T
+                    col = list(bar[:, 0])
+                    row = list(bar[:, 1])
+                    color = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+                    plt.bar(x = col, height = [int(x) for x in row], color = color)
+                    plt.xlabel('Emotions Detected')
+                    plt.ylabel('Frequency')
+                    plt.title('Frequency of Emotions Detected')
+                    st.pyplot(fig)
                         
                 
                  
