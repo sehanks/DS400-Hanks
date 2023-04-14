@@ -144,7 +144,6 @@ def get_pred(path):
     np_onehot = np.array(emotions).reshape(-1, 1)
     y = onehot.fit_transform(np_onehot).toarray()
     feat = get_feats(path)
-    feat = feat.drop(columns = feat.columns[0], axis = 1)
     sc = StandardScaler()
     feat_fit = sc.fit_transform(feat)
     expand_dim = np.expand_dims(feat_fit, axis = 2)
@@ -251,14 +250,14 @@ def main():
                         if audio_file is None:
                             if st.button('Record an audio file'):  # Record audio button                    
                                 audio = audiorecorder("Click to record", "Recording...")
-                                if len(audio) > 0:                                    
-                                    st.audio(audio.tobytes())  # To play audio in frontend
-                                    wav_file = open('audio.wav', 'wb')  # To save audio to a file
-                                    wav_file.write(audio.tobytes())
-                                    wav, sr = librosa.load(wav_file, sr = 45000)
-                                    fig = plt.figure(figsize = (20, 8))
-                                    librosa.display.waveplot(wav, sr = 45000)
-                                    st.write(fig)
+                                #if len(audio) > 0:                                    
+                                st.audio(audio.tobytes())  # To play audio in frontend
+                                wav_file = open('audio.wav', 'wb')  # To save audio to a file
+                                wav_file.write(audio.tobytes())
+                                wav, sr = librosa.load(wav_file, sr = 45000)
+                                fig = plt.figure(figsize = (20, 8))
+                                librosa.display.waveplot(wav, sr = 45000)
+                                st.write(fig)
                                     
     
     
