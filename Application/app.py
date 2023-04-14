@@ -291,7 +291,7 @@ def main():
                 
             with st.container():
                 #column5, column6 = st.columns(2)
-                st.markdown('#  ')
+                #st.markdown('#  ')
                 tess = pd.read_csv('Application/Tess_df.csv')
                 
                 # Prediction
