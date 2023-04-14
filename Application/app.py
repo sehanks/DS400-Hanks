@@ -247,12 +247,9 @@ def main():
                                 spectrogram(wav, sr)
                                 st.write(fig2)
                     with column4:
-                        if audio_file is None:
-                            if st.button('Record an audio file'):
-                                with st.spinner(f'Recording for 5 seconds ....'):
-                                    audio_bytes = audio_recorder()
-                                    st.write('Recording...')
-                                st.success('Recording completed')
+                        if st.button('Record an audio file'):
+                            audio = audiorecorder('Click to record', 'Recording...')
+                            st.markdown(audio)
                                 
                                 
                                 
