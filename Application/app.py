@@ -144,7 +144,7 @@ def get_pred(path):
     np_onehot = np.array(emotions).reshape(-1, 1)
     y = onehot.fit_transform(np_onehot).toarray()
     feat = get_feats(path)
-    print(feat.shape)
+    feat = feat.drop(columns = feat.columns[0], axis = 1)
     sc = StandardScaler()
     feat_fit = sc.fit_transform(feat)
     expand_dim = np.expand_dims(feat_fit, axis = 2)
