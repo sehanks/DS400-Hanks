@@ -252,7 +252,6 @@ def main():
                                 with st.spinner(f'Recording for 5 seconds ....'):
                                     audio_bytes = audio_recorder()
                                     st.write('Recording...')
-                                    time.sleep(3)
                                 st.success('Recording completed')
                                 
                                 
@@ -290,8 +289,6 @@ def main():
                 st.write(file_details)
                 
             with st.container():
-                #column5, column6 = st.columns(2)
-                #st.markdown('#  ')
                 tess = pd.read_csv('Application/Tess_df.csv')
                 
                 # Prediction
