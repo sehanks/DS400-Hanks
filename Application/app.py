@@ -252,20 +252,7 @@ def main():
                             if len(audio) > 0:
                                 wav_file = open('audio.wav', 'wb')
                                 wav_file.write(audio.tobytes())
-                                
-                                with column1: 
-                                    st.markdown('#  ')
-                                    st.markdown('###### Waveplot for Audio File')
-                                    fig = plt.figure(figsize = (20, 8))
-                                    #wav, sr = librosa.load(wav_file, sr = 45000)
-                                    librosa.display.waveplot(wav_file, sr = 45000)
-                                    plt.gca().axes.get_yaxis().set_visible(False)
-                                    plt.gca().axes.get_xaxis().set_visible(False)
-                                    plt.gca().axes.spines['right'].set_visible(False)
-                                    plt.gca().axes.spines['left'].set_visible(False)
-                                    plt.gca().axes.spines['top'].set_visible(False)
-                                    plt.gca().axes.spines['bottom'].set_visible(False)
-                                    st.write(fig)
+                                st.markdown(wav_file)
                                 
                                 
                                 
