@@ -14,6 +14,8 @@ from audio_recorder_streamlit import audio_recorder
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from audiorecorder import audiorecorder
+from io import BytesIO
+import streamlit.components.v1 as components
 
 
 
