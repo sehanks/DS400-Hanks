@@ -13,3 +13,5 @@ audio_recorder_streamlit-dev
 sklearn.model_selection-dev
 sklearn.preprocessing-dev
 streamlit-audiorecorder-dev
+io-dev
+streamlit.components.v1-dev
