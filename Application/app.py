@@ -251,13 +251,17 @@ def main():
                             if st.button('Record an audio file'):  # Record audio button                    
                                 audio = audiorecorder("Click to record", "Recording...")
                                 #if len(audio) > 0:                                    
-                                st.audio(audio.tobytes())  # To play audio in frontend
-                                wav_file = open('audio.wav', 'wb')  # To save audio to a file
-                                wav_file.write(audio.tobytes())
-                                wav, sr = librosa.load(wav_file, sr = 45000)
-                                fig = plt.figure(figsize = (20, 8))
-                                librosa.display.waveplot(wav, sr = 45000)
-                                st.write(fig)
+                                    #st.audio(audio.tobytes())  # To play audio in frontend
+                                    #wav_file = open('audio.wav', 'wb')  # To save audio to a file
+                                    #wav_file.write(audio.tobytes())
+                                    #wav, sr = librosa.load(wav_file, sr = 45000)
+                                    #fig = plt.figure(figsize = (20, 8))
+                                    #librosa.display.waveplot(wav, sr = 45000)
+                                    #st.write(fig)
+                                audio_bytes = audio_recorder()
+                                if audio_bytes:
+                                    st.audio(audio_bytes, format = 'audio/wav')
+                                    print(audio_bytes)
                                     
     
     
@@ -301,7 +305,6 @@ def main():
                     plt.title('Frequency of Emotions Detected')
                     st.pyplot(fig)
                 if not audio_file == 'test_file':
-                    st.markdown('#  ')
                     fig = plt.figure(figsize = (10, 4))
                     unique, counts = np.unique(pred_emotion ,return_counts = True)
                     bar = np.asarray((unique, counts)).T
