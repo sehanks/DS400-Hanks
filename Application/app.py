@@ -248,8 +248,9 @@ def main():
                                 st.write(fig2)
                     with column4:
                         if st.button('Record an audio file'):
-                            audio = audiorecorder('Click to record', 'Recording...')
-                            st.markdown(audio)
+                            #audio = audiorecorder('Click to record', 'Recording...')
+                            audio_bytes = audio_recorder(pause_threshold=2.0, sample_rate=42000)
+                            st.markdown(audio_bytes)
                                 
                                 
                                 
