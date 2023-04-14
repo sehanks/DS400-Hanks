@@ -251,8 +251,8 @@ def main():
                             audio = audiorecorder('Click to record', 'Recording...')
                             if len(audio) > 0:
                                 wav_file = open('audio.mp3', 'wb')
-                                wav_file.write(audio.tobytes())
-                                st.markdown(audio)
+                                #wav_file.write(audio.tobytes())
+                                st.markdown(wav_file)
                                 
                                 
                                 
