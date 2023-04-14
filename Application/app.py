@@ -255,7 +255,39 @@ def main():
                                     st.audio(audio.tobytes())  # To play audio in frontend
                                     wav_file = open('audio.wav', 'wb')  # To save audio to a file
                                     wav_file.write(audio.tobytes())
-                                    st.audio(wav_file, format = 'audio/wav', start_time = 0)
+                                    save_audio = save_audio_file(wav_file)  # save_audio_file function
+                                    if save_audio == 1:
+                                        st.warning('File size is too large. Try another file.')
+                                    elif save_audio == 0: 
+                                        with column2:
+                                            st.markdown('#  ')
+                                            st.markdown('#  ')
+                                            st.audio(wav_file, format = 'audio/wav', start_time = 0)
+                                        try:
+                                            with column1: 
+                                                st.markdown('#  ')
+                                                st.markdown('###### Waveplot for Audio File')
+                                                fig = plt.figure(figsize = (20, 8))
+                                                wav, sr = librosa.load(path, sr = 45000)
+                                                librosa.display.waveplot(wav, sr = 45000)
+                                                plt.gca().axes.get_yaxis().set_visible(False)
+                                                plt.gca().axes.get_xaxis().set_visible(False)
+                                                plt.gca().axes.spines['right'].set_visible(False)
+                                                plt.gca().axes.spines['left'].set_visible(False)
+                                                plt.gca().axes.spines['top'].set_visible(False)
+                                                plt.gca().axes.spines['bottom'].set_visible(False)
+                                                st.write(fig)
+                                            with column2:
+                                                st.markdown('#  ')
+                                                st.markdown('#  ')
+                                                st.markdown('######  ')
+                                                st.markdown('###### Mel-Spectrogram for Audio File')
+                                                fig2 = plt.figure(figsize = (20, 8))
+                                                spectrogram(wav, sr)
+                                                st.write(fig2)
+                                        except Exception as e:
+                                            audio_file = None
+                                            st.error(f'Error {e} - wrong format of the file. Try another .wav file.')
     
     
 
