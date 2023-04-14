@@ -249,7 +249,7 @@ def main():
                     with column4:
                         if audio_file is None:
                             if st.button('Record an audio file'):  # Record audio button                    
-                                audio = audiorecorder("Click to record", "Recording...")
+                                #audio = audiorecorder("Click to record", "Recording...")
                                 #if len(audio) > 0:                                    
                                     #st.audio(audio.tobytes())  # To play audio in frontend
                                     #wav_file = open('audio.wav', 'wb')  # To save audio to a file
@@ -261,7 +261,16 @@ def main():
                                 audio_bytes = audio_recorder()
                                 if audio_bytes:
                                     st.audio(audio_bytes, format = 'audio/wav')
-                                    print(audio_bytes)
+                                    if audio_bytes is not None:
+                                        if not os.path.exists('audio'):  # Check whether the specified path exists or not
+                                            os.makedirs('audio')  # Create a directory recursively               
+                                        path = os.path.join('audio', audio_bytes.name)  # Join different path components
+                                        save_audio = save_audio_file(audio_bytes)  # save_audio_file function
+                                        fig = plt.figure(figsize = (20, 8))
+                                        wav, sr = librosa.load(path, sr = 45000)
+                                        librosa.display.waveplot(wav, sr = 45000)
+                                        st.write(fig)
+                                    
                                     
     
     
