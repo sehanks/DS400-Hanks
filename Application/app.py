@@ -250,22 +250,10 @@ def main():
                     with column4:
                         if audio_file is None:
                             if st.button('Record an audio file'):  # Record audio button                    
-                                #with st.spinner(f'Recording for 5 seconds ....'):
-                                    #st.write('Recording...')
-                                    #time.sleep(3)
-                                    #st.success('Recording completed.')
-                                    #st.write('Error while loading the file.')
-                                    
-                                #audio_bytes = audio_recorder()
-                                #if audio_bytes:
-                                    #st.audio(audio_bytes, format = 'audio/wav')
                                 audio = audiorecorder("Click to record", "Recording...")
-                                if len(audio) > 0:
-                                    # To play audio in frontend:
-                                    st.audio(audio.tobytes())
-
-                                    # To save audio to a file:
-                                    wav_file = open('audio.wav', 'wb')
+                                if len(audio) > 0:                                    
+                                    st.audio(audio.tobytes())  # To play audio in frontend
+                                    wav_file = open('audio.wav', 'wb')  # To save audio to a file
                                     wav_file.write(audio.tobytes())
     
     
