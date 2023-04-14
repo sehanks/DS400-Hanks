@@ -307,7 +307,7 @@ def main():
                         st.markdown('### Emotion Detected: {}'.format(pred_emotion[2]))
             with st.container():
                 if audio_file == 'test_file':
-                    st.markdown('#  ')
+                    st.markdown('###  ')
                     fig = plt.figure(figsize = (15, 7))
                     unique, counts = np.unique(pred_emotion ,return_counts = True)
                     bar = np.asarray((unique, counts)).T
