@@ -252,8 +252,9 @@ def main():
                             #audio_bytes = audio_recorder(pause_threshold=2.0, sample_rate=42000)
                             #st.markdown(audio)
                             if len(audio) > 0:
-                                s = st.audio(audio.tobytes())
-                                st.markdown(s)
+                                with column1:
+                                    s = st.audio(audio.tobytes())
+                                    st.markdown(s)
                                 
                                 
                                 
