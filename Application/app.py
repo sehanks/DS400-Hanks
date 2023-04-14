@@ -259,17 +259,22 @@ def main():
                                     #librosa.display.waveplot(wav, sr = 45000)
                                     #st.write(fig)
                                 audio_bytes = audio_recorder()
-                                if audio_bytes:
-                                    st.audio(audio_bytes, format = 'audio/wav')
-                                    if audio_bytes is not None:
-                                        if not os.path.exists('audio'):  # Check whether the specified path exists or not
-                                            os.makedirs('audio')  # Create a directory recursively               
+                                if audio_bytes:                          
+                                    if not os.path.exists('audio'):  # Check whether the specified path exists or not
+                                        os.makedirs('audio')  # Create a directory recursively               
                                         path = os.path.join('audio', audio_bytes.name)  # Join different path components
                                         save_audio = save_audio_file(audio_bytes)  # save_audio_file function
-                                        fig = plt.figure(figsize = (20, 8))
-                                        wav, sr = librosa.load(path, sr = 45000)
-                                        librosa.display.waveplot(wav, sr = 45000)
-                                        st.write(fig)
+                                        if save_audio == 1:
+                                            st.warning('File size is too large. Try another file.')
+                                        elif save_audio == 0: 
+                                            with column2:
+                                                st.markdown('#  ')
+                                                st.markdown('#  ')
+                                                st.audio(audio_bytes, format = 'audio/wav', start_time = 0)
+                                                fig = plt.figure(figsize = (20, 8))
+                                                wav, sr = librosa.load(path, sr = 45000)
+                                                librosa.display.waveplot(wav, sr = 45000)
+                                                st.write(fig)
                                     
                                     
     
