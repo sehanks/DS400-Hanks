@@ -253,8 +253,8 @@ def main():
                             #st.markdown(audio)
                             if len(audio) > 0:
                                 with column1:
-                                    s = st.audio(audio.tobytes())
-                                    st.markdown(s)
+                                    wav_file = open("audio.wav", "wb")
+                                    wav_file.write(audio.tobytes())
                                 
                                 
                                 
