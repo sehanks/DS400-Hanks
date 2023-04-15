@@ -16,7 +16,7 @@ seaborn==0.12.2
 audio_recorder_streamlit
 streamlit-audiorecorder
 #streamlit.components.v1
-io
+#io
 
 
 # numpy
