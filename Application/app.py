@@ -296,15 +296,17 @@ def main():
                 # Prediction
                 if audio_file == 'test_file':
                     pred_emotion = get_pred('Application/OAF_back_angry.wav')
-                    st.markdown('## Emotion Detected: {}'.format(emotions[np.argmax(pred_emotion)]))
+                    unique, counts = np.unique(pred_emotion, return_counts = True)
+                    st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
                     #st.markdown('#### Emotion Detected: Angry')
                 if not audio_file == 'test_file':
                     pred_emotion = get_pred(audio_file)
-                    st.markdown('## Emotion Detected: {}'.format(emotions[np.argmax(pred_emotion)]))
+                    unique, counts = np.unique(pred_emotion, return_counts = True)
+                    st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
             with st.container():
                 if audio_file == 'test_file':
                     fig = plt.figure(figsize = (15, 7))
-                    unique, counts = np.unique(pred_emotion ,return_counts = True)
+                    unique, counts = np.unique(pred_emotion, return_counts = True)
                     bar = np.asarray((unique, counts)).T
                     col = list(bar[:, 0])
                     row = list(bar[:, 1])
