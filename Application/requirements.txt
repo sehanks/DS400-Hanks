@@ -17,8 +17,8 @@ audio_recorder_streamlit
 streamlit-audiorecorder
 pyaudio
 wave
-array 
-struct
+#array 
+#struct
 json_tricks
 pydub
 noisereduce
