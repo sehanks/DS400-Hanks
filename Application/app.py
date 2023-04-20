@@ -18,9 +18,7 @@ import pyaudio
 import wave
 #import array
 #import struct
-from json_tricks import dump, load
 from pydub import AudioSegment, effects
-import IPython.display as ipd 
 import noisereduce as nr
 from keras import layers
 from keras import optimizers
