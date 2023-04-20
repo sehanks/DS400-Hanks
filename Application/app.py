@@ -7,7 +7,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import os
 from datetime import datetime
-from datetime import time
 import librosa 
 import librosa.display
 from tensorflow.keras.models import load_model
@@ -15,8 +14,17 @@ from audio_recorder_streamlit import audio_recorder
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from audiorecorder import audiorecorder
-#from io import BytesIO
-#import streamlit.components.v1 as components
+import pyaudio
+import wave
+from array import array
+import struct
+from json_tricks import dump, load
+from pydub import AudioSegment, effects
+import IPython.display as ipd 
+import noisereduce as nr
+from keras import layers
+from keras import optimizers
+from keras import callbacks 
 
 
 
