@@ -17,7 +17,7 @@ audio_recorder_streamlit
 streamlit-audiorecorder
 pyaudio
 wave
-array 
+#array 
 struct
 json_tricks
 pydub
