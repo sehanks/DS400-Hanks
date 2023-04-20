@@ -19,7 +19,6 @@ pyaudio-dev
 wave-dev
 #array-dev
 #struct-dev
-json_tricks-dev
 pydub-dev
 noisereduce-dev
 
