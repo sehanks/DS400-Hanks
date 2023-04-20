@@ -16,7 +16,7 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from audiorecorder import audiorecorder
 import pyaudio
 import wave
-from array import array
+#from array import array
 import struct
 from json_tricks import dump, load
 from pydub import AudioSegment, effects
