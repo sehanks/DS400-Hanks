@@ -19,7 +19,6 @@ pyaudio
 wave
 #array 
 #struct
-json_tricks
 pydub
 noisereduce
 
