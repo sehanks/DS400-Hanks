@@ -15,9 +15,9 @@ sklearn.preprocessing-dev
 streamlit-audiorecorder-dev
 io-dev
 streamlit.components.v1-dev
-portaudio19-dev 
-python3-all-dev
-pyproject.toml-dev
+#portaudio19-dev 
+#python3-all-dev
+#pyproject.toml-dev
 #pyaudio-dev
 wave-dev
 #array-dev
