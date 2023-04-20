@@ -15,4 +15,11 @@ sklearn.preprocessing-dev
 streamlit-audiorecorder-dev
 io-dev
 streamlit.components.v1-dev
-time-dev
+pyaudio-dev
+wave-dev
+array-dev
+struct-dev
+json_tricks-dev
+pydub-dev
+noisereduce-dev
+
