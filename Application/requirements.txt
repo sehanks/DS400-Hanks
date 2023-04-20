@@ -1,3 +1,4 @@
+pip==23.1
 numpy
 pandas
 pandas-datareader
@@ -16,9 +17,9 @@ seaborn==0.12.2
 audio_recorder_streamlit
 streamlit-audiorecorder
 #pyaudio
-portaudio19 
-python3
-pyproject.toml
+#portaudio19 
+#python3
+#pyproject.toml
 wave
 #array 
 #struct
