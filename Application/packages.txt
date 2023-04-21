@@ -18,8 +18,7 @@ streamlit.components.v1-dev
 libasound-dev
 portaudio19-dev 
 libportaudio2 
-libportaudiocpp0
-ffmpeg 
+libportaudiocpp0 
 libav-tools
 #python3-all-dev
 #pyproject.toml-dev
