@@ -16,9 +16,7 @@ tensorflow
 seaborn==0.12.2
 audio_recorder_streamlit
 streamlit-audiorecorder
-PyAudio
-portaudio19
-python3
+pyaudio
 wave
 #array 
 #struct
