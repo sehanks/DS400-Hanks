@@ -17,6 +17,7 @@ seaborn==0.12.2
 #audio_recorder_streamlit
 #streamlit-audiorecorder
 PyAudio
+wheel
 streamlit==1.16.0
 streamlit_lottie==0.0.3
 wave
