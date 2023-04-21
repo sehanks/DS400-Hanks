@@ -18,8 +18,8 @@ seaborn==0.12.2
 #streamlit-audiorecorder
 #PyAudio
 #wheel
-streamlit==1.16.0
-streamlit_lottie==0.0.3
+#streamlit==1.16.0
+#streamlit_lottie==0.0.3
 wave
 #array 
 #struct
