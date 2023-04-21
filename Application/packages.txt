@@ -16,11 +16,11 @@ streamlit-audiorecorder-dev
 io-dev
 streamlit.components.v1-dev
 #python3-pyaudio
-libasound-dev
-portaudio19-dev 
-libportaudio2 
-libportaudiocpp0 
-libav-tools
+#libasound-dev
+#portaudio19-dev 
+#libportaudio2 
+#libportaudiocpp0 
+#libav-tools
 wave-dev
 #array-dev
 #struct-dev
