@@ -18,7 +18,7 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from streamlit_lottie import st_lottie
 import requests
 from streamlit_webrtc import WebRtcMode, webrtc_streamer
-import pyaudio
+#import pyaudio
 import wave
 #import array
 #import struct
