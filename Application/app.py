@@ -15,9 +15,6 @@ import tensorflow as tf
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 #from audiorecorder import audiorecorder
-from streamlit_lottie import st_lottie
-import requests
-from streamlit_webrtc import WebRtcMode, webrtc_streamer
 #import pyaudio
 import wave
 #import array
