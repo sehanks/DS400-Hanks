@@ -15,8 +15,13 @@ sklearn.preprocessing-dev
 streamlit-audiorecorder-dev
 io-dev
 streamlit.components.v1-dev
+libasound-dev
 portaudio19-dev 
-python3-all-dev
+libportaudio2 
+libportaudiocpp0
+ffmpeg 
+libav-tools
+#python3-all-dev
 #pyproject.toml-dev
 #pyaudio-dev
 wave-dev
