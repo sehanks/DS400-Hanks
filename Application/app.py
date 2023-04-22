@@ -375,7 +375,7 @@ def main():
                 if audio_file == 'test_file':
                     #pred_emotion = get_pred('Application/OAF_back_sad.wav')
                     #unique, counts = np.unique(pred_emotion, return_counts = True)
-                    st.markdown('## Emotion Detected: {}'.format(np.argmax(predictions))
+                    st.markdown('## Emotion Detected: {}'.format(np.argmax(predictions)))
                     X = feature('Application/OAF_back_sad.wav')
                     predictions = model.predict(X, use_multiprocessing = True)
                     list_predictions = list(predictions)
@@ -384,7 +384,7 @@ def main():
                 if not audio_file == 'test_file':
                     #pred_emotion = get_pred(audio_file)
                     #unique, counts = np.unique(pred_emotion, return_counts = True)
-                    st.markdown('## Emotion Detected: {}'.format(np.argmax(predictions))
+                    st.markdown('## Emotion Detected: {}'.format(np.argmax(predictions)))
                     X = feature(audio_file)
                     predictions = model.predict(X, use_multiprocessing = True)
                     list_predictions = list(predictions)
