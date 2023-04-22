@@ -18,6 +18,5 @@ streamlit.components.v1-dev
 wave-dev
 pydub-dev
 noisereduce-dev
-portaudio19-dev
-python3-all-dev
+
 
