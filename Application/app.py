@@ -377,7 +377,7 @@ def main():
                     #unique, counts = np.unique(pred_emotion, return_counts = True)
                     #st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
                     total_pred = [] 
-                    X = feature('OAF_calm_sad.wav')
+                    X = feature('OAF_back_sad.wav')
                     predictions = model.predict(X, use_multiprocessing = True)
                     list_predictions = list(predictions)
                     pred = np.squeeze(np.array(list_predictions).tolist(), axis = 0)
