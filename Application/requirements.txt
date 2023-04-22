@@ -21,6 +21,5 @@ wave
 #struct
 pydub
 noisereduce
-pyaudio
 
 
