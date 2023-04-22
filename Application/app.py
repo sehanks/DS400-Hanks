@@ -379,6 +379,11 @@ def main():
                     #pred_emotion = get_pred(audio_file)
                     #unique, counts = np.unique(pred_emotion, return_counts = True)
                     #st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
+                    X = feature(audio_file)
+                    predictions = model.predict(X, use_multiprocessing = True)
+                    list_predictions = list(predictions)
+                    pred = np.squeeze(np.array(list_predictions).tolist(), axis = 0)
+                    total_pred.append(pred)
                     
             with st.container():
                 if audio_file == 'test_file':
