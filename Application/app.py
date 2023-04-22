@@ -30,13 +30,7 @@ from keras import callbacks
 emotions = ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Surprise', 'Sad']
 
 
-#model = load_model('Application/model_cnn.hdf5')
-with open('Application/newmodel.json', 'r') as json_file:
-    json_file = json_file.read()
-    
-model = tf.keras.models.model_from_json(json_file)
-model.load_weights('Application/newmodel_weights.hdf5')
-model.compile(loss = 'categorical_crossentropy',  optimizer = 'RMSProp', metrics = ['categorical_accuracy'])
+model = load_model('Application/model_cnn.hdf5')
 
 
 starttime = datetime.now()
@@ -371,42 +365,26 @@ def main():
                 
                 # Prediction
                 if audio_file == 'test_file':
-                    #pred_emotion = get_pred('Application/OAF_back_sad.wav')
-                    #unique, counts = np.unique(pred_emotion, return_counts = True)          
-                    X = feature('Application/OAF_back_sad.wav')
-                    predictions = model.predict(X, use_multiprocessing = True)
-                    list_predictions = list(predictions)
-                    pred = np.squeeze(np.array(list_predictions).tolist(), axis = 0)
-                    total_pred.append(pred)
-                    st.markdown('## Emotion Detected: {}'.format(np.argmax(predictions)))
+                    pred_emotion = get_pred('Application/OAF_back_sad.wav')
+                    unique, counts = np.unique(pred_emotion, return_counts = True)
+                    st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
+                    #st.markdown('#### Emotion Detected: Angry')
                 if not audio_file == 'test_file':
-                    #pred_emotion = get_pred(audio_file)
-                    #unique, counts = np.unique(pred_emotion, return_counts = True)                   
-                    X = feature(audio_file)
-                    predictions = model.predict(X, use_multiprocessing = True)
-                    list_predictions = list(predictions)
-                    pred = np.squeeze(np.array(list_predictions).tolist(), axis = 0)
-                    total_pred.append(pred)
-                    st.markdown('## Emotion Detected: {}'.format(np.argmax(predictions)))
-                    
+                    pred_emotion = get_pred(audio_file)
+                    unique, counts = np.unique(pred_emotion, return_counts = True)
+                    st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
             with st.container():
                 if audio_file == 'test_file':
-                    #fig = plt.figure(figsize = (15, 7))
-                    #unique, counts = np.unique(pred_emotion, return_counts = True)
-                    #bar = np.asarray((unique, counts)).T
-                    #col = list(bar[:, 0])
-                    #row = list(bar[:, 1])
-                    #color = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
-                    #plt.bar(x = col, height = [int(x) for x in row], color = color)
-                    #plt.xlabel('Emotions Detected')
-                    #plt.ylabel('Frequency')
-                    #plt.title('Frequency of Emotions Detected')
-                    #st.pyplot(fig)
-                    fig = plt.figure(figsize = (8, 3))
-                    plt.bar(emotion_list, pred, color = 'indigo')
-                    plt.ylabel('Probability')
-                    plt.xlabel('Emotions')
-                    plt.title('Emotions Detected')
+                    fig = plt.figure(figsize = (15, 7))
+                    unique, counts = np.unique(pred_emotion, return_counts = True)
+                    bar = np.asarray((unique, counts)).T
+                    col = list(bar[:, 0])
+                    row = list(bar[:, 1])
+                    color = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+                    plt.bar(x = col, height = [int(x) for x in row], color = color)
+                    plt.xlabel('Emotions Detected')
+                    plt.ylabel('Frequency')
+                    plt.title('Frequency of Emotions Detected')
                     st.pyplot(fig)
                 if not audio_file == 'test_file':
                     fig = plt.figure(figsize = (10, 4))
