@@ -14,7 +14,7 @@ streamlit
 streamlit-option-menu
 tensorflow
 seaborn==0.12.2
-audio_recorder_streamlit
+#audio_recorder_streamlit
 streamlit-audiorecorder
 wave
 #array 
