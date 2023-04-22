@@ -11,10 +11,10 @@ import librosa
 import librosa.display
 from tensorflow.keras.models import load_model
 import tensorflow as tf
-#from audio_recorder_streamlit import audio_recorder
+from audio_recorder_streamlit import audio_recorder
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
-#from audiorecorder import audiorecorder
+from audiorecorder import audiorecorder
 #import pyaudio
 import wave
 #import array
