@@ -31,7 +31,14 @@ emotions = ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Surprise', 'Sad']
 
 
 #model = load_model('Application/model_cnn.hdf5')
-model = load_model('Application/newmodel_weights.hdf5')
+with open('Application/newmodel.json', 'r') as json_file:
+    json_file = json_file.read()
+    
+model = tf.keras.models.model_from_json(json_file)
+model.load_weights('Application/newmodel_weights.hdf5')
+model.compile(loss = 'categorical_crossentropy', 
+              optimizer = 'RMSProp', 
+              metrics = ['categorical_accuracy'])
 
 
 starttime = datetime.now()
