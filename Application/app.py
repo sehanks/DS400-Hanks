@@ -278,75 +278,13 @@ def main():
                                 st.write(fig2)
                     with column4:
                         if st.button('Record an audio file'):
-                            emotions = {
-                                0 : 'Angry',
-                                1 : 'Disgust',
-                                2 : 'Fear',
-                                3 : 'Happy',
-                                4 : 'Neutral',
-                                5 : 'Surprise',
-                                6 : 'Sad'   
-                            }
-                            emotion_list = list(emotions.values())
-                            
-                            saved_model_path = 'Application/newmodel.json'
-                            saved_weights_path = 'Application/newmodel_weights.hdf5'
-                            
-                            with open(saved_model_path, 'r') as json_file:
-                                json_file = json_file.read()
-    
-                                model = tf.keras.models.model_from_json(json_file)
-                                model.load_weights(saved_weights_path)
-
-                                model.compile(loss = 'categorical_crossentropy',
-                                              optimizer = 'RMSProp', 
-                                              metrics = ['categorical_accuracy'])
-                                
-                                rate = 18797 
-                                hop = 512
-                                record = 7.0
-                                format = pyaudio.paInt32
-                                channel = 1
-                                recorded_file = 'audio.wav'
-                                
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            #audio = audiorecorder('Click to record', 'Recording...')
-                            #if len(audio) > 0:
-                                #wav_file = open('audio.mp3', 'wb')
-                                #wav_file.write(audio.tobytes())
-                                #st.markdown(wav_file)
-                                
-                                
-                                
-                                                  
-                                #audio = audiorecorder("Click to record", "Recording...")
-                                #if len(audio) > 0:                                    
-                                    #st.audio(audio.tobytes())  # To play audio in frontend
-                                    #wav_file = open('audio.wav', 'wb')  # To save audio to a file
-                                    #wav_file.write(audio.tobytes())
-                                    #wav, sr = librosa.load(wav_file, sr = 45000)
-                                    #fig = plt.figure(figsize = (20, 8))
-                                    #librosa.display.waveplot(wav, sr = 45000)
-                                    #st.write(fig)
+                           audio = audiorecorder('Click to record', 'Recording...')
+                           if len(audio) > 0:
+                                wav_file = open('audio.mp3', 'wb')
+                                wav_file.write(audio.tobytes())
+ 
+                               
                                     
-                                #audio_bytes = audio_recorder()
-                                #st.success('Recording completed')
-                                #if audio_bytes:                          
-                                    #st.audio(audio_bytes, format = 'audio/wav', start_time = 0)
-                                    #fig = plt.figure(figsize = (20, 8))
-                                    #wav, sr = librosa.load(audio_bytes, sr = 45000)
-                                    #librosa.display.waveplot(wav, sr = 45000)
-                                    #st.write(fig)
                                     
                                     
     
