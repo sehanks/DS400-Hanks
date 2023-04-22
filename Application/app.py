@@ -36,9 +36,7 @@ with open('Application/newmodel.json', 'r') as json_file:
     
 model = tf.keras.models.model_from_json(json_file)
 model.load_weights('Application/newmodel_weights.hdf5')
-model.compile(loss = 'categorical_crossentropy', 
-              optimizer = 'RMSProp', 
-              metrics = ['categorical_accuracy'])
+model.compile(loss = 'categorical_crossentropy',  optimizer = 'RMSProp', metrics = ['categorical_accuracy'])
 
 
 starttime = datetime.now()
