@@ -282,14 +282,14 @@ def main():
                                 plt.gca().axes.spines['top'].set_visible(False)
                                 plt.gca().axes.spines['bottom'].set_visible(False)
                                 st.write(fig)
-                            with column2:
-                                st.markdown('#  ')
-                                st.markdown('####  ')
-                                st.markdown('######   ')
-                                st.markdown('###### Mel-Spectrogram for Recorded Audio File')
-                                fig2 = plt.figure(figsize = (20, 8))
-                                spectrogram(wav, sr)
-                                st.write(fig2)
+                        with column2:
+                            st.markdown('#  ')
+                            st.markdown('####  ')
+                            st.markdown('######   ')
+                            st.markdown('###### Mel-Spectrogram for Recorded Audio File')
+                            fig2 = plt.figure(figsize = (20, 8))
+                            spectrogram(wav, sr)
+                            st.write(fig2)
                         
                      
                                
