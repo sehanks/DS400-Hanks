@@ -261,7 +261,9 @@ def main():
                                                      recording_color = '2cd2e8', 
                                                      neutral_color = '2c7de8', 
                                                      icon_name = 'volume-high', 
-                                                     icon_size = '2x')
+                                                     icon_size = '2x',
+                                                     energy_threshold = (-1.0, 1.0),
+                                                     pause_threshold = 5.0)
                         with column2:
                             if audio_bytes:
                                 st.markdown('#  ')
