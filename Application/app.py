@@ -264,6 +264,8 @@ def main():
                                                      icon_size = '2x')
                         with column2:
                             if audio_bytes:
+                                st.markdown('#  ')
+                                st.markdown('#  ')
                                 st.audio(audio_bytes, format = 'audio/wav')
                         
                      
