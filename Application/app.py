@@ -257,7 +257,8 @@ def main():
                                 spectrogram(wav, sr)
                                 st.write(fig2)
                     with column4:
-                        audio_bytes = audio_recorder(text = 'Click to Record', recording_color="#e8b62c", neutral_color="#6aa36f", icon_name="user", icon_size="2x")
+                        audio_bytes = audio_recorder(text = 'Click to Record', 
+                                                     recording_color="#2c7de8", neutral_color = '2cd2e8', icon_name = 'volume-high', icon_size="2x")
                         if audio_bytes:
                             st.audio(audio_bytes, format = 'audio/wav')
                         
