@@ -273,8 +273,8 @@ def main():
                                 st.markdown('#  ')
                                 st.markdown('###### Waveplot for Recorded Audio File')
                                 fig = plt.figure(figsize = (20, 8))
-                                wav, sr = librosa.load(audio_bytes, sr = 45000)
-                                librosa.display.waveplot(wav, sr = 45000)
+                                #wav, sr = librosa.load(audio_bytes, sr = 45000)
+                                librosa.display.waveplot(audio_bytes, sr = 45000)
                                 plt.gca().axes.get_yaxis().set_visible(False)
                                 plt.gca().axes.get_xaxis().set_visible(False)
                                 plt.gca().axes.spines['right'].set_visible(False)
@@ -282,14 +282,7 @@ def main():
                                 plt.gca().axes.spines['top'].set_visible(False)
                                 plt.gca().axes.spines['bottom'].set_visible(False)
                                 st.write(fig)
-                        with column2:
-                            st.markdown('#  ')
-                            st.markdown('####  ')
-                            st.markdown('######   ')
-                            st.markdown('###### Mel-Spectrogram for Recorded Audio File')
-                            fig2 = plt.figure(figsize = (20, 8))
-                            spectrogram(wav, sr)
-                            st.write(fig2)
+                     
                         
                      
                                
