@@ -258,8 +258,8 @@ def main():
                                 st.write(fig2)
                     with column4:
                         audio_bytes = audio_recorder()
-                        if audio_bytes:
-                            st.audio(audio_bytes, format = 'audio/wav')
+                        #if audio_bytes:
+                            #st.audio(audio_bytes, format = 'audio/wav')
                         
                         
                         
