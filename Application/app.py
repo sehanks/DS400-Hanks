@@ -258,9 +258,13 @@ def main():
                                 st.write(fig2)
                     with column4:
                         audio_bytes = audio_recorder(text = 'Click to Record', 
-                                                     recording_color = '2cd2e8', neutral_color = '2c7de8', icon_name = 'volume-high', icon_size="2x")
-                        if audio_bytes:
-                            st.audio(audio_bytes, format = 'audio/wav')
+                                                     recording_color = '2cd2e8', 
+                                                     neutral_color = '2c7de8', 
+                                                     icon_name = 'volume-high', 
+                                                     icon_size = '2x')
+                        with column2:
+                            if audio_bytes:
+                                st.audio(audio_bytes, format = 'audio/wav')
                         
                      
                                
