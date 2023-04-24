@@ -336,12 +336,12 @@ def main():
                                     spectrogram(audio.astype(np.float32), 45000)
                                     st.write(fig2)
                                 with column2:
-                                    if len(audio) > 0:
+                                    #if len(audio) > 0:
                                         #st.audio(audio.tobytes())
-                                        wav_file = open('audio.wav', 'wb')
-                                        wav_file.write(audio)
+                                        #wav_file = open('audio.wav', 'wb')
+                                        #wav_file.write(audio)
                                 with st.container():
-                                    pred_emotion = get_pred(wav_file)
+                                    pred_emotion = get_pred_recorded(audio)
 
                                 #audio_bytes = audio_recorder(text = 'Click to Record', 
                                                              #recording_color = '2cd2e8', 
