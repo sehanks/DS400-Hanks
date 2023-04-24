@@ -314,7 +314,9 @@ def main():
                         else: 
                             with column4:
                                 audio = audiorecorder('Click to record', 'Recording...')
-                                                               
+                                with column2:
+                                    if len(audio) > 0:
+                                        st.audio(audio.tobytes())                               
                                 with column1:
                                     st.markdown('#  ')
                                     st.markdown('###### Waveplot for Recorded Audio File')
@@ -339,11 +341,7 @@ def main():
                                 pred_emotion = get_pred_recorded(audio.astype(np.float32), 45000)
                                 unique, counts = np.unique(pred_emotion, return_counts = True)
                                 st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
-                                with column2:
-                                    if len(audio) > 0:
-                                        st.audio(audio.tobytes())
-                                        wav_file = open('audio.wav', 'wb')
-                                        wav_file.write(audio)
+                                
 
                                 #audio_bytes = audio_recorder(text = 'Click to Record', 
                                                              #recording_color = '2cd2e8', 
