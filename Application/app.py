@@ -251,6 +251,7 @@ def main():
                                                      neutral_color = '2c7de8', 
                                                      icon_name = 'volume-high', 
                                                      icon_size = '2x',
+                                                     sample_rate = 45000,
                                                      energy_threshold = (-1.0, 1.0),
                                                      pause_threshold = 5.0)
                         with column2:
@@ -262,8 +263,9 @@ def main():
                                 st.markdown('#  ')
                                 st.markdown('###### Waveplot for Recorded Audio File')
                                 fig = plt.figure(figsize = (20, 8))
+                                wav = np.frombuffer(audio_bytes)
                                 #wav, sr = librosa.load(audio_bytes, sr = 45000)
-                                librosa.display.waveplot(audio_bytes, sr = 45000)
+                                librosa.display.waveplot(wav, sr = 45000)
                                 plt.gca().axes.get_yaxis().set_visible(False)
                                 plt.gca().axes.get_xaxis().set_visible(False)
                                 plt.gca().axes.spines['right'].set_visible(False)
