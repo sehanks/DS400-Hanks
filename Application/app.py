@@ -341,7 +341,7 @@ def main():
                                         #wav_file = open('audio.wav', 'wb')
                                         #wav_file.write(audio)
                                 with st.container():
-                                    pred_emotion = get_pred_recorded(audio)
+                                    pred_emotion = get_pred_recorded(audio, 45000)
 
                                 #audio_bytes = audio_recorder(text = 'Click to Record', 
                                                              #recording_color = '2cd2e8', 
