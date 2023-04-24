@@ -188,7 +188,7 @@ def get_pred_recorded(path, sr):
     onehot = OneHotEncoder() 
     np_onehot = np.array(emotions).reshape(-1, 1)
     y = onehot.fit_transform(np_onehot).toarray()
-    feat = get_feats_recorded(path, sr)
+    feat = get_feats(path, sr)
     sc = StandardScaler()
     feat_fit = sc.fit_transform(feat)
     expand_dim = np.expand_dims(feat_fit, axis = 2)
