@@ -224,6 +224,7 @@ def main():
                         os.makedirs('audio')  # Create a directory recursively               
                     path = os.path.join('audio', audio_file.name)  # Join different path components
                     save_audio = save_audio_file(audio_file)  # save_audio_file function
+                    audio_file = 'browse_file'
                     if save_audio == 1:
                         st.warning('File size is too large. Try another file.')
                     elif save_audio == 0: 
@@ -354,7 +355,7 @@ def main():
                     pred_emotion = get_pred('Application/OAF_back_sad.wav')
                     unique, counts = np.unique(pred_emotion, return_counts = True)
                     st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
-                if not audio_file == 'test_file':
+                if audio_file == 'browse_file':
                     pred_emotion = get_pred(audio_file)
                     unique, counts = np.unique(pred_emotion, return_counts = True)
                     st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
@@ -371,7 +372,7 @@ def main():
                     plt.ylabel('Frequency')
                     plt.title('Frequency of Emotions Detected')
                     st.pyplot(fig)
-                if not audio_file == 'test_file':
+                if audio_file == 'browse_file':
                     fig = plt.figure(figsize = (10, 4))
                     unique, counts = np.unique(pred_emotion ,return_counts = True)
                     bar = np.asarray((unique, counts)).T
