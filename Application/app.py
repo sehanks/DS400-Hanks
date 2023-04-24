@@ -16,6 +16,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from io import BytesIO
 from pydub import AudioSegment, effects
+import ffprobe
+import ffmeg
 
 
 emotions = ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Surprise', 'Sad']
