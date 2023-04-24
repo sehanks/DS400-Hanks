@@ -280,36 +280,36 @@ def main():
                     
                 else:
                     column3, column4 = st.columns(2)
-                    if st.button('Try test audio file'): # Test audio file button
-                        #column3, column4 = st.columns(2)
-                        with column3:  
-                            with column2:
-                                st.markdown('#  ')
-                                st.markdown('#  ')
-                                st.audio(data = 'Application/OAF_back_sad.wav', format = 'audio/wav', start_time = 0) 
-                                path = 'Application/OAF_back_sad.wav'
-                                audio_file = 'test_file'
-                            with column1: 
-                                st.markdown('#  ')
-                                st.markdown('###### Waveplot for Test Audio File')
-                                fig = plt.figure(figsize = (20, 8))
-                                wav, sr = librosa.load(path, sr = 45000)
-                                librosa.display.waveplot(wav, sr = 45000)
-                                plt.gca().axes.get_yaxis().set_visible(False)
-                                plt.gca().axes.get_xaxis().set_visible(False)
-                                plt.gca().axes.spines['right'].set_visible(False)
-                                plt.gca().axes.spines['left'].set_visible(False)
-                                plt.gca().axes.spines['top'].set_visible(False)
-                                plt.gca().axes.spines['bottom'].set_visible(False)
-                                st.write(fig)
-                            with column2:
-                                st.markdown('#  ')
-                                st.markdown('####  ')
-                                st.markdown('######   ')
-                                st.markdown('###### Mel-Spectrogram for Test Audio File')
-                                fig2 = plt.figure(figsize = (20, 8))
-                                spectrogram(wav, sr)
-                                st.write(fig2)
+                    with column3:
+                        if st.button('Try test audio file'): # Test audio file button
+                            #column3, column4 = st.columns(2)
+                                with column2:
+                                    st.markdown('#  ')
+                                    st.markdown('#  ')
+                                    st.audio(data = 'Application/OAF_back_sad.wav', format = 'audio/wav', start_time = 0) 
+                                    path = 'Application/OAF_back_sad.wav'
+                                    audio_file = 'test_file'
+                                with column1: 
+                                    st.markdown('#  ')
+                                    st.markdown('###### Waveplot for Test Audio File')
+                                    fig = plt.figure(figsize = (20, 8))
+                                    wav, sr = librosa.load(path, sr = 45000)
+                                    librosa.display.waveplot(wav, sr = 45000)
+                                    plt.gca().axes.get_yaxis().set_visible(False)
+                                    plt.gca().axes.get_xaxis().set_visible(False)
+                                    plt.gca().axes.spines['right'].set_visible(False)
+                                    plt.gca().axes.spines['left'].set_visible(False)
+                                    plt.gca().axes.spines['top'].set_visible(False)
+                                    plt.gca().axes.spines['bottom'].set_visible(False)
+                                    st.write(fig)
+                                with column2:
+                                    st.markdown('#  ')
+                                    st.markdown('####  ')
+                                    st.markdown('######   ')
+                                    st.markdown('###### Mel-Spectrogram for Test Audio File')
+                                    fig2 = plt.figure(figsize = (20, 8))
+                                    spectrogram(wav, sr)
+                                    st.write(fig2)
                     else: 
                         #column3, column4 = st.columns(2)
                         with column4:
