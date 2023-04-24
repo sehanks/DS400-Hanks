@@ -153,9 +153,9 @@ def get_pred(path):
 
 
 
-def feature(file, frame_length = 2048, hop_length = 512):
-    wav, sr = librosa.load(path = file, sr = None)
-    normal = AudioSegment.from_file(file = file)
+def feature(wav, frame_length = 2048, hop_length = 512):
+    #wav, sr = librosa.load(path = file, sr = None)
+    normal = AudioSegment.from_file(file = wav)
     normalize = effects.normalize(normal, headroom = 5.0) 
     normalize_array = np.array(normalize.get_array_of_samples(), dtype = 'float32')
     noise = nr.reduce_noise(normalize_array, sr = sr, time_mask_smooth_ms = 139)
@@ -304,7 +304,7 @@ def main():
                                 spectrogram(wav, sr)
                                 st.write(fig2)
                         with st.container():
-                            X = feature(np_bytes)
+                            X = feature(wav)
                             predictions = model.predict(X, use_multiprocessing = True)
                             list_predictions = list(predictions)
                             pred = np.squeeze(np.array(list_predictions).tolist(), axis = 0)
