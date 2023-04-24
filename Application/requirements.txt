@@ -16,10 +16,6 @@ tensorflow
 seaborn==0.12.2
 audio_recorder_streamlit
 streamlit-audiorecorder
-wave
-#array 
-#struct
-pydub
-noisereduce
+io
 
 
