@@ -336,7 +336,7 @@ def main():
                                     fig2 = plt.figure(figsize = (20, 8))
                                     spectrogram(audio.astype(np.float32), 45000)
                                     st.write(fig2)
-                                with column 2:
+                                with column2:
                                     if len(audio) > 0:
                                         st.audio(audio)
                                         wav_file = open('audio.wav', 'wb')
