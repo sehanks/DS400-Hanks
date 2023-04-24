@@ -320,7 +320,7 @@ def main():
                                     spectrogram(audio.astype(np.float32), 45000)
                                     st.write(fig2)
                             with st.container():
-                                with column1: 
+                                with column1 and column2: 
                                     pred_emotion = get_pred_recorded(audio.astype(np.float32), 45000)
                                     unique, counts = np.unique(pred_emotion, return_counts = True)
                                     st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
