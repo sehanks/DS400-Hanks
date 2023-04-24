@@ -318,7 +318,7 @@ def main():
                                 if len(audio) > 0:
                                     st.audio(audio.tobytes())
                                     wav_file = open('audio.wav', 'wb')
-                                    wav_file.write(audio.tobytes())
+                                    #wav_file.write(audio.tobytes())
                                 
                                 with column1: 
                                     librosa.display.waveplot(wav_file, sr = 45000)
