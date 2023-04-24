@@ -280,7 +280,6 @@ def main():
                     
                 else:
                     column3, column4 = st.columns(2)
-                    #with column3:  
                     if st.button('Try test audio file'): # Test audio file button
                         #column3, column4 = st.columns(2)
                         with column3:  
