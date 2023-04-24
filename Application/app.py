@@ -313,7 +313,7 @@ def main():
                                     st.write(fig2)
                         else: 
                             column3, column4 = st.columns(2)
-                            with column4:
+                            with column3:
                                 audio_bytes = audio_recorder(text = 'Click to Record', 
                                                              recording_color = '2cd2e8', 
                                                              neutral_color = '2c7de8', 
