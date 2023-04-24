@@ -264,7 +264,6 @@ def main():
                     column3, column4 = st.columns(2)
                     with column3:
                         if st.button('Try test audio file'): # Test audio file button
-                            #column3, column4 = st.columns(2)
                                 with column2:
                                     st.markdown('#  ')
                                     st.markdown('#  ')
@@ -321,11 +320,9 @@ def main():
                                     spectrogram(audio.astype(np.float32), 45000)
                                     st.write(fig2)
                             with st.container():
-                                column1, column2 = st.columns(2)
-                                with column1:
-                                    pred_emotion = get_pred_recorded(audio.astype(np.float32), 45000)
-                                    unique, counts = np.unique(pred_emotion, return_counts = True)
-                                    st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
+                                pred_emotion = get_pred_recorded(audio.astype(np.float32), 45000)
+                                unique, counts = np.unique(pred_emotion, return_counts = True)
+                                st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
                             with st.container():
                                 with column1:
                                     fig = plt.figure(figsize = (15, 7))
