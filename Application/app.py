@@ -313,47 +313,48 @@ def main():
                                     spectrogram(wav, sr)
                                     st.write(fig2)
                         else: 
-                            #column3, column4 = st.columns(2)
                             with column4:
-                                audio_bytes = audio_recorder(text = 'Click to Record', 
-                                                             recording_color = '2cd2e8', 
-                                                             neutral_color = '2c7de8', 
-                                                             icon_name = 'volume-high', 
-                                                             icon_size = '2x',
-                                                             sample_rate = 45000,
-                                                             energy_threshold = (-1.0, 1.0),
-                                                             pause_threshold = 5.0)
-                                with column2:
-                                    if audio_bytes:
-                                        st.markdown('#  ')
-                                        st.markdown('#  ')
-                                        st.audio(audio_bytes, format = 'audio/wav')
+                                audio = audiorecorder('Click to record', 'Recording...')
+                                
+                                #audio_bytes = audio_recorder(text = 'Click to Record', 
+                                                             #recording_color = '2cd2e8', 
+                                                             #neutral_color = '2c7de8', 
+                                                             #icon_name = 'volume-high', 
+                                                             #icon_size = '2x',
+                                                             #sample_rate = 45000,
+                                                             #energy_threshold = (-1.0, 1.0),
+                                                             #pause_threshold = 5.0)
+                                #with column2:
+                                    #if audio_bytes:
+                                        #st.markdown('#  ')
+                                        #st.markdown('#  ')
+                                        #st.audio(audio_bytes, format = 'audio/wav')
 
-                                        with column1: 
-                                            st.markdown('#  ')
-                                            st.markdown('###### Waveplot for Recorded Audio File')
-                                            fig = plt.figure(figsize = (20, 8))
-                                            np_bytes = BytesIO(audio_bytes)
-                                            wav, sr = librosa.load(np_bytes, sr = 45000)
-                                            librosa.display.waveplot(wav, sr = 45000)
-                                            plt.gca().axes.get_yaxis().set_visible(False)
-                                            plt.gca().axes.get_xaxis().set_visible(False)
-                                            plt.gca().axes.spines['right'].set_visible(False)
-                                            plt.gca().axes.spines['left'].set_visible(False)
-                                            plt.gca().axes.spines['top'].set_visible(False)
-                                            plt.gca().axes.spines['bottom'].set_visible(False)
-                                            st.write(fig)
-                                        with column2:
-                                            st.markdown('#  ')
-                                            st.markdown('####  ')
-                                            st.markdown('######   ')
-                                            st.markdown('###### Mel-Spectrogram for Test Audio File')
-                                            fig2 = plt.figure(figsize = (20, 8))
-                                            spectrogram(wav, sr)
-                                            st.write(fig2)
-                                        with st.container():
-                                            np_bytes = BytesIO(audio_bytes)
-                                            X = feature(np_bytes)
+                                        #with column1: 
+                                            #st.markdown('#  ')
+                                            #st.markdown('###### Waveplot for Recorded Audio File')
+                                            #fig = plt.figure(figsize = (20, 8))
+                                            #np_bytes = BytesIO(audio_bytes)
+                                            #wav, sr = librosa.load(np_bytes, sr = 45000)
+                                            #librosa.display.waveplot(wav, sr = 45000)
+                                            #plt.gca().axes.get_yaxis().set_visible(False)
+                                            #plt.gca().axes.get_xaxis().set_visible(False)
+                                            #plt.gca().axes.spines['right'].set_visible(False)
+                                            #plt.gca().axes.spines['left'].set_visible(False)
+                                            #plt.gca().axes.spines['top'].set_visible(False)
+                                            #plt.gca().axes.spines['bottom'].set_visible(False)
+                                            #st.write(fig)
+                                        #with column2:
+                                            #st.markdown('#  ')
+                                            #st.markdown('####  ')
+                                            #st.markdown('######   ')
+                                            #st.markdown('###### Mel-Spectrogram for Test Audio File')
+                                            #fig2 = plt.figure(figsize = (20, 8))
+                                            #spectrogram(wav, sr)
+                                            #st.write(fig2)
+                                        #with st.container():
+                                            #np_bytes = BytesIO(audio_bytes)
+                                            #X = feature(np_bytes)
 
 
 
