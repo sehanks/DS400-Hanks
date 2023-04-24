@@ -338,7 +338,7 @@ def main():
                                     st.write(fig2)
                                 with column2:
                                     if len(audio) > 0:
-                                        st.audio(audio)
+                                        st.audio(audio.tobytes())
                                         wav_file = open('audio.wav', 'wb')
                                         wav_file.write(audio.tobytes())
                                 #with st.container():
