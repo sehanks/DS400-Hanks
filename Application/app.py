@@ -315,11 +315,7 @@ def main():
                         else: 
                             with column4:
                                 audio = audiorecorder('Click to record', 'Recording...')
-                                #if len(audio) > 0:
-                                    #st.audio(audio)
-                                    #wav_file = open('audio.wav', 'wb')
-                                    #wav_file.write(audio.tobytes())
-                                
+                                                               
                                 with column1:
                                     st.markdown('#  ')
                                     st.markdown('###### Waveplot for Recorded Audio File')
@@ -340,6 +336,11 @@ def main():
                                     fig2 = plt.figure(figsize = (20, 8))
                                     spectrogram(audio.astype(np.float32), 45000)
                                     st.write(fig2)
+                                with column 2:
+                                    if len(audio) > 0:
+                                    st.audio(audio)
+                                    wav_file = open('audio.wav', 'wb')
+                                    wav_file.write(audio.tobytes())
                                 #with st.container():
                                     #X = feature(audio)
 
