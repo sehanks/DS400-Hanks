@@ -14,6 +14,7 @@ import tensorflow as tf
 from audio_recorder_streamlit import audio_recorder
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from io import BytesIO
 
 
 emotions = ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Surprise', 'Sad']
@@ -259,12 +260,12 @@ def main():
                                 st.markdown('#  ')
                                 st.markdown('#  ')
                                 st.audio(audio_bytes, format = 'audio/wav')
-                                wave = np.frombuffer(audio_bytes, dtype = 'float32')
+                                np_bytes = BytesIO(audio_bytes)
                         with column1: 
                                 st.markdown('#  ')
                                 st.markdown('###### Waveplot for Recorded Audio File')
                                 fig = plt.figure(figsize = (20, 8))
-                                wav, sr = librosa.load(wave, sr = 45000)
+                                wav, sr = librosa.load(np_bytes, sr = 45000)
                                 librosa.display.waveplot(wav, sr = 45000)
                                 plt.gca().axes.get_yaxis().set_visible(False)
                                 plt.gca().axes.get_xaxis().set_visible(False)
