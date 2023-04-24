@@ -316,12 +316,12 @@ def main():
                             with column4:
                                 audio = audiorecorder('Click to record', 'Recording...')
                                 if len(audio) > 0:
-                                    st.audio(audio.tobytes())
-                                    wav_file = open('audio.wav', 'wb')
+                                    st.audio(audio)
+                                    #wav_file = open('audio.wav', 'wb')
                                     #wav_file.write(audio.tobytes())
                                 
                                 with column1: 
-                                    librosa.display.waveplot(wav_file, sr = 45000)
+                                    librosa.display.waveplot(audio, sr = 45000)
                                     plt.gca().axes.get_yaxis().set_visible(False)
                                     plt.gca().axes.get_xaxis().set_visible(False)
                                     plt.gca().axes.spines['right'].set_visible(False)
