@@ -315,8 +315,8 @@ def main():
                         else: 
                             with column4:
                                 audio = audiorecorder('Click to record', 'Recording...')
-                                if len(audio) > 0:
-                                    st.audio(audio)
+                                #if len(audio) > 0:
+                                    #st.audio(audio)
                                     #wav_file = open('audio.wav', 'wb')
                                     #wav_file.write(audio.tobytes())
                                 
