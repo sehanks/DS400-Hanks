@@ -14,8 +14,6 @@ import tensorflow as tf
 from audio_recorder_streamlit import audio_recorder
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
-from scipy.io.wavfile import read, write
-import io
 
 
 emotions = ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Surprise', 'Sad']
