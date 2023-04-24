@@ -320,7 +320,10 @@ def main():
                                     #wav_file = open('audio.wav', 'wb')
                                     #wav_file.write(audio.tobytes())
                                 
-                                with column1: 
+                                with column1:
+                                    st.markdown('#  ')
+                                    st.markdown('###### Waveplot for Recorded Audio File')
+                                    fig = plt.figure(figsize = (20, 8))
                                     librosa.display.waveplot(audio.astype(np.float32), sr = 45000)
                                     plt.gca().axes.get_yaxis().set_visible(False)
                                     plt.gca().axes.get_xaxis().set_visible(False)
@@ -329,6 +332,16 @@ def main():
                                     plt.gca().axes.spines['top'].set_visible(False)
                                     plt.gca().axes.spines['bottom'].set_visible(False)
                                     st.write(fig)
+                                with column2:
+                                    st.markdown('#  ')
+                                    st.markdown('####  ')
+                                    st.markdown('######   ')
+                                    st.markdown('###### Mel-Spectrogram for Test Audio File')
+                                    fig2 = plt.figure(figsize = (20, 8))
+                                    spectrogram(wav, sr)
+                                    st.write(fig2)
+                                #with st.container():
+                                    #X = feature(audio)
 
                                 #audio_bytes = audio_recorder(text = 'Click to Record', 
                                                              #recording_color = '2cd2e8', 
