@@ -315,7 +315,7 @@ def main():
                                     st.markdown('#  ')
                                     st.markdown('####  ')
                                     st.markdown('######   ')
-                                    st.markdown('###### Mel-Spectrogram for Test Audio File')
+                                    st.markdown('###### Mel-Spectrogram for Recorded Audio File')
                                     fig2 = plt.figure(figsize = (20, 8))
                                     spectrogram(audio.astype(np.float32), 45000)
                                     st.write(fig2)
