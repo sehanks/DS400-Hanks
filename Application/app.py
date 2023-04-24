@@ -310,9 +310,10 @@ def main():
                                     fig2 = plt.figure(figsize = (20, 8))
                                     spectrogram(wav, sr)
                                     st.write(fig2)
-                    else: 
-                        #column3, column4 = st.columns(2)
-                        with column4:
+                    with column4:
+                        else: 
+                            #column3, column4 = st.columns(2)
+                            #with column4:
                             audio_bytes = audio_recorder(text = 'Click to Record', 
                                                          recording_color = '2cd2e8', 
                                                          neutral_color = '2c7de8', 
@@ -351,7 +352,7 @@ def main():
                                         st.write(fig2)
                                     with st.container():
                                         pred_emotion = get_pred_recorded(np_bytes, sr)
-                            
+
                      
                         
                      
