@@ -198,9 +198,9 @@ def get_pred_recorded(path, sr):
 
 
 
-def feature(bytes, frame_length = 2048, hop_length = 512):
+def feature(filee, frame_length = 2048, hop_length = 512):
     #wav, sr = librosa.load(path = file, sr = None)
-    normal = AudioSegment.from_file(file = bytes)
+    normal = AudioSegment.from_file(file = filee)
     normalize = effects.normalize(normal, headroom = 5.0) 
     normalize_array = np.array(normalize.get_array_of_samples(), dtype = 'float32')
     noise = nr.reduce_noise(normalize_array, sr = sr, time_mask_smooth_ms = 139)
@@ -336,13 +336,13 @@ def main():
                                     fig2 = plt.figure(figsize = (20, 8))
                                     spectrogram(audio.astype(np.float32), 45000)
                                     st.write(fig2)
-                                with column2:
-                                    if len(audio) > 0:
-                                        st.audio(audio.tobytes())
-                                        wav_file = open('audio.wav', 'wb')
-                                        wav_file.write(audio.tobytes())
-                                #with st.container():
-                                    #X = feature(audio)
+                                #with column2:
+                                    #if len(audio) > 0:
+                                        #st.audio(audio.tobytes())
+                                        #wav_file = open('audio.wav', 'wb')
+                                        #wav_file.write(audio.tobytes())
+                                with st.container():
+                                    X = feature(audio)
 
                                 #audio_bytes = audio_recorder(text = 'Click to Record', 
                                                              #recording_color = '2cd2e8', 
