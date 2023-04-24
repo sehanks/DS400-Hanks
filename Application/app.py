@@ -300,7 +300,7 @@ def main():
                                     if len(audio) > 0:
                                         st.audio(audio.tobytes()) 
                                 with column1:
-                                    st.markdown('#  ')
+                                    st.markdown('###  ')
                                     st.markdown('###### Waveplot for Recorded Audio File')
                                     fig = plt.figure(figsize = (20, 8))
                                     librosa.display.waveplot(audio.astype(np.float32), sr = 45000)
@@ -320,7 +320,6 @@ def main():
                                     spectrogram(audio.astype(np.float32), 45000)
                                     st.write(fig2)
                             with st.container():
-                                column1 = st.columns(1)
                                 with column1: 
                                     pred_emotion = get_pred_recorded(audio.astype(np.float32), 45000)
                                     unique, counts = np.unique(pred_emotion, return_counts = True)
@@ -355,7 +354,6 @@ def main():
                     pred_emotion = get_pred('Application/OAF_back_sad.wav')
                     unique, counts = np.unique(pred_emotion, return_counts = True)
                     st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
-                    #st.markdown('#### Emotion Detected: Angry')
                 if not audio_file == 'test_file':
                     pred_emotion = get_pred(audio_file)
                     unique, counts = np.unique(pred_emotion, return_counts = True)
