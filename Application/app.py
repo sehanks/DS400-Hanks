@@ -260,12 +260,11 @@ def main():
                                 st.markdown('#  ')
                                 st.markdown('#  ')
                                 st.audio(audio_bytes, format = 'audio/wav')
-                                
+                                np_bytes = BytesIO(audio_bytes)
                         with column1: 
                                 st.markdown('#  ')
                                 st.markdown('###### Waveplot for Recorded Audio File')
                                 fig = plt.figure(figsize = (20, 8))
-                                np_bytes = BytesIO(audio_bytes)
                                 wav, sr = librosa.load(np_bytes, sr = 45000)
                                 librosa.display.waveplot(wav, sr = 45000)
                                 plt.gca().axes.get_yaxis().set_visible(False)
