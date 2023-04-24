@@ -281,77 +281,77 @@ def main():
                 else:
                     column3, column4 = st.columns(2)
                     #with column3:  
-                        if st.button('Try test audio file'): # Test audio file button
-                            #column3, column4 = st.columns(2)
-                            with column3:  
-                                with column2:
+                    if st.button('Try test audio file'): # Test audio file button
+                        #column3, column4 = st.columns(2)
+                        with column3:  
+                            with column2:
+                                st.markdown('#  ')
+                                st.markdown('#  ')
+                                st.audio(data = 'Application/OAF_back_sad.wav', format = 'audio/wav', start_time = 0) 
+                                path = 'Application/OAF_back_sad.wav'
+                                audio_file = 'test_file'
+                            with column1: 
+                                st.markdown('#  ')
+                                st.markdown('###### Waveplot for Test Audio File')
+                                fig = plt.figure(figsize = (20, 8))
+                                wav, sr = librosa.load(path, sr = 45000)
+                                librosa.display.waveplot(wav, sr = 45000)
+                                plt.gca().axes.get_yaxis().set_visible(False)
+                                plt.gca().axes.get_xaxis().set_visible(False)
+                                plt.gca().axes.spines['right'].set_visible(False)
+                                plt.gca().axes.spines['left'].set_visible(False)
+                                plt.gca().axes.spines['top'].set_visible(False)
+                                plt.gca().axes.spines['bottom'].set_visible(False)
+                                st.write(fig)
+                            with column2:
+                                st.markdown('#  ')
+                                st.markdown('####  ')
+                                st.markdown('######   ')
+                                st.markdown('###### Mel-Spectrogram for Test Audio File')
+                                fig2 = plt.figure(figsize = (20, 8))
+                                spectrogram(wav, sr)
+                                st.write(fig2)
+                    else: 
+                        #column3, column4 = st.columns(2)
+                        with column4:
+                            audio_bytes = audio_recorder(text = 'Click to Record', 
+                                                         recording_color = '2cd2e8', 
+                                                         neutral_color = '2c7de8', 
+                                                         icon_name = 'volume-high', 
+                                                         icon_size = '2x',
+                                                         sample_rate = 45000,
+                                                         energy_threshold = (-1.0, 1.0),
+                                                         pause_threshold = 5.0)
+                            with column2:
+                                if audio_bytes:
                                     st.markdown('#  ')
                                     st.markdown('#  ')
-                                    st.audio(data = 'Application/OAF_back_sad.wav', format = 'audio/wav', start_time = 0) 
-                                    path = 'Application/OAF_back_sad.wav'
-                                    audio_file = 'test_file'
-                                with column1: 
-                                    st.markdown('#  ')
-                                    st.markdown('###### Waveplot for Test Audio File')
-                                    fig = plt.figure(figsize = (20, 8))
-                                    wav, sr = librosa.load(path, sr = 45000)
-                                    librosa.display.waveplot(wav, sr = 45000)
-                                    plt.gca().axes.get_yaxis().set_visible(False)
-                                    plt.gca().axes.get_xaxis().set_visible(False)
-                                    plt.gca().axes.spines['right'].set_visible(False)
-                                    plt.gca().axes.spines['left'].set_visible(False)
-                                    plt.gca().axes.spines['top'].set_visible(False)
-                                    plt.gca().axes.spines['bottom'].set_visible(False)
-                                    st.write(fig)
-                                with column2:
-                                    st.markdown('#  ')
-                                    st.markdown('####  ')
-                                    st.markdown('######   ')
-                                    st.markdown('###### Mel-Spectrogram for Test Audio File')
-                                    fig2 = plt.figure(figsize = (20, 8))
-                                    spectrogram(wav, sr)
-                                    st.write(fig2)
-                        else: 
-                            #column3, column4 = st.columns(2)
-                            with column4:
-                                audio_bytes = audio_recorder(text = 'Click to Record', 
-                                                             recording_color = '2cd2e8', 
-                                                             neutral_color = '2c7de8', 
-                                                             icon_name = 'volume-high', 
-                                                             icon_size = '2x',
-                                                             sample_rate = 45000,
-                                                             energy_threshold = (-1.0, 1.0),
-                                                             pause_threshold = 5.0)
-                                with column2:
-                                    if audio_bytes:
-                                        st.markdown('#  ')
-                                        st.markdown('#  ')
-                                        st.audio(audio_bytes, format = 'audio/wav')
+                                    st.audio(audio_bytes, format = 'audio/wav')
 
-                                        with column1: 
-                                            st.markdown('#  ')
-                                            st.markdown('###### Waveplot for Recorded Audio File')
-                                            fig = plt.figure(figsize = (20, 8))
-                                            np_bytes = BytesIO(audio_bytes)
-                                            wav, sr = librosa.load(np_bytes, sr = 45000)
-                                            librosa.display.waveplot(wav, sr = 45000)
-                                            plt.gca().axes.get_yaxis().set_visible(False)
-                                            plt.gca().axes.get_xaxis().set_visible(False)
-                                            plt.gca().axes.spines['right'].set_visible(False)
-                                            plt.gca().axes.spines['left'].set_visible(False)
-                                            plt.gca().axes.spines['top'].set_visible(False)
-                                            plt.gca().axes.spines['bottom'].set_visible(False)
-                                            st.write(fig)
-                                        with column2:
-                                            st.markdown('#  ')
-                                            st.markdown('####  ')
-                                            st.markdown('######   ')
-                                            st.markdown('###### Mel-Spectrogram for Test Audio File')
-                                            fig2 = plt.figure(figsize = (20, 8))
-                                            spectrogram(wav, sr)
-                                            st.write(fig2)
-                                        with st.container():
-                                            pred_emotion = get_pred_recorded(np_bytes, sr)
+                                    with column1: 
+                                        st.markdown('#  ')
+                                        st.markdown('###### Waveplot for Recorded Audio File')
+                                        fig = plt.figure(figsize = (20, 8))
+                                        np_bytes = BytesIO(audio_bytes)
+                                        wav, sr = librosa.load(np_bytes, sr = 45000)
+                                        librosa.display.waveplot(wav, sr = 45000)
+                                        plt.gca().axes.get_yaxis().set_visible(False)
+                                        plt.gca().axes.get_xaxis().set_visible(False)
+                                        plt.gca().axes.spines['right'].set_visible(False)
+                                        plt.gca().axes.spines['left'].set_visible(False)
+                                        plt.gca().axes.spines['top'].set_visible(False)
+                                        plt.gca().axes.spines['bottom'].set_visible(False)
+                                        st.write(fig)
+                                    with column2:
+                                        st.markdown('#  ')
+                                        st.markdown('####  ')
+                                        st.markdown('######   ')
+                                        st.markdown('###### Mel-Spectrogram for Test Audio File')
+                                        fig2 = plt.figure(figsize = (20, 8))
+                                        spectrogram(wav, sr)
+                                        st.write(fig2)
+                                    with st.container():
+                                        pred_emotion = get_pred_recorded(np_bytes, sr)
                             
                      
                         
