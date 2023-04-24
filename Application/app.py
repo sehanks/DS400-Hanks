@@ -259,7 +259,7 @@ def main():
                                 st.markdown('#  ')
                                 st.markdown('#  ')
                                 st.audio(audio_bytes, format = 'audio/wav')
-                                wav = np.frombuffer(audio_bytes)
+                                wav = np.frombuffer(audio_bytes, dtype = 'int32')
                         with column1: 
                                 st.markdown('#  ')
                                 st.markdown('###### Waveplot for Recorded Audio File')
