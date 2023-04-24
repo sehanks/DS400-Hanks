@@ -346,7 +346,7 @@ def main():
                                     st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
                             with st.container():
                                 with column1:
-                                fig = plt.figure(figsize = (15, 7))
+                                    fig = plt.figure(figsize = (15, 7))
                                     unique, counts = np.unique(pred_emotion, return_counts = True)
                                     bar = np.asarray((unique, counts)).T
                                     col = list(bar[:, 0])
