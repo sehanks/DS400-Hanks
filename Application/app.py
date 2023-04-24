@@ -140,11 +140,53 @@ def get_feats(path):
 
 
 
+def get_feats_recorded(wav, sampling_rate):     
+    # Normal Audio
+    resample_norm = extract_feats(wav, sampling_rate)
+    result = np.array(resample_norm)    
+    # Noise
+    get_noise = noise(array)
+    resample_noise = extract_feats(get_noise, sampling_rate)
+    result = np.vstack((result, resample_noise))  # Vertical Stack    
+    # Pitch
+    get_pitch = pitch(array, sampling_rate)
+    resample_pitch = extract_feats(get_pitch, sampling_rate)
+    result = np.vstack((result, resample_pitch))  # Vertical Stack    
+    # Slow Down
+    get_slow = slow(array)
+    resample_slow = extract_feats(get_slow, sampling_rate)
+    result = np.vstack((result, resample_slow))  # Vertical Stack    
+    # Speed Up
+    get_fast = fast(array)
+    resample_fast = extract_feats(get_fast, sampling_rate)
+    result = np.vstack((result, resample_fast))  # Vertical Stack    
+    # Shift
+    get_shift = shift(array)
+    resample_shift = extract_feats(get_shift, sampling_rate)
+    result = np.vstack((result, resample_shift))  # Vertical Stack    
+    return result
+
+
+
 def get_pred(path):
     onehot = OneHotEncoder() 
     np_onehot = np.array(emotions).reshape(-1, 1)
     y = onehot.fit_transform(np_onehot).toarray()
     feat = get_feats(path)
+    sc = StandardScaler()
+    feat_fit = sc.fit_transform(feat)
+    expand_dim = np.expand_dims(feat_fit, axis = 2)
+    pred = model.predict(expand_dim)
+    y_pred = onehot.inverse_transform(pred)
+    return y_pred.flatten()
+
+
+
+def get_pred_recorded(path, sr):
+    onehot = OneHotEncoder() 
+    np_onehot = np.array(emotions).reshape(-1, 1)
+    y = onehot.fit_transform(np_onehot).toarray()
+    feat = get_feats_recorded(path, sr)
     sc = StandardScaler()
     feat_fit = sc.fit_transform(feat)
     expand_dim = np.expand_dims(feat_fit, axis = 2)
@@ -305,7 +347,7 @@ def main():
                                 spectrogram(wav, sr)
                                 st.write(fig2)
                         with st.container():
-                            pred_emotion = get_pred(np_bytes)
+                            pred_emotion = get_pred_recorded(np_bytes, sr)
                             
                      
                         
