@@ -315,8 +315,11 @@ def main():
                             with column4:
                                 audio = audiorecorder('Click to record', 'Recording...')
                                 with column2:
+                                    st.markdown('#  ')
+                                    st.markdown('#  ')
                                     if len(audio) > 0:
-                                        st.audio(audio.tobytes())                               
+                                        st.audio(audio.tobytes()) 
+                                    audio_file = 'recorded_file'
                                 with column1:
                                     st.markdown('#  ')
                                     st.markdown('###### Waveplot for Recorded Audio File')
