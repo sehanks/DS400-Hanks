@@ -8,6 +8,7 @@ matplotlib-dev
 os-dev
 libsndfile1-dev
 ffmpeg
+ffprobe
 python3-cffi
 audio_recorder_streamlit-dev
 sklearn.model_selection-dev
