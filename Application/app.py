@@ -342,6 +342,8 @@ def main():
                                         #wav_file.write(audio)
                                 with st.container():
                                     pred_emotion = get_pred_recorded(audio.astype(np.float32), 45000)
+                                    unique, counts = np.unique(pred_emotion, return_counts = True)
+                                    st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
 
                                 #audio_bytes = audio_recorder(text = 'Click to Record', 
                                                              #recording_color = '2cd2e8', 
