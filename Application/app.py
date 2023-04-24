@@ -305,13 +305,7 @@ def main():
                                 spectrogram(wav, sr)
                                 st.write(fig2)
                         with st.container():
-                            X = feature(wav)
-                            predictions = model.predict(X, use_multiprocessing = True)
-                            list_predictions = list(predictions)
-                            pred = np.squeeze(np.array(list_predictions).tolist(), axis = 0)
-                            total_pred.append(pred)
-                            detected_emotion = np.argmax(predictions)
-                            st.markdown('## Emotion Detected: {}'.format(emotions.get(detected_emotion, -1)))
+                            pred_emotion = get_pred(np_bytes)
                             
                      
                         
