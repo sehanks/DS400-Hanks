@@ -335,15 +335,15 @@ def main():
                                     fig2 = plt.figure(figsize = (20, 8))
                                     spectrogram(audio.astype(np.float32), 45000)
                                     st.write(fig2)
-                                #with column2:
-                                    #if len(audio) > 0:
-                                        #st.audio(audio.tobytes())
-                                        #wav_file = open('audio.wav', 'wb')
-                                        #wav_file.write(audio)
                                 with st.container():
                                     pred_emotion = get_pred_recorded(audio.astype(np.float32), 45000)
                                     unique, counts = np.unique(pred_emotion, return_counts = True)
                                     st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
+                                with column2:
+                                    if len(audio) > 0:
+                                        st.audio(audio.tobytes())
+                                        wav_file = open('audio.wav', 'wb')
+                                        wav_file.write(audio)
 
                                 #audio_bytes = audio_recorder(text = 'Click to Record', 
                                                              #recording_color = '2cd2e8', 
