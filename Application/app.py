@@ -153,6 +153,26 @@ def get_pred(path):
 
 
 
+def feature(file, frame_length = 2048, hop_length = 512):
+    wav, sr = librosa.load(path = file, sr = None)
+    normal = AudioSegment.from_file(file = file)
+    normalize = effects.normalize(normal, headroom = 5.0) 
+    normalize_array = np.array(normalize.get_array_of_samples(), dtype = 'float32')
+    noise = nr.reduce_noise(normalize_array, sr = sr, time_mask_smooth_ms = 139)
+    extract_1 = librosa.feature.rms(noise, frame_length = 2048, hop_length = 512, center = True, pad_mode = 'reflect').T 
+    extract_2 = librosa.feature.zero_crossing_rate(noise, frame_length = 2048, hop_length = 512, center = True).T
+    extract_3 = librosa.feature.mfcc(noise, sr = sr, S = None, n_mfcc = 13, hop_length = 512).T
+    X = np.concatenate((extract_1, extract_2, extract_3), axis = 1)
+    features = np.expand_dims(X, axis = 0)
+    return features
+
+
+
+def file_silence(data):
+    return max(data) < 100
+
+
+
 def main():
     
     # Image
@@ -283,6 +303,15 @@ def main():
                                 fig2 = plt.figure(figsize = (20, 8))
                                 spectrogram(wav, sr)
                                 st.write(fig2)
+                        with st.container():
+                            X = feature(np_bytes)
+                            predictions = model.predict(X, use_multiprocessing = True)
+                            list_predictions = list(predictions)
+                            pred = np.squeeze(np.array(list_predictions).tolist(), axis = 0)
+                            total_pred.append(pred)
+                            detected_emotion = np.argmax(predictions)
+                            st.markdown('## Emotion Detected: {}'.format(emotions.get(detected_emotion, -1)))
+                            
                      
                         
                      
