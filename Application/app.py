@@ -12,6 +12,7 @@ import librosa.display
 from tensorflow.keras.models import load_model
 import tensorflow as tf
 from audio_recorder_streamlit import audio_recorder
+from audiorecorder import audiorecorder
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from io import BytesIO
