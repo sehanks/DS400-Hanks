@@ -323,7 +323,7 @@ def main():
                                 with column1: 
                                     pred_emotion = get_pred_recorded(audio.astype(np.float32), 45000)
                                     unique, counts = np.unique(pred_emotion, return_counts = True)
-                                    st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
+                                    st.markdown('## Emotion Detected:         {}'.format(unique[counts.argmax()]))
                             with st.container():
                                 with column2:
                                     fig = plt.figure(figsize = (15, 7))
