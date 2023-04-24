@@ -319,7 +319,6 @@ def main():
                                     st.markdown('#  ')
                                     if len(audio) > 0:
                                         st.audio(audio.tobytes()) 
-                                    audio_file = 'recorded_file'
                                 with column1:
                                     st.markdown('#  ')
                                     st.markdown('###### Waveplot for Recorded Audio File')
@@ -340,10 +339,10 @@ def main():
                                     fig2 = plt.figure(figsize = (20, 8))
                                     spectrogram(audio.astype(np.float32), 45000)
                                     st.write(fig2)
-                            #with st.container():
-                                #pred_emotion = get_pred_recorded(audio.astype(np.float32), 45000)
-                                #unique, counts = np.unique(pred_emotion, return_counts = True)
-                                #st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
+                            with st.container():
+                                pred_emotion = get_pred_recorded(audio.astype(np.float32), 45000)
+                                unique, counts = np.unique(pred_emotion, return_counts = True)
+                                st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
                                 
 
                                 #audio_bytes = audio_recorder(text = 'Click to Record', 
@@ -398,11 +397,11 @@ def main():
 
                                     
         if audio_file is not None:
-            #if not audio_file == 'test_file':
-                #st.markdown('#  ')
-                #st.markdown('###### Analysis of Audio File')  # Show details of the audio file in the menu bar
-                #file_details = {'Name': audio_file.name, 'Size': audio_file.size}
-                #st.write(file_details)
+            if not audio_file == 'test_file':
+                st.markdown('#  ')
+                st.markdown('###### Analysis of Audio File')  # Show details of the audio file in the menu bar
+                file_details = {'Name': audio_file.name, 'Size': audio_file.size}
+                st.write(file_details)
                 
             with st.container():
                 tess = pd.read_csv('Application/Tess_df.csv')
@@ -415,10 +414,6 @@ def main():
                     #st.markdown('#### Emotion Detected: Angry')
                 if not audio_file == 'test_file':
                     pred_emotion = get_pred(audio_file)
-                    unique, counts = np.unique(pred_emotion, return_counts = True)
-                    st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
-                if audio_file == 'recorded_file':
-                    pred_emotion = get_pred_recorded(audio.astype(np.float32), 45000)
                     unique, counts = np.unique(pred_emotion, return_counts = True)
                     st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
             with st.container():
