@@ -293,13 +293,12 @@ def main():
                                     st.write(fig2)
                         else: 
                             with column4:
-                                audio = audiorecorder('Click to record', 'Recording...')
-                                with column2:
-                                    st.markdown('#  ')
-                                    st.markdown('#  ')
-                                    if len(audio) > 0:
-                                        st.audio(audio.tobytes()) 
-                                if len(audio) >= 0:
+                                if (audio = audiorecorder('Click to record', 'Recording...')):
+                                    with column2:
+                                        st.markdown('#  ')
+                                        st.markdown('#  ')
+                                        if len(audio) > 0:
+                                            st.audio(audio.tobytes()) 
                                     with column1:
                                         st.markdown('###  ')
                                         st.markdown('###### Waveplot for Recorded Audio File')
