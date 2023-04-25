@@ -261,6 +261,7 @@ def main():
                     
                     
                 else:
+                    with st.container():
                     column3, column4 = st.columns(2)
                     with column3:
                         if st.button('Try test audio file'): # Test audio file button
@@ -319,23 +320,22 @@ def main():
                                 fig2 = plt.figure(figsize = (20, 8))
                                 spectrogram(audio.astype(np.float32), 45000)
                                 st.write(fig2)
-        with st.container():
-            #with column1: 
-            pred_emotion = get_pred_recorded(audio.astype(np.float32), 45000)
-            unique, counts = np.unique(pred_emotion, return_counts = True)
-            st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
-        with st.container():
-            fig = plt.figure(figsize = (15, 7))
-            unique, counts = np.unique(pred_emotion, return_counts = True)
-            bar = np.asarray((unique, counts)).T
-            col = list(bar[:, 0])
-            row = list(bar[:, 1])
-            color = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
-            plt.bar(x = col, height = [int(x) for x in row], color = color)
-            plt.xlabel('Emotions Detected')
-            plt.ylabel('Frequency')
-            plt.title('Frequency of Emotions Detected')
-            st.pyplot(fig)
+                            with column1: 
+                                pred_emotion = get_pred_recorded(audio.astype(np.float32), 45000)
+                                unique, counts = np.unique(pred_emotion, return_counts = True)
+                                st.markdown('## Emotion Detected: {}'.format(unique[counts.argmax()]))
+                            with column2: 
+                                fig = plt.figure(figsize = (15, 7))
+                                unique, counts = np.unique(pred_emotion, return_counts = True)
+                                bar = np.asarray((unique, counts)).T
+                                col = list(bar[:, 0])
+                                row = list(bar[:, 1])
+                                color = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+                                plt.bar(x = col, height = [int(x) for x in row], color = color)
+                                plt.xlabel('Emotions Detected')
+                                plt.ylabel('Frequency')
+                                plt.title('Frequency of Emotions Detected')
+                                st.pyplot(fig)
                                 
     
         if audio_file is not None:
