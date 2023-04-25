@@ -300,7 +300,7 @@ def main():
                                     st.markdown('#  ')
                                     if len(audio) > 0:
                                         st.audio(audio.tobytes()) 
-                                if audio is not None:
+                                if len(audio) > 0:
                                     with column1:
                                         st.markdown('###  ')
                                         st.markdown('###### Waveplot for Recorded Audio File')
