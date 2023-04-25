@@ -299,7 +299,7 @@ def main():
                                     st.markdown('#  ')
                                     if len(audio) > 0:
                                         st.audio(audio.tobytes()) 
-                                if len(audio) > 0:
+                                if len(audio) >= 0:
                                     with column1:
                                         st.markdown('###  ')
                                         st.markdown('###### Waveplot for Recorded Audio File')
