@@ -293,7 +293,7 @@ def main():
                                         spectrogram(wav, sr)
                                         st.write(fig2)
                             else: 
-                                if st.button('Record your own audio file'):
+                                if st.button('Record an audio file'):
                                     with column4:
                                         audio = audiorecorder('Click to record', 'Recording...')
                                     with column2:
