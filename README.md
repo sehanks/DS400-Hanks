@@ -3,6 +3,8 @@ Data Science Capstone Project
 
 ### Dataset: https://borealisdata.ca/dataset.xhtml?persistentId=doi:10.5683/SP2/E8H2MF 
 
+### App Link: https://sehanks-ds400-hanks-applicationapp-qe8am2.streamlit.app/
+
 ### Commit 1: Data Collection and Preprocessing
 In this commit I imported all of the necessary libraries, read in the dataset, and completed basic preprocessing. For this project, I am using the Toronto Emotional Speech Set (TESS) from the Northwestern University Auditory Test No. 6. This dataset was particularly appealing because it solely includes females and yet the audio is of such good caliber. Due to other datasets' vast amount of male speakers, there is an imbalance in representation. Two women (26 and 64 years old) recited a set of 200 keywords in the sentence "Say the word _," and recordings evoking each of the following emotions were made (anger, disgust, fear, happiness, pleasant surprise, sadness, and neutral). There are a total of 2800 audio files. Each of the two females and their emotions is contained within their own folder in the dataset. The 200 target words audio files (in WAV format) are contained within those.
 
@@ -36,7 +38,6 @@ In this stage, I was able to alter my models to make them each as accurate as po
 
 ### Commit 6: Application Design
 In this stage, I was able to begin my application. I have chosen to use StreamLit to build and share my data application. In my app, there will be 3 pages the user can choose from. The first page will be where the Emotion Recognition application is done, the second page will be a Project Summary, and the third page will be about myself as the creator. In the Emotion Recognition page, the user should be able to record an audio file and use my final model in order to predict which emotion is being presented. I will also create visuals in order show the user what emotions may be underlying in their audio. 
-App Link: https://sehanks-ds400-hanks-applicationapp-qe8am2.streamlit.app/ 
 
 
 ## Commit 7: Code Revision
