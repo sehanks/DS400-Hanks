@@ -40,4 +40,8 @@ App Link: https://sehanks-ds400-hanks-applicationapp-qe8am2.streamlit.app/
 
 
 ## Commit 7: Code Revision
-In this stage, I finished up the coding for my application.
+In this stage, I finished up the coding for my application. My project was successful in taking a user's input speech and accurately predicting the audio's emotion.
+
+
+## Commit 8: Code cleanup, Packaging, and Publishing
+In this stage, I cleaned up the my code for each of my files as well as made sure the application was running as intended.
